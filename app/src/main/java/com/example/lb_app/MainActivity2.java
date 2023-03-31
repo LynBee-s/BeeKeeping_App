@@ -24,10 +24,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRichTextString;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
+import org.openxmlformats.schemas.spreadsheetml.x2006.main.WorksheetDocument;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -36,6 +38,7 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.util.ArrayList;
 
 import au.com.bytecode.opencsv.CSVWriter;
@@ -241,8 +244,7 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    SQLCSV();
-                    csv2xl();
+                    exprt();
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "ERROR: Failed to export the database.", Toast.LENGTH_LONG).show();
                 }
@@ -267,6 +269,60 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
     }
+    private void exprt(){
+        File dbFile = getDatabasePath("LBDB.db");
+        HiveListHelper helper;
+        helper= new HiveListHelper(getApplicationContext(),"LBDB.db", null, 1);
+        System.out.println(dbFile);
+        File exportDir = new File(Environment.getExternalStorageDirectory() + "/Documents");
+        if (!exportDir.exists()) {
+            exportDir.mkdirs();
+        }
+        File file = new File(exportDir, "T1.xls");
+        try {
+            if (file.createNewFile()) {
+                System.out.println("file.xls " + file.getAbsolutePath());
+                Toast.makeText(getApplicationContext(), "Generating xls file...", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(getApplicationContext(), "ATTENCION: The file already exists!", Toast.LENGTH_LONG).show();
+            }
+            String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/T1.xls";
+            String outFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/TW.xls";
+            FileInputStream fis = new FileInputStream(inFilePath);
+            BufferedReader myInput = new BufferedReader(new InputStreamReader(fis));
+            HSSFWorkbook wb=new HSSFWorkbook();
+            FileWriter fw=new FileWriter(file);
+            HSSFSheet fsheet=wb.createSheet("registry");
+            HSSFRow rowA=fsheet.createRow(0);
+            for (int k = 0; k < data.size(); k++) {
+                HSSFCell cellA=rowA.createCell(k);
+                cellA.setCellValue(new HSSFRichTextString(""+data.get(k)));
+                Cursor cur=helper.exportAll();
+                cur.moveToFirst();
+                int n=1;
+                while(!cur.isAfterLast()){
+                    rowA=fsheet.createRow(n);
+                    for (int l = 0; l < data.size(); l++){
+                        cellA=rowA.createCell(l);
+                        cellA.setCellValue(new HSSFRichTextString(cur.getString(l)));
+                        wb.write(new OutputStream() {
+                            @Override
+                            public void write(int b) throws IOException {
+                                FileOutputStream fileOut = new FileOutputStream(outFilePath);
+                                wb.write(fileOut);
+                                fileOut.close();
+                            }
+                        });
+                    }
+                    n++;
+                    cur.moveToNext();
+                    fw.write(n);
+                }
+            }
+        }catch (Exception e){
+            Toast.makeText(getApplicationContext(),"ERROR",Toast.LENGTH_LONG).show();
+        }
+    }
     private void getAdapter(){
         HiveAdapter adapter = new HiveAdapter(data);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -290,112 +346,7 @@ public class MainActivity2 extends AppCompatActivity {
             data.add(hives);
         }
     }
-    private void SQLCSV() {
-        File dbFile = getDatabasePath("LBDB.db");
-        HiveDB_Helper dbhelper = new HiveDB_Helper(getApplicationContext());
-        System.out.println(dbFile);  // displays the data base path in your logcat
-        File exportDir = new File(Environment.getExternalStorageDirectory() + "/Documents");
-        if (!exportDir.exists()) {
-            exportDir.mkdirs();
-        }
-        File file = new File(exportDir, "LBHiveData.csv");
-        try {
-            if (file.createNewFile()) {
-                System.out.println("file.csv " + file.getAbsolutePath());
-                Toast.makeText(getApplicationContext(), "Generating CSV file...", Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(getApplicationContext(), "ATTENCION: The file already exists!", Toast.LENGTH_LONG).show();
-            }
-            CSVWriter csvWrite = new CSVWriter(new FileWriter(file));
-            SQLiteDatabase db = dbhelper.getWritableDatabase();
-            Cursor curCSV = db.rawQuery("SELECT * FROM " + TABLE1, null);
-            csvWrite.writeNext(curCSV.getColumnNames());
-            while (curCSV.moveToNext()) {
-                String arrStr[] = {
-                        curCSV.getString(0),
-                        curCSV.getString(1),
-                        curCSV.getString(2),
-                        curCSV.getString(3),
-                        curCSV.getString(4),
-                        curCSV.getString(5),
-                        curCSV.getString(6),
-                        curCSV.getString(7)};
-                csvWrite.writeNext(arrStr);
-            }
-            csvWrite.close();
-            curCSV.close();
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR: Failed to export the database.", Toast.LENGTH_LONG).show();
-        }
-    }
 
-    private void csv2xl() throws IOException {
-        ArrayList arList = null;
-        ArrayList al = null;
-        try {
-            String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/LBHiveData.csv";
-            String outFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/LBHiveRecordUpdate.xls";
-            String thisLine;
-            int count = 0;
-
-            try {
-
-                FileInputStream fis = new FileInputStream(inFilePath);
-                BufferedReader myInput = new BufferedReader(new InputStreamReader(fis));
-                int i = 0;
-                arList = new ArrayList();
-                while ((thisLine = myInput.readLine()) != null) {
-                    al = new ArrayList();
-                    String strar[] = thisLine.split(",");
-                    for (int j = 0; j < strar.length; j++) {
-                        al.add(strar[j]);
-                    }
-                    arList.add(al);
-                    System.out.println();
-                    i++;
-                }
-            } catch (Exception e) {
-                System.out.println();
-            }
-
-            try {
-                HSSFWorkbook hwb = new HSSFWorkbook();
-                HSSFSheet sheet = hwb.createSheet("Hive_records");
-                for (int k = 0; k < arList.size(); k++) {
-                    ArrayList ardata = (ArrayList) arList.get(k);
-                    HSSFRow row = sheet.createRow((short) 0 + k);
-                    for (int p = 0; p < ardata.size(); p++) {
-                        HSSFCell cell = row.createCell((int) p);
-                        String data = ardata.get(p).toString();
-                        if (data.startsWith("=")) {
-                            cell.setCellType(Cell.CELL_TYPE_STRING);
-                            data = data.replaceAll("\"", "");
-                            data = data.replaceAll("=", "");
-                            cell.setCellValue(data);
-                        } else if (data.startsWith("\"")) {
-                            data = data.replaceAll("\"", "");
-                            cell.setCellType(Cell.CELL_TYPE_STRING);
-                            cell.setCellValue(data);
-                        } else {
-                            data = data.replaceAll("\"", "");
-                            cell.setCellType(Cell.CELL_TYPE_NUMERIC);
-                            cell.setCellValue(data);
-                        }
-                    }
-                    System.out.println();
-                }
-                FileOutputStream fileOut = new FileOutputStream(outFilePath);
-                hwb.write(fileOut);
-                fileOut.close();
-                System.out.println("Your excel file has been generated");
-                Toast.makeText(getApplicationContext(), "The database has been exported to "+outFilePath, Toast.LENGTH_LONG).show();
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                Toast.makeText(getApplicationContext(), "ERROR: Failed to export the database. Please try again.", Toast.LENGTH_LONG).show();
-            }
-        } catch (Exception e) {
-        }
-    }
     private void MainMenu() {
         try {
             Intent intent = new Intent(this, MainActivity.class);
