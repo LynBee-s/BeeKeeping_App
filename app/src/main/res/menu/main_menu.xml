@@ -1,4 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/mmenu"
+        android:title="@string/main_menu"
+        android:visible="true"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/hivrec"
+        android:title="@string/hive_activity"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/ventas"
+        android:title="@string/sales"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/salesresum"
+        android:title="Sales History"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/gastos"
+        android:title="@string/expenditure"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/gastoshstry"
+        android:title="Expenditure History"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/event"
+        android:title="Set Reminder"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/geoloc"
+        android:title="Hive Tracker"
+        app:showAsAction="never" />
 
 </menu>

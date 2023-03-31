@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">LB_App</string>
+    <string name="main_menu">Main Menu</string>
+    <string name="hive_activity">Hive Activity</string>
+    <string name="sales">Sales</string>
+    <string name="expenditure">Expenditure</string>
+    <string name="hive_map">Hive Map</string>
+    <string name="id">ID:</string>
+    <string name="hive_id">HIVE ID:</string>
+    <string name="date">DATE:</string>
+    <string name="hive_status">HIVE STATUS:</string>
+    <string name="frames"># FRAMES:</string>
+    <string name="population">POPULATION:</string>
+    <string name="location">LOCATION:</string>
+    <string name="notes">NOTES:</string>
+    <string name="insert">Insert</string>
+    <string name="clear">Clear</string>
+    <string name="button">Button</string>
+    <string name="map_input">Map Input</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="total">Total</string>
+    <string name="price">Price:</string>
+    <string name="amount">Amount:</string>
+    <string name="description">Description:</string>
+    <string name="trans_id">Trans_ID:</string>
+    <string name="Export">export</string>
 </resources>

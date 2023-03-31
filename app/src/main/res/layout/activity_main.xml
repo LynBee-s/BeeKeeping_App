@@ -1,18 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="176dp"
+        android:orientation="horizontal"></LinearLayout>
+
+    <Button
+        android:id="@+id/hr"
+        android:layout_width="match_parent"
+        android:layout_height="94dp"
+        android:fontFamily="@font/alice"
+        android:text="Hive Activity"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/sls"
+        android:layout_width="match_parent"
+        android:layout_height="94dp"
+        android:fontFamily="@font/alice"
+        android:text="Sales"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/exp"
+        android:layout_width="match_parent"
+        android:layout_height="94dp"
+        android:fontFamily="@font/alice"
+        android:text="Expenditure"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/gl"
+        android:layout_width="match_parent"
+        android:layout_height="94dp"
+        android:fontFamily="@font/alice"
+        android:text="Hive Tracker"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+</LinearLayout>
