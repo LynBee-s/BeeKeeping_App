@@ -1,6 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
              android:layout_width="match_parent"
+    android:orientation="vertical"
              android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="123dp"
+        android:layout_height="235dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="match_parent"
+            android:layout_height="23dp"
+            android:text="@string/id" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:text="@string/hive_id" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="match_parent"
+            android:layout_height="27dp"
+            android:text="@string/date" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="match_parent"
+            android:layout_height="23dp"
+            android:text="@string/hive_status" />
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="match_parent"
+            android:layout_height="27dp"
+            android:text="@string/frames" />
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="match_parent"
+            android:layout_height="29dp"
+            android:text="@string/population" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:text="@string/location" />
+
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:text="@string/notes" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="287dp"
+        android:layout_height="232dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/rvid"
+            android:layout_width="match_parent"
+            android:layout_height="25dp" />
+
+        <TextView
+            android:id="@+id/rvhid"
+            android:layout_width="match_parent"
+            android:layout_height="21dp" />
+
+        <TextView
+            android:id="@+id/rvdate"
+            android:layout_width="match_parent"
+            android:layout_height="27dp" />
+
+        <TextView
+            android:id="@+id/rvhivestat"
+            android:layout_width="match_parent"
+            android:layout_height="23dp" />
+
+        <TextView
+            android:id="@+id/rvframes"
+            android:layout_width="match_parent"
+            android:layout_height="28dp" />
+
+        <TextView
+            android:id="@+id/rvpop"
+            android:layout_width="match_parent"
+            android:layout_height="29dp" />
+
+        <TextView
+            android:id="@+id/rvlocate"
+            android:layout_width="match_parent"
+            android:layout_height="27dp" />
+
+        <TextView
+            android:id="@+id/rvnote"
+            android:layout_width="match_parent"
+            android:layout_height="22dp" />
+    </LinearLayout>
+
+</LinearLayout>
