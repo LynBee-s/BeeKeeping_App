@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <item
+        android:id="@+id/mmenu"
+        android:title="Main menu"
+        android:visible="true" />
+    <item
+        android:id="@+id/hivrec"
+        android:title="Hive activity" />
+    <item
+        android:id="@+id/ventas"
+        android:title="Sales" />
+    <item
+        android:id="@+id/salesresum"
+        android:title="Sales History" />
+    <item
+        android:id="@+id/gastos"
+        android:title="Expenditure" />
+    <item
+        android:id="@+id/gastoshstry"
+        android:title="Expenditure History" />
+    <item
+        android:id="@+id/event"
+        android:title="Set Reminder" />
 </menu>
