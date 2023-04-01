@@ -1,6 +1,7 @@
 package com.example.lb_app;
 
 import static com.example.lb_app.HiveDB_Helper.TABLE1;
+import static com.example.lb_app.Structure_BBDD.TABLE2;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -21,6 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+
 import android.widget.Toast;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -28,8 +30,7 @@ import org.apache.poi.hssf.usermodel.HSSFRichTextString;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.openxmlformats.schemas.spreadsheetml.x2006.main.WorksheetDocument;
+import org.apache.poi.hssf.usermodel.examples.HSSFReadWrite;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -40,8 +41,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.ArrayList;
-
-import au.com.bytecode.opencsv.CSVWriter;
 
 public class MainActivity2 extends AppCompatActivity {
     Button btnRead,btnUpdate,btnClear,btnExport,btnInsert;
@@ -271,7 +270,6 @@ public class MainActivity2 extends AppCompatActivity {
     }
     private void exprt(){
         File dbFile = getDatabasePath("LBDB.db");
-        HiveListHelper helper;
         helper= new HiveListHelper(getApplicationContext(),"LBDB.db", null, 1);
         System.out.println(dbFile);
         File exportDir = new File(Environment.getExternalStorageDirectory() + "/Documents");
@@ -294,17 +292,19 @@ public class MainActivity2 extends AppCompatActivity {
             FileWriter fw=new FileWriter(file);
             HSSFSheet fsheet=wb.createSheet("registry");
             HSSFRow rowA=fsheet.createRow(0);
+            SQLiteDatabase db=helper.getWritableDatabase();
+            Cursor cur = db.rawQuery("SELECT * FROM " + TABLE2, null);
             for (int k = 0; k < data.size(); k++) {
                 HSSFCell cellA=rowA.createCell(k);
                 cellA.setCellValue(new HSSFRichTextString(""+data.get(k)));
-                Cursor cur=helper.exportAll();
+                cur=helper.exportAll();
                 cur.moveToFirst();
                 int n=1;
                 while(!cur.isAfterLast()){
                     rowA=fsheet.createRow(n);
                     for (int l = 0; l < data.size(); l++){
                         cellA=rowA.createCell(l);
-                        cellA.setCellValue(new HSSFRichTextString(cur.getString(l)));
+                        cellA.setCellValue(new HSSFRichTextString(cur.getColumnName(n)));
                         wb.write(new OutputStream() {
                             @Override
                             public void write(int b) throws IOException {
@@ -316,7 +316,7 @@ public class MainActivity2 extends AppCompatActivity {
                     }
                     n++;
                     cur.moveToNext();
-                    fw.write(n);
+                    fw.write(cur.getString(n));
                 }
             }
         }catch (Exception e){
@@ -411,4 +411,5 @@ public class MainActivity2 extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
+
 }

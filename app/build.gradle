@@ -5,6 +5,7 @@ plugins {
 android {
     namespace 'com.example.lb_app'
     compileSdk 33
+
     defaultConfig {
         applicationId "com.example.lb_app"
         minSdk 30
@@ -16,15 +17,28 @@ android {
         ndk {
             abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
         }
-    }
-    buildscript{
-        repositories{
-            maven{url 'https://chaquo.com/maven'}
-            maven { url 'https://jitpack.io' }
-            mavenCentral()
+        buildscript {
+            repositories {
+                maven { url 'https://jitpack.io' }
+                google()
+                mavenCentral()
 
+            }
+        }
+
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
         }
     }
+
+    buildscript {
+        repositories {
+            maven { url 'https://chaquo.com/maven' }
+            maven { url 'https://jitpack.io' }
+            mavenCentral()
+        }
+    }
+
     buildTypes {
         release {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -35,7 +49,6 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
-
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.6.1'
