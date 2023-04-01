@@ -48,10 +48,11 @@ public class MainActivity5 extends AppCompatActivity {
     private RecyclerView recyclerView;
 
     HiveListHelper helper;
-    SalesAdapter salesAdapter=null;
-    SalesAdapter.ViewHolder viewHolder=null;
+    SalesAdapter salesAdapter = null;
+    SalesAdapter.ViewHolder viewHolder = null;
 
     ImageButton export2;
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -92,10 +93,6 @@ public class MainActivity5 extends AppCompatActivity {
                 s:
                 PlanEvent();
                 return true;
-            case R.id.geoloc:
-                s:
-                HiveMap();
-                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -105,11 +102,11 @@ public class MainActivity5 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main5);
-        HiveDB_Helper hiveDB_helper=new HiveDB_Helper(MainActivity5.this);
-        helper= new HiveListHelper(getApplicationContext(),"LBDB.db", null, 1);
-        recyclerView=(RecyclerView)findViewById(R.id.recycler_view2);
-        data=new ArrayList<>();
-        export2=(ImageButton) findViewById(R.id.export2);
+        HiveDB_Helper hiveDB_helper = new HiveDB_Helper(MainActivity5.this);
+        helper = new HiveListHelper(getApplicationContext(), "LBDB.db", null, 1);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view2);
+        data = new ArrayList<>();
+        export2 = (ImageButton) findViewById(R.id.export2);
 
         getAdapter();
         getInfo();
@@ -126,6 +123,7 @@ public class MainActivity5 extends AppCompatActivity {
             }
         });
     }
+
     private void SQLCSV() {
         File dbFile = getDatabasePath("LBDB.db");
         HiveDB_Helper dbhelper = new HiveDB_Helper(getApplicationContext());
@@ -224,7 +222,7 @@ public class MainActivity5 extends AppCompatActivity {
                 hwb.write(fileOut);
                 fileOut.close();
                 System.out.println("Your excel file has been generated");
-                Toast.makeText(getApplicationContext(), "The database has been exported to "+outFilePath, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "The database has been exported to " + outFilePath, Toast.LENGTH_LONG).show();
             } catch (Exception ex) {
                 ex.printStackTrace();
                 Toast.makeText(getApplicationContext(), "ERROR: Failed to export the database. Please try again.", Toast.LENGTH_LONG).show();
@@ -232,18 +230,20 @@ public class MainActivity5 extends AppCompatActivity {
         } catch (Exception e) {
         }
     }
-    private void getAdapter(){
+
+    private void getAdapter() {
         SalesAdapter adapter = new SalesAdapter(data);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
     }
-    private  void  getInfo(){
-        SQLiteDatabase db=helper.getReadableDatabase();
+
+    private void getInfo() {
+        SQLiteDatabase db = helper.getReadableDatabase();
         Sales sales = null;
-        Cursor cur = db.rawQuery("select * from "+TABLE2 ,null);
+        Cursor cur = db.rawQuery("select * from " + TABLE2, null);
         while (cur.moveToNext()) {
-            sales= new Sales();
+            sales = new Sales();
             sales.setID(cur.getString(0));
             sales.setTrans_ID(cur.getString(1));
             sales.setDate(cur.getString(2));
@@ -255,6 +255,7 @@ public class MainActivity5 extends AppCompatActivity {
             data.add(sales);
         }
     }
+
     private void MainMenu() {
         try {
             Intent intent = new Intent(this, MainActivity.class);
@@ -263,6 +264,7 @@ public class MainActivity5 extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
+
     private void HiveRecords() {
         try {
             Intent intent = new Intent(this, MainActivity2.class);
@@ -283,21 +285,23 @@ public class MainActivity5 extends AppCompatActivity {
 
     private void Expenditure() {
         try {
-            Intent intent = new Intent(this, MainActivity8.class);
+            Intent intent = new Intent(this, MainActivity7.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
+
     private void ExpenditureHistory() {
         try {
-            Intent intent = new Intent(this, MainActivity8.class);
+            Intent intent = new Intent(this, MainActivity7.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
 
     }
+
     private void SalesResume() {
         try {
             Intent intent = new Intent(this, MainActivity5.class);
@@ -306,19 +310,13 @@ public class MainActivity5 extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
+
     private void PlanEvent() {
         try {
-            Intent intent=new Intent(this,MainActivity6.class);
+            Intent intent = new Intent(this, MainActivity6.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
-    private void HiveMap() {
-        try {
-            Intent intent=new Intent(this,MainActivity7.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-    }
+}
