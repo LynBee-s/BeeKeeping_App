@@ -21,7 +21,7 @@ public class HiveDB_Helper extends SQLiteOpenHelper {
     public HiveDB_Helper(Context context, String s, Object o, int i) {
         super(context.getApplicationContext(),DATABASE_NAME,null,1);
     }
-
+    
 
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(Structure_BBDD.SQL_CREATE_ENTRIES1);
