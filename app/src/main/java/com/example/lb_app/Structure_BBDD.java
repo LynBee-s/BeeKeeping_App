@@ -3,7 +3,7 @@ package com.example.lb_app;
 import org.apache.poi.xslf.model.geom.Context;
 
 public class Structure_BBDD {
-    public Structure_BBDD(Context context){}
+    public Structure_BBDD (Context context){}
     public static final String DATABASE_NAME = "LBDB.db";
     public static final String TABLE1 = "Hive_Rec";
     public static final String COLUMNID = "ID";
@@ -34,6 +34,7 @@ public class Structure_BBDD {
     public static final String COLUMNB6 = "Price";
     public static final String COLUMNB7 = "Total";
     public static final String COLUMNB8 = "Notes";
+
 
     public static final String SQL_CREATE_ENTRIES1 =
 
