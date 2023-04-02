@@ -269,7 +269,8 @@
             android:id="@+id/shistory"
             android:layout_width="146dp"
             android:layout_height="match_parent"
-            android:background="@drawable/export_data__2_" />
+            android:background="@drawable/export_data__2_"
+            android:contentDescription="@string/search_history" />
 
         <Space
             android:layout_width="wrap_content"

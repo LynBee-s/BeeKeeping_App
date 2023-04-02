@@ -24,4 +24,5 @@
     <string name="description">Description:</string>
     <string name="trans_id">Trans_ID:</string>
     <string name="Export">export</string>
+    <string name="search_history">Search History</string>
 </resources>
