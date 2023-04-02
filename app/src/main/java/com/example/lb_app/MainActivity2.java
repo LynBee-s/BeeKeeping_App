@@ -268,60 +268,65 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
     }
-    private void exprt(){
+    private void exprt() throws IOException {
         File dbFile = getDatabasePath("LBDB.db");
-        helper= new HiveListHelper(getApplicationContext(),"LBDB.db", null, 1);
+        HiveDB_Helper db_helper = new HiveDB_Helper(getApplicationContext());
         System.out.println(dbFile);
         File exportDir = new File(Environment.getExternalStorageDirectory() + "/Documents");
         if (!exportDir.exists()) {
             exportDir.mkdirs();
         }
         File file = new File(exportDir, "T1.xls");
-        try {
-            if (file.createNewFile()) {
-                System.out.println("file.xls " + file.getAbsolutePath());
-                Toast.makeText(getApplicationContext(), "Generating xls file...", Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(getApplicationContext(), "ATTENCION: The file already exists!", Toast.LENGTH_LONG).show();
-            }
-            String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/T1.xls";
-            String outFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/TW.xls";
-            FileInputStream fis = new FileInputStream(inFilePath);
-            BufferedReader myInput = new BufferedReader(new InputStreamReader(fis));
-            HSSFWorkbook wb=new HSSFWorkbook();
-            FileWriter fw=new FileWriter(file);
-            HSSFSheet fsheet=wb.createSheet("registry");
-            HSSFRow rowA=fsheet.createRow(0);
-            SQLiteDatabase db=helper.getWritableDatabase();
-            Cursor cur = db.rawQuery("SELECT * FROM " + TABLE2, null);
-            for (int k = 0; k < data.size(); k++) {
-                HSSFCell cellA=rowA.createCell(k);
-                cellA.setCellValue(new HSSFRichTextString(""+data.get(k)));
-                cur=helper.exportAll();
-                cur.moveToFirst();
-                int n=1;
-                while(!cur.isAfterLast()){
-                    rowA=fsheet.createRow(n);
-                    for (int l = 0; l < data.size(); l++){
-                        cellA=rowA.createCell(l);
-                        cellA.setCellValue(new HSSFRichTextString(cur.getColumnName(n)));
-                        wb.write(new OutputStream() {
-                            @Override
-                            public void write(int b) throws IOException {
-                                FileOutputStream fileOut = new FileOutputStream(outFilePath);
-                                wb.write(fileOut);
-                                fileOut.close();
-                            }
-                        });
-                    }
-                    n++;
-                    cur.moveToNext();
-                    fw.write(cur.getString(n));
-                }
-            }
-        }catch (Exception e){
-            Toast.makeText(getApplicationContext(),"ERROR",Toast.LENGTH_LONG).show();
+
+        if (file.createNewFile()) {
+            System.out.println("file.xls " + file.getAbsolutePath());
+            Toast.makeText(getApplicationContext(), "Generating xls file...", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext(), "ATTENCION: The file already exists!", Toast.LENGTH_LONG).show();
         }
+        HSSFWorkbook wb = new HSSFWorkbook();
+        FileWriter fw = new FileWriter(file);
+        HSSFSheet fsheet = wb.createSheet("registry");
+        for (int k = 0; k < data.size(); k++) {
+            HSSFRow rowA = fsheet.createRow(k);
+            SQLiteDatabase db = db_helper.getWritableDatabase();
+            //Cursor cur=db.rawQuery("SELECT * FROM " + TABLE2, null);
+            HSSFCell cellA = rowA.createCell(k);
+            cellA.setCellValue(new HSSFRichTextString("" + data.get(k)));
+            Cursor cur = helper.exportAll();
+            cur.getColumnNames();
+            cur.getColumnIndex("ID");
+            cur.getColumnIndex("Hive");
+            cur.getColumnIndex("Date");
+            cur.getColumnIndex("Frames");
+            cur.getColumnIndex("Hive_Stat");
+            cur.getColumnIndex("Population");
+            cur.getColumnIndex("Location");
+            cur.getColumnIndex("Notes");
+            cur.moveToNext();
+            int n = 1;
+            while (!cur.isAfterLast()) {
+                rowA = fsheet.createRow(n);
+                for (int l = 0; l < data.size(); l++) {
+                    cur.getColumnNames();
+                    cellA = rowA.createCell(l);
+                    cellA.setCellValue(new HSSFRichTextString(cur.getColumnName(n)));
+                    wb.write(new OutputStream() {
+                        @Override
+                        public void write(int b) throws IOException {
+                            FileOutputStream fileOut = new FileOutputStream(file);
+                            wb.write(fileOut);
+                            fileOut.close();
+                        }
+                    });
+                }
+                n++;
+                cur.moveToNext();
+                fw.write(cur.getString(n));
+                cur.close();
+            }
+        }
+
     }
     private void getAdapter(){
         HiveAdapter adapter = new HiveAdapter(data);
