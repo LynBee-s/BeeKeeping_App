@@ -62,7 +62,7 @@
             android:layout_weight="1"
             android:clickable="false"
             android:fontFamily="@font/alice"
-            android:text="@string/date" />
+            android:text="Date:" />
 
         <EditText
             android:id="@+id/date5"
