@@ -281,13 +281,6 @@ public boolean onCreateOptionsMenu(Menu menu) {
             }
         }
         });
-        exphistry.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(MainActivity4.this,MainActivity8.class);
-                startActivity(intent);
-            }
-        });
 
         exphistry.setOnClickListener(new View.OnClickListener() {
             @Override
