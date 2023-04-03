@@ -372,10 +372,10 @@ public class MainActivity2 extends AppCompatActivity {
                 fileOut.close();
                 System.out.println("Your excel file has been generated");
                 delete();
-                Toast.makeText(getApplicationContext(), "Hive records have been successfully exported to "+getFilesDir(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "´Hive Records´ has been successfully exported to "+getFilesDir(), Toast.LENGTH_LONG).show();
             } catch (Exception ex) {
                 ex.printStackTrace();
-                Toast.makeText(getApplicationContext(), "ERROR: Failed to export hive records.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "ERROR: Failed to export file ´Hive Records´ .", Toast.LENGTH_LONG).show();
             }
         } catch (Exception e) {
             e.printStackTrace();

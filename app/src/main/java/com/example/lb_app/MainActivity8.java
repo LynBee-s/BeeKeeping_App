@@ -1,5 +1,7 @@
 package com.example.lb_app;
 
+import static com.example.lb_app.HiveDB_Helper.DATABASE_NAME;
+import static com.example.lb_app.HiveDB_Helper.TABLE1;
 import static com.example.lb_app.HiveListHelper.TABLE3;
 import static com.example.lb_app.Structure_BBDD.TABLE2;
 
@@ -34,6 +36,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Date;
 
 import au.com.bytecode.opencsv.CSVWriter;
 
@@ -140,24 +143,24 @@ public class MainActivity8 extends AppCompatActivity {
         }
     }
     private void SQLCSV() {
-        File dbFile = getDatabasePath("LBDB.db");
+        File dbFile = getDatabasePath(DATABASE_NAME);
         HiveDB_Helper dbhelper = new HiveDB_Helper(getApplicationContext());
         System.out.println(dbFile);  // displays the data base path in your logcat
         File exportDir = new File(Environment.getExternalStorageDirectory() + "/Documents");
         if (!exportDir.exists()) {
             exportDir.mkdirs();
         }
-        File file = new File(exportDir, "ExpenditureData.csv");
+        File file = new File(exportDir, "LBdatos.csv");
         try {
             if (file.createNewFile()) {
                 System.out.println("file.csv " + file.getAbsolutePath());
-                Toast.makeText(getApplicationContext(), "Generating CSV file...", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Writing data to excel file...", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(getApplicationContext(), "ATTENCION: The file already exists!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "ATTENTION:The file already exists!", Toast.LENGTH_LONG).show();
             }
             CSVWriter csvWrite = new CSVWriter(new FileWriter(file));
             SQLiteDatabase db = dbhelper.getWritableDatabase();
-            Cursor curCSV = db.rawQuery("SELECT * FROM " + TABLE2, null);
+            Cursor curCSV = db.rawQuery("SELECT * FROM " + TABLE3, null);
             csvWrite.writeNext(curCSV.getColumnNames());
             while (curCSV.moveToNext()) {
                 String arrStr[] = {
@@ -174,21 +177,20 @@ public class MainActivity8 extends AppCompatActivity {
             csvWrite.close();
             curCSV.close();
         } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR: Failed to export the database.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
-
     private void csv2xl() throws IOException {
         ArrayList arList = null;
         ArrayList al = null;
         try {
-            String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/ExpenditureData.csv";
-            String outFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/ExpenditureRecordUpdate.xls";
+            Date date=new Date();
+            date.getTime();
+            String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/LBdatos.csv";
+            String outFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/ExpenditureHistory"+date.getTime()+".xls";
             String thisLine;
             int count = 0;
-
             try {
-
                 FileInputStream fis = new FileInputStream(inFilePath);
                 BufferedReader myInput = new BufferedReader(new InputStreamReader(fis));
                 int i = 0;
@@ -206,10 +208,9 @@ public class MainActivity8 extends AppCompatActivity {
             } catch (Exception e) {
                 System.out.println();
             }
-
             try {
                 HSSFWorkbook hwb = new HSSFWorkbook();
-                HSSFSheet sheet = hwb.createSheet("Expenditure_records");
+                HSSFSheet sheet = hwb.createSheet("Records");
                 for (int k = 0; k < arList.size(); k++) {
                     ArrayList ardata = (ArrayList) arList.get(k);
                     HSSFRow row = sheet.createRow((short) 0 + k);
@@ -237,12 +238,23 @@ public class MainActivity8 extends AppCompatActivity {
                 hwb.write(fileOut);
                 fileOut.close();
                 System.out.println("Your excel file has been generated");
-                Toast.makeText(getApplicationContext(), "The database has been exported to "+outFilePath, Toast.LENGTH_LONG).show();
+                delete();
+                Toast.makeText(getApplicationContext(), "´Expenditure History´ has been successfully exported to "+getFilesDir(), Toast.LENGTH_LONG).show();
             } catch (Exception ex) {
                 ex.printStackTrace();
-                Toast.makeText(getApplicationContext(), "ERROR: Failed to export the database. Please try again.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "ERROR: Failed to export ´Expenditure History´.", Toast.LENGTH_LONG).show();
             }
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    private void delete()throws SecurityException{
+        try {
+            String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/LBdatos.csv";
+            File file2 = new File(inFilePath);
+            file2.delete();
+        }catch (Exception exc){
+            exc.printStackTrace();
         }
     }
     private void MainMenu() {
