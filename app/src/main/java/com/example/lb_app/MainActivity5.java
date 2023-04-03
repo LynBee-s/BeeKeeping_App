@@ -172,6 +172,47 @@ public class MainActivity5 extends AppCompatActivity {
     private void csv2xl() throws IOException {
         ArrayList arList = null;
         ArrayList al = null;
+        Calendar calendar = new Calendar() {
+            @Override
+            protected void computeTime() {
+
+            }
+
+            @Override
+            protected void computeFields() {
+
+            }
+
+            @Override
+            public void add(int field, int amount) {
+
+            }
+
+            @Override
+            public void roll(int field, boolean up) {
+
+            }
+
+            @Override
+            public int getMinimum(int field) {
+                return 0;
+            }
+
+            @Override
+            public int getMaximum(int field) {
+                return 0;
+            }
+
+            @Override
+            public int getGreatestMinimum(int field) {
+                return 0;
+            }
+
+            @Override
+            public int getLeastMaximum(int field) {
+                return 0;
+            }
+        };
         try {
             String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/LBdatos.csv";
             String outFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/SalesHistory.xls";
@@ -197,7 +238,7 @@ public class MainActivity5 extends AppCompatActivity {
             }
             try {
                 HSSFWorkbook hwb = new HSSFWorkbook();
-                HSSFSheet sheet = hwb.createSheet("Activity");
+                HSSFSheet sheet = hwb.createSheet("Records");
                 for (int k = 0; k < arList.size(); k++) {
                     ArrayList ardata = (ArrayList) arList.get(k);
                     HSSFRow row = sheet.createRow((short) 0 + k);

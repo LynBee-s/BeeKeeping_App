@@ -184,10 +184,8 @@ public class MainActivity8 extends AppCompatActivity {
         ArrayList arList = null;
         ArrayList al = null;
         try {
-            Date date=new Date();
-            date.getTime();
             String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/LBdatos.csv";
-            String outFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/ExpenditureHistory"+date.getTime()+".xls";
+            String outFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/ExpenditureHistory.xls";
             String thisLine;
             int count = 0;
             try {
