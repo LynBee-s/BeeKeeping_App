@@ -308,6 +308,7 @@ public class MainActivity2 extends AppCompatActivity {
                             public void write(int l) throws IOException {
                                 FileOutputStream fileOut = new FileOutputStream(inFilePath);
                                 wb.write(fileOut);
+                                fw.write(l);
                                 fileOut.close();
                             }
                         });
