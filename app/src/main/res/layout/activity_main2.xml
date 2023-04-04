@@ -40,7 +40,7 @@
 
         <EditText
             android:id="@+id/id"
-            android:layout_width="wrap_content"
+            android:layout_width="84dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:hint="ID"
@@ -86,7 +86,7 @@
 
         <EditText
             android:id="@+id/date"
-            android:layout_width="12dp"
+            android:layout_width="72dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:hint="DATE"
@@ -106,7 +106,7 @@
 
         <EditText
             android:id="@+id/frames"
-            android:layout_width="wrap_content"
+            android:layout_width="127dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:hint="FRAMES"
@@ -132,7 +132,7 @@
 
         <EditText
             android:id="@+id/hivstat"
-            android:layout_width="wrap_content"
+            android:layout_width="243dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:hint="HIVE STATUS"
@@ -159,7 +159,7 @@
 
         <EditText
             android:id="@+id/popu"
-            android:layout_width="wrap_content"
+            android:layout_width="173dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:hint="HIVE POPULATION"
