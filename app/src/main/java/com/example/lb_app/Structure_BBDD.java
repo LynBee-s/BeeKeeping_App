@@ -57,9 +57,9 @@ public class Structure_BBDD {
                     Structure_BBDD.COLUMNA2 + " TEXT,"+
                     Structure_BBDD.COLUMNA3 +" TEXT," +
                     Structure_BBDD.COLUMNA4 + " TEXT,"+
-                    Structure_BBDD.COLUMNA5 + " TEXT,"+
-                    Structure_BBDD.COLUMNA6 + " TEXT,"+
-                    Structure_BBDD.COLUMNA7 + " TEXT,"+
+                    Structure_BBDD.COLUMNA5 + " INTEGER,"+
+                    Structure_BBDD.COLUMNA6 + " INTEGER,"+
+                    Structure_BBDD.COLUMNA7 + " INTEGER,"+
                     Structure_BBDD.COLUMNA8 + " TEXT ); ";
 
     // public static final String SQL_DELETE_ENTRIES =
@@ -72,9 +72,9 @@ public class Structure_BBDD {
                     Structure_BBDD.COLUMNB2 + " TEXT,"+
                     Structure_BBDD.COLUMNB3 +" TEXT," +
                     Structure_BBDD.COLUMNB4 + " TEXT,"+
-                    Structure_BBDD.COLUMNB5 + " TEXT,"+
-                    Structure_BBDD.COLUMNB6 + " TEXT,"+
-                    Structure_BBDD.COLUMNB7 + " TEXT,"+
+                    Structure_BBDD.COLUMNB5 + " INTEGER,"+
+                    Structure_BBDD.COLUMNB6 + " INTEGER,"+
+                    Structure_BBDD.COLUMNB7 + " INTEGER,"+
                     Structure_BBDD.COLUMNB8 + " TEXT ); ";
 
     // public static final String SQL_DELETE_ENTRIES =
