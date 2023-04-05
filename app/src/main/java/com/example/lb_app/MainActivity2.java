@@ -2,6 +2,14 @@ package com.example.lb_app;
 
 import static com.example.lb_app.HiveDB_Helper.DATABASE_NAME;
 import static com.example.lb_app.HiveDB_Helper.TABLE1;
+import static com.example.lb_app.Structure_BBDD.COLUMN2;
+import static com.example.lb_app.Structure_BBDD.COLUMN3;
+import static com.example.lb_app.Structure_BBDD.COLUMN4;
+import static com.example.lb_app.Structure_BBDD.COLUMN5;
+import static com.example.lb_app.Structure_BBDD.COLUMN6;
+import static com.example.lb_app.Structure_BBDD.COLUMN7;
+import static com.example.lb_app.Structure_BBDD.COLUMN8;
+import static com.example.lb_app.Structure_BBDD.COLUMNID;
 import static com.example.lb_app.Structure_BBDD.TABLE2;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +23,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.CalendarContract;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -142,8 +151,8 @@ public class MainActivity2 extends AppCompatActivity {
                     values.put(String.valueOf(Structure_BBDD.COLUMNID), id.getText().toString());
                     values.put(Structure_BBDD.COLUMN2, hid.getText().toString());
                     values.put(Structure_BBDD.COLUMN3, date.getText().toString());
-                    values.put(Structure_BBDD.COLUMN4, frame.getText().toString());
-                    values.put(Structure_BBDD.COLUMN5, hivst.getText().toString());
+                    values.put(COLUMN4, frame.getText().toString());
+                    values.put(COLUMN5, hivst.getText().toString());
                     values.put(Structure_BBDD.COLUMN6, pop.getText().toString());
                     values.put(Structure_BBDD.COLUMN7, locate.getText().toString());
                     values.put(Structure_BBDD.COLUMN8, note.getText().toString());
@@ -171,8 +180,8 @@ public class MainActivity2 extends AppCompatActivity {
                 String[] projection = {
                         Structure_BBDD.COLUMN2,
                         Structure_BBDD.COLUMN3,
-                        Structure_BBDD.COLUMN4,
-                        Structure_BBDD.COLUMN5,
+                        COLUMN4,
+                        COLUMN5,
                         Structure_BBDD.COLUMN6,
                         Structure_BBDD.COLUMN7,
                         Structure_BBDD.COLUMN8
@@ -226,8 +235,8 @@ public class MainActivity2 extends AppCompatActivity {
                 values.put(Structure_BBDD.COLUMNID, id.getText().toString());
                 values.put(Structure_BBDD.COLUMN2, hid.getText().toString());
                 values.put(Structure_BBDD.COLUMN3, date.getText().toString());
-                values.put(Structure_BBDD.COLUMN4, frame.getText().toString());
-                values.put(Structure_BBDD.COLUMN5, hivst.getText().toString());
+                values.put(COLUMN4, frame.getText().toString());
+                values.put(COLUMN5, hivst.getText().toString());
                 values.put(Structure_BBDD.COLUMN6, pop.getText().toString());
                 values.put(Structure_BBDD.COLUMN7, locate.getText().toString());
                 values.put(Structure_BBDD.COLUMN8,note.getText().toString());
@@ -254,7 +263,6 @@ public class MainActivity2 extends AppCompatActivity {
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "ERROR: Failed to export the database.", Toast.LENGTH_LONG).show();
                 }
-
             }
         });
         btnClear.setOnClickListener(new View.OnClickListener() {
@@ -313,14 +321,15 @@ public class MainActivity2 extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
-    private void csv2xl() throws IOException {
+    private void csv2xl() throws IOException  {
         ArrayList arList = null;
         ArrayList al = null;
         try {
-            Date date=new Date();
-            date.getTime();
+            Calendar calendar = Calendar.getInstance();
+            calendar.getTimeZone();
             String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/LBdatos.csv";
-            String outFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/HiveActivity"+date.getTime()+".xls";
+
+            String outFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/HiveActivity"+calendar.get(Calendar.DAY_OF_MONTH)+"_"+calendar.get(Calendar.MONTH)+"_"+calendar.get(Calendar.YEAR)+".xls";
             String thisLine;
             int count = 0;
             try {
@@ -380,6 +389,11 @@ public class MainActivity2 extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    private void complete() throws ArrayIndexOutOfBoundsException {
+        Calendar calendar=null;
+        //Calendar.getInstance();
+        calendar.get(Calendar.DAY_OF_MONTH);
     }
     private void delete()throws SecurityException{
         try {
@@ -478,5 +492,4 @@ public class MainActivity2 extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
-
 }
