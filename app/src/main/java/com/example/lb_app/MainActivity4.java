@@ -1,5 +1,6 @@
 package com.example.lb_app;
 
+import static com.example.lb_app.Structure_BBDD.TABLE2;
 import static com.example.lb_app.Structure_BBDD.TABLE3;
 
 import androidx.appcompat.app.AlertDialog;
@@ -12,6 +13,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.Editable;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,6 +23,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import org.apache.commons.collections.functors.StringValueTransformer;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -130,7 +133,6 @@ public boolean onCreateOptionsMenu(Menu menu) {
                     values.put(Structure_BBDD.COLUMNB6, price3.getText().toString());
                     values.put(Structure_BBDD.COLUMNB7, total3.getText().toString());
                     values.put(Structure_BBDD.COLUMNB8, coment3.getText().toString());
-
                     long newRowId = db.insert(TABLE3, null, values);
                     Toast.makeText(getApplicationContext(), "The register was saved with ID: " + newRowId, Toast.LENGTH_LONG).show();
 
@@ -278,6 +280,7 @@ public boolean onCreateOptionsMenu(Menu menu) {
                 total3.setText("");
                 coment3.setText("");
             } catch (Exception e) {
+                Toast.makeText(getApplicationContext(), "System Error.Please restart the application and try again.", Toast.LENGTH_LONG).show();
             }
         }
         });
