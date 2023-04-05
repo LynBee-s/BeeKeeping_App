@@ -36,6 +36,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import au.com.bytecode.opencsv.CSVWriter;
@@ -184,8 +185,10 @@ public class MainActivity8 extends AppCompatActivity {
         ArrayList arList = null;
         ArrayList al = null;
         try {
+            Calendar calendar=Calendar.getInstance();
+            calendar.getTimeZone();
             String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/LBdatos.csv";
-            String outFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/ExpenditureHistory.xls";
+            String outFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/ExpenditureHistory"+calendar.get(Calendar.DAY_OF_MONTH)+"_"+calendar.get(Calendar.MONTH)+"_"+calendar.get(Calendar.YEAR)+".xls";
             String thisLine;
             int count = 0;
             try {

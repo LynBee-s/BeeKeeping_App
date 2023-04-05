@@ -326,6 +326,7 @@ public class MainActivity2 extends AppCompatActivity {
         ArrayList al = null;
         try {
             Calendar calendar = Calendar.getInstance();
+            calendar.getTime();
             calendar.getTimeZone();
             String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/LBdatos.csv";
 

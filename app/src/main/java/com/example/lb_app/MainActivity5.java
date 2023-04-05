@@ -174,8 +174,10 @@ public class MainActivity5 extends AppCompatActivity {
         ArrayList al = null;
 
         try {
+            Calendar calendar=Calendar.getInstance();
+            calendar.getTimeZone();
             String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/LBdatos.csv";
-            String outFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/SalesHistory.xls";
+            String outFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/SalesHistory"+calendar.get(Calendar.DAY_OF_MONTH)+"_"+calendar.get(Calendar.MONTH)+"_"+calendar.get(Calendar.YEAR)+".xls";
             String thisLine;
             int count = 0;
             try {
