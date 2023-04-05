@@ -221,6 +221,7 @@ public class MainActivity5 extends AppCompatActivity {
                             cell.setCellType(Cell.CELL_TYPE_NUMERIC);
                             cell.setCellValue(data);
                         }
+                        //cell.setCellFormula("SUM");
                     }
                     System.out.println();
                 }

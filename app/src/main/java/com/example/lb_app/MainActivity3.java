@@ -40,6 +40,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.security.PublicKey;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import au.com.bytecode.opencsv.CSVWriter;
 
@@ -295,6 +296,7 @@ public class MainActivity3 extends AppCompatActivity {
         btnSendrecipt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Calendar  calendar=Calendar.getInstance();
                 try{
                     transid.getText();
                     date2.getText();
@@ -306,7 +308,7 @@ public class MainActivity3 extends AppCompatActivity {
                     Intent intent=new Intent(Intent.ACTION_SEND);
                     intent.setType("*/*");
                     intent.putExtra(Intent.EXTRA_SUBJECT,"Transaction Notification from LynBee´s");
-                    intent.putExtra(Intent.EXTRA_TEXT,"Date: "+date2.getText()+" " +
+                    intent.putExtra(Intent.EXTRA_TEXT,"Date: "+calendar.get(Calendar.DAY_OF_MONTH)+"-"+calendar.get(Calendar.MONTH)+"-"+calendar.get(Calendar.YEAR)+" " +
                             "\n Receipt number: "+transid.getText()+" " +
                             "\n Description: "+descrip2.getText()+" " +
                             "\n Amount: "+amt2.getText()+" " +

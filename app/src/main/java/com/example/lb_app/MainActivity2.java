@@ -374,6 +374,7 @@ public class MainActivity2 extends AppCompatActivity {
                             cell.setCellType(Cell.CELL_TYPE_NUMERIC);
                             cell.setCellValue(data);
                         }
+
                     }
                     System.out.println();
                 }
