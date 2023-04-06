@@ -100,7 +100,6 @@ public boolean onCreateOptionsMenu(Menu menu) {
                 return super.onOptionsItemSelected(item);
         }
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,14 +115,14 @@ public boolean onCreateOptionsMenu(Menu menu) {
 
         exphistry=(ImageButton) findViewById(R.id.exp_history6);
 
-       id3=(EditText) findViewById(R.id.id3);
-       transid3=(EditText) findViewById(R.id.transid3);
-       date3=(EditText) findViewById(R.id.date3);
-       descrip3=(EditText) findViewById(R.id.descrip3);
-       amt3=(EditText) findViewById(R.id.amt3);
-       price3=(EditText) findViewById(R.id.price3);
-       total3=(EditText) findViewById(R.id.total3);
-       coment3=(EditText) findViewById(R.id.coment3);
+           id3=(EditText) findViewById(R.id.id3);
+           transid3=(EditText) findViewById(R.id.transid3);
+           date3=(EditText) findViewById(R.id.date3);
+           descrip3=(EditText) findViewById(R.id.descrip3);
+           amt3=(EditText) findViewById(R.id.amt3);
+           price3=(EditText) findViewById(R.id.price3);
+           total3=(EditText) findViewById(R.id.total3);
+           coment3=(EditText) findViewById(R.id.coment3);
 
         btnInsert.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -298,7 +297,6 @@ public boolean onCreateOptionsMenu(Menu menu) {
             }
         }
         });
-
         exphistry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
