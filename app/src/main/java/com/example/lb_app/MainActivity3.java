@@ -54,7 +54,7 @@ public class MainActivity3 extends AppCompatActivity {
 
     private int TotalI;
     private int AmtI;
-    private   int PriceI;
+    private int PriceI;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
