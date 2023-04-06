@@ -187,8 +187,6 @@ public class MainActivity3 extends AppCompatActivity {
 
                 String selection = Structure_BBDD.COLUMNAID + " = ?";
                 String[] selectionArgs = {id.getText().toString()};
-
-
                 try {
                     Cursor cursor = db.query(
                             TABLE2,   // The table to query
@@ -207,7 +205,6 @@ public class MainActivity3 extends AppCompatActivity {
                     price2.setText("");
                     total2.setText("");
                     coment2.setText("");
-
 
                     transid.setText(cursor.getString(0));
                     date2.setText(cursor.getString(1));
@@ -304,7 +301,6 @@ public class MainActivity3 extends AppCompatActivity {
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
                 }
-
             }
         });
         btnSendrecipt.setOnClickListener(new View.OnClickListener() {

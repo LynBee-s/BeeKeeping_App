@@ -138,11 +138,11 @@ public boolean onCreateOptionsMenu(Menu menu) {
                     SQLiteDatabase db = helper.getWritableDatabase();
                     ContentValues values = new ContentValues();
                     values.put(Structure_BBDD.COLUMNB2, transid3.getText().toString());
-                    values.put(Structure_BBDD.COLUMNB3, date3.getText().toString());
+                    values.put(Structure_BBDD.COLUMNB3, DateNow);
                     values.put(Structure_BBDD.COLUMNB4, descrip3.getText().toString());
                     values.put(Structure_BBDD.COLUMNB5, amt3.getText().toString());
                     values.put(Structure_BBDD.COLUMNB6, price3.getText().toString());
-                    values.put(Structure_BBDD.COLUMNB7, total3.getText().toString());
+                    values.put(Structure_BBDD.COLUMNB7, TotalI);
                     values.put(Structure_BBDD.COLUMNB8, coment3.getText().toString());
                     long newRowId = db.insert(TABLE3, null, values);
                     Toast.makeText(getApplicationContext(), "The register was saved with ID: " + newRowId, Toast.LENGTH_LONG).show();
@@ -225,7 +225,7 @@ public boolean onCreateOptionsMenu(Menu menu) {
                 values.put(Structure_BBDD.COLUMNA4, descrip3.getText().toString());
                 values.put(Structure_BBDD.COLUMNA5, amt3.getText().toString());
                 values.put(Structure_BBDD.COLUMNA6, price3.getText().toString());
-                values.put(Structure_BBDD.COLUMNA7, total3.getText().toString());
+                values.put(Structure_BBDD.COLUMNA7, TotalI);
                 values.put(Structure_BBDD.COLUMNA8,coment3.getText().toString());
                 String selection = Structure_BBDD.COLUMNAID + " LIKE ?";
                 String[] selectionArgs = {id3.getText().toString()};

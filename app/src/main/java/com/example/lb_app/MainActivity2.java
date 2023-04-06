@@ -21,6 +21,8 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.location.Geocoder;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.CalendarContract;
@@ -153,11 +155,10 @@ public class MainActivity2 extends AppCompatActivity {
                     date.setText(DateNow);
                     SQLiteDatabase db = helper.getWritableDatabase();
                     ContentValues values = new ContentValues();
-                    values.put(String.valueOf(Structure_BBDD.COLUMNID), id.getText().toString());
                     values.put(Structure_BBDD.COLUMN2, hid.getText().toString());
                     values.put(Structure_BBDD.COLUMN3, date.getText().toString());
-                    values.put(COLUMN4, frame.getText().toString());
-                    values.put(COLUMN5, hivst.getText().toString());
+                    values.put(Structure_BBDD.COLUMN4, frame.getText().toString());
+                    values.put(Structure_BBDD.COLUMN5, hivst.getText().toString());
                     values.put(Structure_BBDD.COLUMN6, pop.getText().toString());
                     values.put(Structure_BBDD.COLUMN7, locate.getText().toString());
                     values.put(Structure_BBDD.COLUMN8, note.getText().toString());
@@ -191,11 +192,8 @@ public class MainActivity2 extends AppCompatActivity {
                         Structure_BBDD.COLUMN7,
                         Structure_BBDD.COLUMN8
                 };
-
                 String selection = Structure_BBDD.COLUMNID + " = ?";
                 String[] selectionArgs = {id.getText().toString()};
-
-
                 try {
                     Cursor cursor = db.query(
                             Structure_BBDD.TABLE1,   // The table to query
@@ -247,7 +245,6 @@ public class MainActivity2 extends AppCompatActivity {
                 values.put(Structure_BBDD.COLUMN8,note.getText().toString());
                 String selection = Structure_BBDD.COLUMNID + " LIKE ?";
                 String[] selectionArgs = {id.getText().toString()};
-
                 int count = db.update(
                         Structure_BBDD.TABLE1,
                         values,
