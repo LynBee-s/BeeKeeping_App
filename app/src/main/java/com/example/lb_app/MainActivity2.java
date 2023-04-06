@@ -238,8 +238,8 @@ public class MainActivity2 extends AppCompatActivity {
                 values.put(Structure_BBDD.COLUMNID, id.getText().toString());
                 values.put(Structure_BBDD.COLUMN2, hid.getText().toString());
                 values.put(Structure_BBDD.COLUMN3, date.getText().toString());
-                values.put(COLUMN4, frame.getText().toString());
-                values.put(COLUMN5, hivst.getText().toString());
+                values.put(Structure_BBDD.COLUMN4, frame.getText().toString());
+                values.put(Structure_BBDD.COLUMN5, hivst.getText().toString());
                 values.put(Structure_BBDD.COLUMN6, pop.getText().toString());
                 values.put(Structure_BBDD.COLUMN7, locate.getText().toString());
                 values.put(Structure_BBDD.COLUMN8,note.getText().toString());

@@ -233,7 +233,7 @@ public class MainActivity3 extends AppCompatActivity {
                 values.put(Structure_BBDD.COLUMNA4, descrip2.getText().toString());
                 values.put(Structure_BBDD.COLUMNA5, amt2.getText().toString());
                 values.put(Structure_BBDD.COLUMNA6, price2.getText().toString());
-                values.put(Structure_BBDD.COLUMNA7, total2.getText().toString());
+                values.put(Structure_BBDD.COLUMNA7, TotalI);
                 values.put(Structure_BBDD.COLUMNA8,coment2.getText().toString());
                 String selection = Structure_BBDD.COLUMNAID + " LIKE ?";
                 String[] selectionArgs = {id.getText().toString()};
