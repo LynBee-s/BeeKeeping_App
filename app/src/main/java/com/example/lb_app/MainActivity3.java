@@ -308,7 +308,7 @@ public class MainActivity3 extends AppCompatActivity {
                     Intent intent=new Intent(Intent.ACTION_SEND);
                     intent.setType("*/*");
                     intent.putExtra(Intent.EXTRA_SUBJECT,"Transaction Notification from LynBee´s");
-                    intent.putExtra(Intent.EXTRA_TEXT,"Date: "+calendar.get(Calendar.DAY_OF_MONTH)+"-"+calendar.get(Calendar.MONTH)+"-"+calendar.get(Calendar.YEAR)+" " +
+                    intent.putExtra(Intent.EXTRA_TEXT,"Date: "+date2.getText()+" " +
                             "\n Receipt number: "+transid.getText()+" " +
                             "\n Description: "+descrip2.getText()+" " +
                             "\n Amount: "+amt2.getText()+" " +

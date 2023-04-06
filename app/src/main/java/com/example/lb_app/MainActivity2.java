@@ -64,6 +64,7 @@ public class MainActivity2 extends AppCompatActivity {
     public  ArrayList<Hives>data;
     private RecyclerView recyclerView;
     HiveListHelper helper;
+    public MonthDay DateNow;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -142,6 +143,7 @@ public class MainActivity2 extends AppCompatActivity {
         pop=(EditText) findViewById(R.id.popu);
         locate=(EditText) findViewById(R.id.location);
         note=(EditText)findViewById(R.id.notes);
+
 //Button actions when pressed------------------------------------------------------------------------------
         btnInsert.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -270,9 +272,10 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+                    DateNow=MonthDay.now();
                     id.setText("");
                     hid.setText("");
-                    date.setText("");
+                    date.setText(DateNow.toString());
                     frame.setText("");
                     hivst.setText("");
                     pop.setText("");
@@ -375,7 +378,6 @@ public class MainActivity2 extends AppCompatActivity {
                             cell.setCellType(Cell.CELL_TYPE_NUMERIC);
                             cell.setCellValue(data);
                         }
-
                     }
                     System.out.println();
                 }
@@ -392,11 +394,6 @@ public class MainActivity2 extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-    private void complete() throws ArrayIndexOutOfBoundsException {
-        Calendar calendar=null;
-        //Calendar.getInstance();
-        calendar.get(Calendar.DAY_OF_MONTH);
     }
     private void delete()throws SecurityException{
         try {
