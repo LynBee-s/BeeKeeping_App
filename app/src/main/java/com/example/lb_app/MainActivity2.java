@@ -51,6 +51,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.time.MonthDay;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -330,7 +331,7 @@ public class MainActivity2 extends AppCompatActivity {
             calendar.getTimeZone();
             String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/LBdatos.csv";
 
-            String outFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/HiveActivity"+calendar.get(Calendar.DAY_OF_MONTH)+"_"+calendar.get(Calendar.MONTH)+"_"+calendar.get(Calendar.YEAR)+".xls";
+            String outFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/HiveActivity"+ MonthDay.now() +"_"+calendar.get(Calendar.YEAR)+".xls";
             String thisLine;
             int count = 0;
             try {

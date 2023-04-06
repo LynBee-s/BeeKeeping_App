@@ -41,9 +41,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
+import java.time.LocalTime;
+import java.time.Month;
+import java.time.MonthDay;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import au.com.bytecode.opencsv.CSVWriter;
 
@@ -173,11 +178,13 @@ public class MainActivity5 extends AppCompatActivity {
         ArrayList arList = null;
         ArrayList al = null;
 
+
         try {
-            Calendar calendar=Calendar.getInstance();
-            calendar.getTimeZone();
+
+            TimeZone timeZone=TimeZone.getTimeZone("America/New_York");
+            Calendar calendar=Calendar.getInstance(timeZone);
             String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/LBdatos.csv";
-            String outFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/SalesHistory"+calendar.get(Calendar.DAY_OF_MONTH)+"_"+calendar.get(Calendar.MONTH)+"_"+calendar.get(Calendar.YEAR)+".xls";
+            String outFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/SalesHistory_"+ MonthDay.now() +"_"+calendar.get(Calendar.YEAR)+".xls";
             String thisLine;
             int count = 0;
             try {
@@ -221,7 +228,6 @@ public class MainActivity5 extends AppCompatActivity {
                             cell.setCellType(Cell.CELL_TYPE_NUMERIC);
                             cell.setCellValue(data);
                         }
-                        //cell.setCellFormula("SUM");
                     }
                     System.out.println();
                 }
