@@ -37,7 +37,9 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.MonthDay;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import au.com.bytecode.opencsv.CSVWriter;
 
@@ -124,6 +126,9 @@ public boolean onCreateOptionsMenu(Menu menu) {
             @Override
             public void onClick(View v) {
                 try {
+                    Calendar calendar=Calendar.getInstance();
+                    String DateNow= MonthDay.now().toString()+"-"+calendar.get(Calendar.YEAR);
+                    date3.setText(DateNow);
                     SQLiteDatabase db = helper.getWritableDatabase();
                     ContentValues values = new ContentValues();
                     values.put(Structure_BBDD.COLUMNB2, transid3.getText().toString());

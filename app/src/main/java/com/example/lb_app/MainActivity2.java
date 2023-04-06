@@ -64,7 +64,6 @@ public class MainActivity2 extends AppCompatActivity {
     public  ArrayList<Hives>data;
     private RecyclerView recyclerView;
     HiveListHelper helper;
-    public MonthDay DateNow;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -149,6 +148,9 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+                    Calendar calendar=Calendar.getInstance();
+                    String DateNow= MonthDay.now().toString()+"-"+calendar.get(Calendar.YEAR);
+                    date.setText(DateNow);
                     SQLiteDatabase db = helper.getWritableDatabase();
                     ContentValues values = new ContentValues();
                     values.put(String.valueOf(Structure_BBDD.COLUMNID), id.getText().toString());
@@ -183,8 +185,8 @@ public class MainActivity2 extends AppCompatActivity {
                 String[] projection = {
                         Structure_BBDD.COLUMN2,
                         Structure_BBDD.COLUMN3,
-                        COLUMN4,
-                        COLUMN5,
+                        Structure_BBDD.COLUMN4,
+                        Structure_BBDD.COLUMN5,
                         Structure_BBDD.COLUMN6,
                         Structure_BBDD.COLUMN7,
                         Structure_BBDD.COLUMN8
@@ -272,10 +274,9 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    DateNow=MonthDay.now();
                     id.setText("");
                     hid.setText("");
-                    date.setText(DateNow.toString());
+                    date.setText("");
                     frame.setText("");
                     hivst.setText("");
                     pop.setText("");

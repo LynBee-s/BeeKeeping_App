@@ -39,6 +39,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.security.PublicKey;
+import java.time.MonthDay;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -131,6 +132,9 @@ public class MainActivity3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+                    Calendar calendar=Calendar.getInstance();
+                    String DateNow= MonthDay.now().toString()+"-"+calendar.get(Calendar.YEAR);
+                    date2.setText(DateNow);
                     SQLiteDatabase db = helper.getWritableDatabase();
                     ContentValues values = new ContentValues();
                     values.put(Structure_BBDD.COLUMNA2, transid.getText().toString());

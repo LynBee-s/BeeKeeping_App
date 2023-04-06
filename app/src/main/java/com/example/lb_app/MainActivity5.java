@@ -177,12 +177,8 @@ public class MainActivity5 extends AppCompatActivity {
     private void csv2xl() throws IOException {
         ArrayList arList = null;
         ArrayList al = null;
-
-
         try {
-
-            TimeZone timeZone=TimeZone.getTimeZone("America/New_York");
-            Calendar calendar=Calendar.getInstance(timeZone);
+            Calendar calendar=Calendar.getInstance();
             String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/LBdatos.csv";
             String outFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/SalesHistory_"+ MonthDay.now() +"_"+calendar.get(Calendar.YEAR)+".xls";
             String thisLine;

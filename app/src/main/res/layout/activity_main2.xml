@@ -89,7 +89,7 @@
             android:layout_width="72dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:hint="DATE"
+            android:hint="@string/date"
             android:inputType="textPersonName"
             android:textColor="@color/black"
             android:textSize="12sp" />
