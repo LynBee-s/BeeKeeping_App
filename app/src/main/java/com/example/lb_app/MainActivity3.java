@@ -51,6 +51,11 @@ public class MainActivity3 extends AppCompatActivity {
     Button btninsert2,btnSearch2,btnUpdate2,btnDelete,btnClear,btnSendrecipt;
     EditText id,transid,date2,descrip2,amt2,price2,total2,coment2;
     ImageButton shistory;
+
+    private int TotalI;
+    private int AmtI;
+    private   int PriceI;
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -135,6 +140,10 @@ public class MainActivity3 extends AppCompatActivity {
                     Calendar calendar=Calendar.getInstance();
                     String DateNow= MonthDay.now().toString()+"-"+calendar.get(Calendar.YEAR);
                     date2.setText(DateNow);
+                    PriceI= Integer.parseInt(price2.getText().toString());
+                    AmtI=Integer.parseInt(amt2.getText().toString());
+                    TotalI=PriceI*AmtI;
+                    total2.setText(""+TotalI);
                     SQLiteDatabase db = helper.getWritableDatabase();
                     ContentValues values = new ContentValues();
                     values.put(Structure_BBDD.COLUMNA2, transid.getText().toString());
@@ -269,9 +278,7 @@ public class MainActivity3 extends AppCompatActivity {
 
                                 }
                                 public void onCick(DialogInterface dialogInterface, int i) {
-
                                 }
-
                             }).show();
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();

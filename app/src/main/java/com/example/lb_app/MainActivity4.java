@@ -48,6 +48,9 @@ public class MainActivity4 extends AppCompatActivity {
     Button btnInsert,btnUpdate,btnSearch,btnDelete,btnClear;
     ImageButton exphistry;
     EditText id3,transid3,date3,descrip3,amt3,price3,total3,coment3;
+    private int TotalI;
+    private int AmtI;
+    private   int PriceI;
 
     @Override
 public boolean onCreateOptionsMenu(Menu menu) {
@@ -129,6 +132,10 @@ public boolean onCreateOptionsMenu(Menu menu) {
                     Calendar calendar=Calendar.getInstance();
                     String DateNow= MonthDay.now().toString()+"-"+calendar.get(Calendar.YEAR);
                     date3.setText(DateNow);
+                    PriceI= Integer.parseInt(price3.getText().toString());
+                    AmtI=Integer.parseInt(amt3.getText().toString());
+                    TotalI=PriceI*AmtI;
+                    total3.setText(""+TotalI);
                     SQLiteDatabase db = helper.getWritableDatabase();
                     ContentValues values = new ContentValues();
                     values.put(Structure_BBDD.COLUMNB2, transid3.getText().toString());
