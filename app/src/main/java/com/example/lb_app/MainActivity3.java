@@ -227,6 +227,9 @@ public class MainActivity3 extends AppCompatActivity {
                 SQLiteDatabase db = helper.getReadableDatabase();
 // New value for one column
                 ContentValues values = new ContentValues();
+                AmtI= Integer.parseInt(amt2.getText().toString());
+                PriceI=Integer.parseInt(price2.getText().toString());
+                TotalI=AmtI*PriceI;
                 values.put(Structure_BBDD.COLUMNAID, id.getText().toString());
                 values.put(Structure_BBDD.COLUMNA2, transid.getText().toString());
                 values.put(Structure_BBDD.COLUMNA3, date2.getText().toString());
@@ -309,6 +312,9 @@ public class MainActivity3 extends AppCompatActivity {
             public void onClick(View v) {
                 Calendar  calendar=Calendar.getInstance();
                 try{
+                    AmtI= Integer.parseInt(amt2.getText().toString());
+                    PriceI=Integer.parseInt(price2.getText().toString());
+                    TotalI=AmtI*PriceI;
                     transid.getText();
                     date2.getText();
                     descrip2.getText();
@@ -324,7 +330,7 @@ public class MainActivity3 extends AppCompatActivity {
                             "\n Description: "+descrip2.getText()+" " +
                             "\n Amount: "+amt2.getText()+" " +
                             "\n Price: "+price2.getText()+
-                            "\n Total: "+total2.getText()+" "+
+                            "\n Total: "+TotalI+" "+
                             "\n \n  Thank you for your purchase!");
                     if(intent.resolveActivity(getPackageManager()) !=null){
                         startActivity(intent);

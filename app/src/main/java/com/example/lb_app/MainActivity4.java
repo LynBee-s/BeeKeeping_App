@@ -199,7 +199,6 @@ public boolean onCreateOptionsMenu(Menu menu) {
                     total3.setText("");
                     coment3.setText("");
 
-
                     transid3.setText(cursor.getString(0));
                     date3.setText(cursor.getString(1));
                     descrip3.setText(cursor.getString(2));
@@ -215,6 +214,9 @@ public boolean onCreateOptionsMenu(Menu menu) {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AmtI= Integer.parseInt(amt3.getText().toString());
+                PriceI=Integer.parseInt(price3.getText().toString());
+                TotalI=AmtI*PriceI;
                 SQLiteDatabase db = helper.getReadableDatabase();
 // New value for one column
                 ContentValues values = new ContentValues();
