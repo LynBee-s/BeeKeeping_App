@@ -7,6 +7,7 @@ import android.icu.util.Calendar;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
+import android.service.controls.templates.TemperatureControlTemplate;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,6 +16,7 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.Toast;
 
+import java.sql.Time;
 import java.util.Map;
 
 public class MainActivity6 extends AppCompatActivity {
@@ -78,6 +80,8 @@ public class MainActivity6 extends AppCompatActivity {
         setContentView(R.layout.activity_main6);
         newevent=(Button) findViewById(R.id.setrecuerdo);
         calendarView=(CalendarView) findViewById(R.id.calendarView7);
+
+
         newevent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,7 +94,6 @@ public class MainActivity6 extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_INSERT)
                 .setData(CalendarContract.Events.CONTENT_URI)
                 .putExtra(CalendarContract.Events.TITLE, "Reminder: ");
-
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }

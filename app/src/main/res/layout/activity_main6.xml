@@ -10,13 +10,14 @@
     <CalendarView
         android:id="@+id/calendarView7"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:clickable="true" />
 
     <Button
         android:id="@+id/setrecuerdo"
         android:layout_width="match_parent"
         android:layout_height="38dp"
         android:fontFamily="@font/alice"
-        android:text="Create new event"
+        android:text="@string/create_new_event"
         android:textStyle="bold" />
 </LinearLayout>
