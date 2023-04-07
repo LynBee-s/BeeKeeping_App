@@ -52,9 +52,9 @@ public class MainActivity3 extends AppCompatActivity {
     EditText id,transid,date2,descrip2,amt2,price2,total2,coment2;
     ImageButton shistory;
 
-    private int TotalI;
-    private int AmtI;
-    private int PriceI;
+    private float TotalI;
+    private float AmtI;
+    private float PriceI;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -139,19 +139,19 @@ public class MainActivity3 extends AppCompatActivity {
                 try {
                     Calendar calendar=Calendar.getInstance();
                     String DateNow= MonthDay.now().toString()+"-"+calendar.get(Calendar.YEAR);
-                    date2.setText(DateNow);
-                    PriceI= Integer.parseInt(price2.getText().toString());
-                    AmtI=Integer.parseInt(amt2.getText().toString());
+
+                    PriceI= Float.parseFloat(price2.getText().toString());
+                    AmtI=Float.parseFloat(amt2.getText().toString());
                     TotalI=PriceI*AmtI;
-                    total2.setText(""+TotalI);
+
                     SQLiteDatabase db = helper.getWritableDatabase();
                     ContentValues values = new ContentValues();
                     values.put(Structure_BBDD.COLUMNA2, transid.getText().toString());
-                    values.put(Structure_BBDD.COLUMNA3, date2.getText().toString());
+                    values.put(Structure_BBDD.COLUMNA3, DateNow);
                     values.put(Structure_BBDD.COLUMNA4, descrip2.getText().toString());
                     values.put(Structure_BBDD.COLUMNA5, amt2.getText().toString());
                     values.put(Structure_BBDD.COLUMNA6, price2.getText().toString());
-                    values.put(Structure_BBDD.COLUMNA7, total2.getText().toString());
+                    values.put(Structure_BBDD.COLUMNA7, TotalI);
                     values.put(Structure_BBDD.COLUMNA8, coment2.getText().toString());
 
                     long newRowId = db.insert(TABLE2, null, values);
@@ -224,9 +224,10 @@ public class MainActivity3 extends AppCompatActivity {
                 SQLiteDatabase db = helper.getReadableDatabase();
 // New value for one column
                 ContentValues values = new ContentValues();
-                AmtI= Integer.parseInt(amt2.getText().toString());
-                PriceI=Integer.parseInt(price2.getText().toString());
-                TotalI=AmtI*PriceI;
+                PriceI= Float.parseFloat(price2.getText().toString());
+                AmtI=Float.parseFloat(amt2.getText().toString());
+                TotalI=PriceI*AmtI;
+
                 values.put(Structure_BBDD.COLUMNAID, id.getText().toString());
                 values.put(Structure_BBDD.COLUMNA2, transid.getText().toString());
                 values.put(Structure_BBDD.COLUMNA3, date2.getText().toString());
@@ -308,9 +309,9 @@ public class MainActivity3 extends AppCompatActivity {
             public void onClick(View v) {
                 Calendar  calendar=Calendar.getInstance();
                 try{
-                    AmtI= Integer.parseInt(amt2.getText().toString());
-                    PriceI=Integer.parseInt(price2.getText().toString());
-                    TotalI=AmtI*PriceI;
+                    PriceI= Float.parseFloat(price2.getText().toString());
+                    AmtI=Float.parseFloat(amt2.getText().toString());
+                    TotalI=PriceI*AmtI;
                     transid.getText();
                     date2.getText();
                     descrip2.getText();

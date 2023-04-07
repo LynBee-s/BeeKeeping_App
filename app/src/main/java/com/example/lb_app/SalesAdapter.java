@@ -20,6 +20,9 @@ public class SalesAdapter extends RecyclerView.Adapter<SalesAdapter.ViewHolder>{
     ArrayList<Sales> data;
     HiveDB_Helper helper;
    HiveDB_Helper hiveDB_helper;
+    private float TotalI;
+    private float AmtI;
+    private float PriceI;
 public SalesAdapter(Context context){this.inflater=LayoutInflater.from(context);}
 public SalesAdapter(ArrayList<Sales>data){this.data=data;}
     @NonNull
@@ -68,6 +71,9 @@ public SalesAdapter(ArrayList<Sales>data){this.data=data;}
                 @Override
                 public void onClick(View v) {
                     try {
+                        PriceI= Float.parseFloat(price4.getText().toString());
+                        AmtI=Float.parseFloat(amt4.getText().toString());
+                        TotalI=PriceI*AmtI;
                         SQLiteDatabase db = helper.getReadableDatabase();
 // New value for one column
                         ContentValues values = new ContentValues();
