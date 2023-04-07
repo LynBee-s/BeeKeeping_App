@@ -231,30 +231,31 @@ public class MainActivity2 extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try{
-                SQLiteDatabase db = helper.getReadableDatabase();
+                    try {
+                        SQLiteDatabase db = helper.getReadableDatabase();
 // New value for one column
-                ContentValues values = new ContentValues();
-                values.put(Structure_BBDD.COLUMNID, id.getText().toString());
-                values.put(Structure_BBDD.COLUMN2, hid.getText().toString());
-                values.put(Structure_BBDD.COLUMN3, date.getText().toString());
-                values.put(Structure_BBDD.COLUMN4, frame.getText().toString());
-                values.put(Structure_BBDD.COLUMN5, hivst.getText().toString());
-                values.put(Structure_BBDD.COLUMN6, pop.getText().toString());
-                values.put(Structure_BBDD.COLUMN7, locate.getText().toString());
-                values.put(Structure_BBDD.COLUMN8,note.getText().toString());
-                String selection = Structure_BBDD.COLUMNID + " LIKE ?";
-                String[] selectionArgs = {id.getText().toString()};
-                int count = db.update(
-                        Structure_BBDD.TABLE1,
-                        values,
-                        selection,
-                        selectionArgs);
-                Toast.makeText(getApplicationContext(), "Register " +id.getText()+ " has been successfully updated.", Toast.LENGTH_LONG).show();
-            }catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), "ERROR: Could not update the selected data. Please try again. ", Toast.LENGTH_LONG).show();
-                }
-                }
+                        ContentValues values = new ContentValues();
+                        values.put(Structure_BBDD.COLUMNID, id.getText().toString());
+                        values.put(Structure_BBDD.COLUMN2, hid.getText().toString());
+                        values.put(Structure_BBDD.COLUMN3, date.getText().toString());
+                        values.put(Structure_BBDD.COLUMN4, frame.getText().toString());
+                        values.put(Structure_BBDD.COLUMN5, hivst.getText().toString());
+                        values.put(Structure_BBDD.COLUMN6, pop.getText().toString());
+                        values.put(Structure_BBDD.COLUMN7, locate.getText().toString());
+                        values.put(Structure_BBDD.COLUMN8, note.getText().toString());
+                        String selection = Structure_BBDD.COLUMNID + " LIKE ?";
+                        String[] selectionArgs = {id.getText().toString()};
+                        int count = db.update(
+                                Structure_BBDD.TABLE1,
+                                values,
+                                selection,
+                                selectionArgs);
+
+                        Toast.makeText(getApplicationContext(), "Register "+id.getText()+" has been updated. ", Toast.LENGTH_LONG).show();
+                    } catch (Exception e) {
+                        Toast.makeText(getApplicationContext(), "ERROR: Please insert ID and try again. ", Toast.LENGTH_LONG).show();
+                    }
+            }
         });
         btnExport.setOnClickListener(new View.OnClickListener() {
             @Override

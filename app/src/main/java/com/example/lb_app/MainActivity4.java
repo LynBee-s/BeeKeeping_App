@@ -213,29 +213,33 @@ public boolean onCreateOptionsMenu(Menu menu) {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PriceI= Float.parseFloat(price3.getText().toString());
-                AmtI=Float.parseFloat(amt3.getText().toString());
-                TotalI=PriceI*AmtI;
-                SQLiteDatabase db = helper.getReadableDatabase();
+                try {
+                    PriceI = Float.parseFloat(price3.getText().toString());
+                    AmtI = Float.parseFloat(amt3.getText().toString());
+                    TotalI = PriceI * AmtI;
+                    SQLiteDatabase db = helper.getReadableDatabase();
 // New value for one column
-                ContentValues values = new ContentValues();
-                values.put(Structure_BBDD.COLUMNAID, id3.getText().toString());
-                values.put(Structure_BBDD.COLUMNA2, transid3.getText().toString());
-                values.put(Structure_BBDD.COLUMNA3, date3.getText().toString());
-                values.put(Structure_BBDD.COLUMNA4, descrip3.getText().toString());
-                values.put(Structure_BBDD.COLUMNA5, amt3.getText().toString());
-                values.put(Structure_BBDD.COLUMNA6, price3.getText().toString());
-                values.put(Structure_BBDD.COLUMNA7, TotalI);
-                values.put(Structure_BBDD.COLUMNA8,coment3.getText().toString());
-                String selection = Structure_BBDD.COLUMNAID + " LIKE ?";
-                String[] selectionArgs = {id3.getText().toString()};
+                    ContentValues values = new ContentValues();
+                    values.put(Structure_BBDD.COLUMNAID, id3.getText().toString());
+                    values.put(Structure_BBDD.COLUMNA2, transid3.getText().toString());
+                    values.put(Structure_BBDD.COLUMNA3, date3.getText().toString());
+                    values.put(Structure_BBDD.COLUMNA4, descrip3.getText().toString());
+                    values.put(Structure_BBDD.COLUMNA5, amt3.getText().toString());
+                    values.put(Structure_BBDD.COLUMNA6, price3.getText().toString());
+                    values.put(Structure_BBDD.COLUMNA7, TotalI);
+                    values.put(Structure_BBDD.COLUMNA8, coment3.getText().toString());
+                    String selection = Structure_BBDD.COLUMNAID + " LIKE ?";
+                    String[] selectionArgs = {id3.getText().toString()};
 
-                int count = db.update(
-                        TABLE3,
-                        values,
-                        selection,
-                        selectionArgs);
-                Toast.makeText(getApplicationContext(), "Register " +id3.getText()+ " has been successfully updated.", Toast.LENGTH_LONG).show();
+                    int count = db.update(
+                            TABLE3,
+                            values,
+                            selection,
+                            selectionArgs);
+                    Toast.makeText(getApplicationContext(), "Register " + id3.getText() + " has been successfully updated.", Toast.LENGTH_LONG).show();
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "ERROR:Please insert ID and try again.", Toast.LENGTH_LONG).show();
+                }
             }
         });
         btnDelete.setOnClickListener(new View.OnClickListener() {

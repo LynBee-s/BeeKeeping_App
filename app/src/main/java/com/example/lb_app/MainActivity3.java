@@ -221,6 +221,7 @@ public class MainActivity3 extends AppCompatActivity {
         btnUpdate2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                try{
                 SQLiteDatabase db = helper.getReadableDatabase();
 // New value for one column
                 ContentValues values = new ContentValues();
@@ -245,7 +246,10 @@ public class MainActivity3 extends AppCompatActivity {
                         selection,
                         selectionArgs);
                 Toast.makeText(getApplicationContext(), "Register " +id.getText()+ " has been successfully updated.", Toast.LENGTH_LONG).show();
-            }
+            }catch (Exception e){
+                    Toast.makeText(getApplicationContext(), "ERROR:Please insert ID and try again.", Toast.LENGTH_LONG).show();
+                }
+                }
         });
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
