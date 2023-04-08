@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void HiveRecords() {
         try {
-            Intent intent = new Intent(this, MainActivity2.class);
+            Intent intent = new Intent(this, MainActivity9.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -15,9 +16,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
+import java.time.MonthDay;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MainActivity9 extends AppCompatActivity {
     HiveListHelper helper;
@@ -79,6 +84,9 @@ public class MainActivity9 extends AppCompatActivity {
         helper=new HiveListHelper(getApplicationContext(),"LBDB.db",null,1);
         recyclerView=(RecyclerView)findViewById(R.id.recycler_view8);
         data=new ArrayList<>();
+
+        getAdapter();
+        getInfo();
 
     }
     private void getAdapter(){

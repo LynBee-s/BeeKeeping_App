@@ -5,6 +5,14 @@ public class Forecast {
     private String Temperature;
     private String Conditions;
 
+    public Forecast(String Date, String Day,String Temperature,String Conditions){
+        this.setDate(Date);
+        this.setDay(Day);
+        this.setTemperature(Temperature);
+        this.setConditions(Conditions);
+    }
+
+    public  Forecast(){}
     public String getDate() {
         return Date;
     }

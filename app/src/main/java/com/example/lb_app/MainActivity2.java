@@ -2,15 +2,6 @@ package com.example.lb_app;
 
 import static com.example.lb_app.HiveDB_Helper.DATABASE_NAME;
 import static com.example.lb_app.HiveDB_Helper.TABLE1;
-import static com.example.lb_app.Structure_BBDD.COLUMN2;
-import static com.example.lb_app.Structure_BBDD.COLUMN3;
-import static com.example.lb_app.Structure_BBDD.COLUMN4;
-import static com.example.lb_app.Structure_BBDD.COLUMN5;
-import static com.example.lb_app.Structure_BBDD.COLUMN6;
-import static com.example.lb_app.Structure_BBDD.COLUMN7;
-import static com.example.lb_app.Structure_BBDD.COLUMN8;
-import static com.example.lb_app.Structure_BBDD.COLUMNID;
-import static com.example.lb_app.Structure_BBDD.TABLE2;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -21,28 +12,21 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.location.Geocoder;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.CalendarContract;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 
 import android.widget.Toast;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRichTextString;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.hssf.usermodel.examples.HSSFReadWrite;
 import org.apache.poi.ss.usermodel.Cell;
 
 import java.io.BufferedReader;
@@ -52,11 +36,9 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.time.MonthDay;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 import au.com.bytecode.opencsv.CSVWriter;
 
@@ -138,7 +120,7 @@ public class MainActivity2 extends AppCompatActivity {
 //Declare text fields..................................--------------------------------------------------
         id=(EditText) findViewById(R.id.id);
         hid=(EditText)findViewById(R.id.hivid);
-        date=(EditText)findViewById(R.id.date);
+        date=(EditText)findViewById(R.id.date6);
         hivst=(EditText)findViewById(R.id.hivstat);
         frame=(EditText)findViewById(R.id.frames);
         pop=(EditText) findViewById(R.id.popu);

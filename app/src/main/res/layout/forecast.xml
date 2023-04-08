@@ -9,32 +9,38 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/day"
+            android:id="@+id/day6"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="TextView" />
 
         <TextView
-            android:id="@+id/date"
+            android:id="@+id/date6"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="TextView" />
 
         <TextView
-            android:id="@+id/temperature"
+            android:id="@+id/temperature6"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="TextView" />
 
         <AutoCompleteTextView
-            android:id="@+id/weather"
+            android:id="@+id/weather6"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="TextView" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/insertf"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:text="Button" />
 
 </LinearLayout>
