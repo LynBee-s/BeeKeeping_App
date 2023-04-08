@@ -102,8 +102,8 @@ public class MainActivity9 extends AppCompatActivity {
         WebView wv=new WebView(MainActivity9.this);
 
         WebViewClient wvcl=new WebViewClient();
-        wvcl.onPageStarted();
-        wv.getUrl();
+        //wvcl.onPageStarted();
+        //wv.getUrl();
 
 
         getAdapter();

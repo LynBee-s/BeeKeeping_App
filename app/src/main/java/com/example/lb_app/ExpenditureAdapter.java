@@ -18,7 +18,6 @@ import java.util.ArrayList;
 public class ExpenditureAdapter extends RecyclerView.Adapter<ExpenditureAdapter.ViewHolder>{
     LayoutInflater inflater;
     ArrayList<Expenditure> data;
-    HiveDB_Helper helper;
     HiveDB_Helper hiveDB_helper;
     public ExpenditureAdapter(Context context){
         this.inflater=LayoutInflater.from(context);

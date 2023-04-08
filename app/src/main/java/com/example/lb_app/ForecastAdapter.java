@@ -25,7 +25,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ViewHo
     LayoutInflater inflater;
     ArrayList<Forecast> data;
     HiveDB_Helper helper;
-
+HiveListHelper hiveListHelper;
     public ForecastAdapter(Context context) {
         this.inflater = LayoutInflater.from(context);
     }
@@ -61,6 +61,8 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ViewHo
 
         public ViewHolder(final View itemView) {
             super(itemView);
+            helper=new HiveDB_Helper(itemView.getContext());
+            helper= new HiveDB_Helper(itemView.getContext().getApplicationContext(), "LBDB.db", null, 1);
             date = (TextView) itemView.findViewById(R.id.date6);
             day = (EditText) itemView.findViewById(R.id.day6);
             temp = (EditText) itemView.findViewById(R.id.temperature6);
