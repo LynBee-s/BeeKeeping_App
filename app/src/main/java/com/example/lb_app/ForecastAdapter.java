@@ -6,7 +6,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EdgeEffect;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,17 +25,19 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ViewHo
     LayoutInflater inflater;
     ArrayList<Forecast> data;
     HiveDB_Helper helper;
-    HiveDB_Helper hiveDB_helper;
-    public  ForecastAdapter(Context context){
-        this.inflater=LayoutInflater.from(context);
+
+    public ForecastAdapter(Context context) {
+        this.inflater = LayoutInflater.from(context);
     }
-    public  ForecastAdapter(ArrayList<Forecast> data) {
+
+    public ForecastAdapter(ArrayList<Forecast> data) {
         this.data = data;
     }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view=LayoutInflater.from(parent.getContext()).inflate(R.layout.forecast,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.forecast, parent, false);
         return new ViewHolder(view);
     }
 
@@ -47,45 +53,47 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ViewHo
     public int getItemCount() {
         return data.size();
     }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView date, day, temp, cond;
-        Button btninsert;
+        TextView date, temp;
+        EditText day, cond;
+        Button btnUpdate;
 
         public ViewHolder(final View itemView) {
             super(itemView);
             date = (TextView) itemView.findViewById(R.id.date6);
-            day = (TextView) itemView.findViewById(R.id.day6);
-            temp = (TextView) itemView.findViewById(R.id.temperature6);
-            cond = (TextView) itemView.findViewById(R.id.weather6);
-            btninsert = (Button) itemView.findViewById(R.id.insertf);
+            day = (EditText) itemView.findViewById(R.id.day6);
+            temp = (EditText) itemView.findViewById(R.id.temperature6);
+            cond = (EditText) itemView.findViewById(R.id.weather6);
+            btnUpdate = (Button) itemView.findViewById(R.id.insertf);
 
-            Context context = null;
-            btninsert.setOnClickListener(new View.OnClickListener() {
+            btnUpdate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     try {
-                        Calendar calendar = Calendar.getInstance();
-                        String DateNow = MonthDay.now().toString() + "-" + calendar.get(Calendar.YEAR);
-
-                        SQLiteDatabase db = helper.getWritableDatabase();
+                        SQLiteDatabase db = helper.getReadableDatabase();
+// New value for one column
                         ContentValues values = new ContentValues();
-                        values.put(Structure_BBDD.COLUMNCID, DateNow);
+
+                        //values.put(Structure_BBDD.COLUMNCID, date.getText().toString());
                         values.put(Structure_BBDD.COLUMNC2, day.getText().toString());
                         values.put(Structure_BBDD.COLUMNC3, temp.getText().toString());
                         values.put(Structure_BBDD.COLUMNC4, cond.getText().toString());
-                        long newRowId = db.insert(Structure_BBDD.TABLE4, null, values);
-                        Toast.makeText(itemView.getContext(), "The register was saved with ID: " + newRowId, Toast.LENGTH_LONG).show();
-                        //Clear text from fields
-                        date.setText("");
-                        day.setText("");
-                        temp.setText("");
-                        cond.setText("");
+                        String selection = Structure_BBDD.COLUMNCID + " LIKE ?";
+                        String[] selectionArgs = {date.getText().toString()};
+                        int count = db.update(
+                                Structure_BBDD.TABLE4,
+                                values,
+                                selection,
+                                selectionArgs);
+
+                        Toast.makeText(itemView.getContext(), "Weather forecast for" + date.getText() + " has been updated.", Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
-                        Toast.makeText(itemView.getContext(), "ERROR", Toast.LENGTH_LONG).show();
+                        Toast.makeText(itemView.getContext(), "ERROR: Unable to update weather forecast. Please try again.", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
-
+            }
         }
     }
-}
+

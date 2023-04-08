@@ -12,14 +12,25 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.ParseException;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.webkit.WebViewRenderProcessClient;
 import android.widget.Button;
 import android.widget.Toast;
 
+import org.apache.poi.xslf.model.geom.Context;
+import org.xml.sax.helpers.ParserAdapter;
+
+import java.net.URL;
+import java.text.ParsePosition;
 import java.time.MonthDay;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -28,6 +39,8 @@ public class MainActivity9 extends AppCompatActivity {
     HiveListHelper helper;
     private RecyclerView recyclerView;
     public ArrayList<Forecast> data;
+    WebView webp;
+    Button webview;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -83,10 +96,24 @@ public class MainActivity9 extends AppCompatActivity {
         HiveDB_Helper hiveDB_helper=new HiveDB_Helper(MainActivity9.this);
         helper=new HiveListHelper(getApplicationContext(),"LBDB.db",null,1);
         recyclerView=(RecyclerView)findViewById(R.id.recycler_view8);
+        webview=(Button)findViewById(R.id.wv);
+        webp=(WebView)findViewById(R.id.webv);
         data=new ArrayList<>();
+        WebView wv=new WebView(MainActivity9.this);
+
+        WebViewClient wvcl=new WebViewClient();
+        wvcl.onPageStarted();
+        wv.getUrl();
+
 
         getAdapter();
         getInfo();
+        wv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
     }
     private void getAdapter(){
@@ -105,6 +132,7 @@ public class MainActivity9 extends AppCompatActivity {
             forecast.setDay(cur.getString(1));
             forecast.setTemperature(cur.getString(2));
             forecast.setConditions(cur.getString(3));
+            data.add(forecast);
         }
     }
     private void MainMenu() {

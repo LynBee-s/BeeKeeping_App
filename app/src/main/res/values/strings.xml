@@ -26,4 +26,6 @@
     <string name="Export">export</string>
     <string name="search_history">Search History</string>
     <string name="create_new_event">Create new event</string>
+    <string name="WEATHER">weather</string>
+    <string name="TEMPERATURE">temperature</string>
 </resources>
