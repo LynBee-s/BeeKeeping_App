@@ -22,14 +22,24 @@
         android:theme="@style/Theme.LB_App"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivity9"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".MainActivity7"
             android:exported="true"
             android:label="Hive Tracker">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <data android:scheme="geo" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -87,9 +97,9 @@
             android:exported="true"
             android:label="LynBee´s Inventory"
             android:roundIcon="@drawable/lyn_bee__1_">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
 
                 <action android:name="android.intent.action.VIEW" />
