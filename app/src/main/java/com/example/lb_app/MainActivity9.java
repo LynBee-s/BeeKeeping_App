@@ -97,7 +97,7 @@ public class MainActivity9 extends AppCompatActivity {
     }
     private  void  getInfo(){
         SQLiteDatabase db=helper.getReadableDatabase();
-       Forecast forecast=null;
+        Forecast forecast=null;
         Cursor cur = db.rawQuery("select * from "+TABLE4 ,null);
         while (cur.moveToNext()) {
            forecast=new Forecast();
