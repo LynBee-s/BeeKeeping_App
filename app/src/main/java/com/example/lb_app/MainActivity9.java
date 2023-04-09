@@ -42,6 +42,7 @@ public class MainActivity9 extends AppCompatActivity {
     WebView webp;
     Button webview;
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -101,19 +102,23 @@ public class MainActivity9 extends AppCompatActivity {
         data=new ArrayList<>();
         WebView wv=new WebView(MainActivity9.this);
 
-        WebViewClient wvcl=new WebViewClient();
-        //wvcl.onPageStarted();
-        //wv.getUrl();
-
-
         getAdapter();
         getInfo();
-        wv.setOnClickListener(new View.OnClickListener() {
+
+
+
+        webview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                openWebPage("https://www.weather.gd/");
             }
         });
+
+    }
+    public void openWebPage(String url) {
+        Uri webpage = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+            startActivity(intent);
 
     }
     private void getAdapter(){
