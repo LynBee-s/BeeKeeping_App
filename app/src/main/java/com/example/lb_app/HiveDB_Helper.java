@@ -13,6 +13,8 @@ public class HiveDB_Helper extends SQLiteOpenHelper {
     public static final String TABLE1 = "Hive_Rec";
     public static final String TABLE2 = "Sales";
     public static final String TABLE3 = "Expenditure";
+    public static final String TABLE4 = "Honey_Rec";
+
 
     public HiveDB_Helper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -26,6 +28,7 @@ public class HiveDB_Helper extends SQLiteOpenHelper {
         db.execSQL(Structure_BBDD.SQL_CREATE_ENTRIES1);
         db.execSQL(Structure_BBDD.SQL_CREATE_ENTRIES2);
         db.execSQL(Structure_BBDD.SQL_CREATE_ENTRIES3);
+        db.execSQL(Structure_BBDD.SQL_CREATE_ENTRIES4);
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -43,6 +46,7 @@ public class HiveDB_Helper extends SQLiteOpenHelper {
         db.execSQL("select * from " + TABLE1);
         db.execSQL("select * from " + TABLE2);
         db.execSQL("select * from " + TABLE3);
+        db.execSQL("select * from " + TABLE4);
         s.getBytes(StandardCharsets.UTF_8).toString();
         return null;
     }
@@ -51,6 +55,7 @@ public class HiveDB_Helper extends SQLiteOpenHelper {
         db.execSQL("select * from " + TABLE1);
         db.execSQL("select * from " + TABLE2);
         db.execSQL("select * from " + TABLE3);
+        db.execSQL("select * from " + TABLE4);
         return null;
 
     }

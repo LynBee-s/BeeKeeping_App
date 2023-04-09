@@ -15,6 +15,7 @@ public class HiveListHelper extends SQLiteOpenHelper {
     public static final String TABLE1= "Hive_Rec";
     public static final String TABLE2 = "Sales";
     public static final String TABLE3 = "Expenditure";
+    public static final String TABLE4 = "Honey_Rec";
     public HiveListHelper( Context context,String name,SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -24,6 +25,7 @@ public class HiveListHelper extends SQLiteOpenHelper {
         db.execSQL(Structure_BBDD.SQL_CREATE_ENTRIES1);
         db.execSQL(Structure_BBDD.SQL_CREATE_ENTRIES2);
         db.execSQL(Structure_BBDD.SQL_CREATE_ENTRIES3);
+        db.execSQL(Structure_BBDD.SQL_CREATE_ENTRIES4);
         onCreate(db);
 
     }

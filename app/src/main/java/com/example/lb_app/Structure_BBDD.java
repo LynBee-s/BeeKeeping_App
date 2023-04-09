@@ -35,6 +35,16 @@ public class Structure_BBDD {
     public static final String COLUMNB7 = "Total";
     public static final String COLUMNB8 = "Notes";
 
+    public static final String TABLE4 = "Honey_Rec";
+    public static final String COLUMNCID = "ID";
+    public static final String COLUMNC2 = "Hive_ID";
+    public static final String COLUMNC3 = "Date";
+    public static final String COLUMNC4 = "Amount";
+    public static final String COLUMNC5 = "Other";
+    public static final String COLUMNC6 = "O_Amount";
+    public static final String COLUMNC7 = "Notes";
+
+
 
     public static final String SQL_CREATE_ENTRIES1 =
 
@@ -81,7 +91,18 @@ public class Structure_BBDD {
     // public static final String SQL_DELETE_ENTRIES =
     // "DROP TABLE IF EXISTS " + Estructura_BBDD.TABLE3;
 
+    public static final String SQL_CREATE_ENTRIES4 =
 
+            " CREATE TABLE " + Structure_BBDD.TABLE4 + " ( " +
+                    Structure_BBDD.COLUMNCID + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
+                    Structure_BBDD.COLUMNC2 + " TEXT,"+
+                    Structure_BBDD.COLUMNC3 +" TEXT," +
+                    Structure_BBDD.COLUMNC4 + " TEXT,"+
+                    Structure_BBDD.COLUMNC5 + " TEXT,"+
+                    Structure_BBDD.COLUMNC6 + " TEXT,"+
+                    Structure_BBDD.COLUMNC7 + " TEXT ); ";
 
+        // public static final String SQL_DELETE_ENTRIES =
+        // "DROP TABLE IF EXISTS " + Estructura_BBDD.TABLE4;
 
 }
