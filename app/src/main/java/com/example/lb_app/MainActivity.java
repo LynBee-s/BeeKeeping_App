@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnHR,btnS,btnE,btnMp;
+    Button btnHR,btnS,btnE,btnMp,btnActP;
     ActivityResultLauncher<String[]> mPermissionResultlauncher;
     private boolean isReadPermissionGranted = false;
     private boolean isLocationPermissionGranted = false;
@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
         btnS=(Button) findViewById(R.id.sls);
         btnE=(Button)findViewById(R.id.exp);
         btnMp=(Button)findViewById(R.id.gl);
+        btnActP=(Button)findViewById(R.id.button);
 
         btnMp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,6 +120,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     Intent intent = new Intent(MainActivity.this, MainActivity3.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        btnActP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(MainActivity.this, MainActivity9.class);
                     startActivity(intent);
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
@@ -186,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void HiveRecords() {
         try {
-            Intent intent = new Intent(this, MainActivity9.class);
+            Intent intent = new Intent(this, MainActivity2.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();

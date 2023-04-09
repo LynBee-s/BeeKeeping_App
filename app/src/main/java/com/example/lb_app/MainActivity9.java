@@ -24,6 +24,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.webkit.WebViewRenderProcessClient;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import org.apache.poi.xslf.model.geom.Context;
@@ -38,6 +39,7 @@ import java.util.Calendar;
 public class MainActivity9 extends AppCompatActivity {
     HiveListHelper helper;
     private RecyclerView recyclerView;
+    private FrameLayout frameLayout;
     public ArrayList<Forecast> data;
     WebView webp;
     Button webview;
@@ -97,6 +99,8 @@ public class MainActivity9 extends AppCompatActivity {
         HiveDB_Helper hiveDB_helper=new HiveDB_Helper(MainActivity9.this);
         helper=new HiveListHelper(getApplicationContext(),"LBDB.db",null,1);
         recyclerView=(RecyclerView)findViewById(R.id.recycler_view8);
+        frameLayout=(FrameLayout)findViewById(R.id.framelayout1);
+
         webview=(Button)findViewById(R.id.wv);
         webp=(WebView)findViewById(R.id.webv);
         data=new ArrayList<>();

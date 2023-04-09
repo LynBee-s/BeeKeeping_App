@@ -12,10 +12,16 @@
         android:layout_width="match_parent"
         android:layout_height="276dp" />
 
-    <WebView
-        android:id="@+id/webv"
+    <FrameLayout
+        android:id="@+id/framelayout1"
         android:layout_width="match_parent"
-        android:layout_height="200dp"/>
+        android:layout_height="216dp">
+
+        <WebView
+            android:id="@+id/webv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
 
     <Button
         android:id="@+id/wv"
