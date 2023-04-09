@@ -16,7 +16,7 @@
     <Button
         android:id="@+id/setrecuerdo"
         android:layout_width="match_parent"
-        android:layout_height="38dp"
+        android:layout_height="70dp"
         android:fontFamily="@font/alice"
         android:text="@string/create_new_event"
         android:textStyle="bold" />
@@ -30,7 +30,7 @@
         <Button
             android:id="@+id/wv"
             android:layout_width="match_parent"
-            android:layout_height="44dp"
+            android:layout_height="55dp"
             android:text="@string/check_forecast" />
 
         <WebView
