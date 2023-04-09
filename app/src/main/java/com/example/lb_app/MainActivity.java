@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    Intent intent = new Intent(MainActivity.this, MainActivity9.class);
+                    Intent intent = new Intent(MainActivity.this, MainActivity6.class);
                     startActivity(intent);
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();

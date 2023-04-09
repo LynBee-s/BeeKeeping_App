@@ -1,6 +1,7 @@
 package com.example.lb_app;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.browser.customtabs.CustomTabsIntent;
 
 import android.content.Intent;
 import android.icu.util.Calendar;
@@ -12,8 +13,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import java.sql.Time;
@@ -23,6 +26,10 @@ public class MainActivity6 extends AppCompatActivity {
     Calendar calendar;
     CalendarView calendarView;
     Button newevent;
+    WebView webp;
+    Button webview;
+    FrameLayout frameLayout;
+    String url="https://www.weather.gd/";
 
 
     @Override
@@ -78,14 +85,26 @@ public class MainActivity6 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main6);
+        frameLayout=(FrameLayout)findViewById(R.id.framelayout1);
         newevent=(Button) findViewById(R.id.setrecuerdo);
         calendarView=(CalendarView) findViewById(R.id.calendarView7);
+        webview=(Button)findViewById(R.id.wv);
+        webp=(WebView)findViewById(R.id.webv);
+        WebView wv=new WebView(MainActivity6.this);
 
 
         newevent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 event();
+            }
+        });
+        webview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                CustomTabsIntent customTabsIntent = builder.build();
+                customTabsIntent.launchUrl(MainActivity6.this, Uri.parse(url));
             }
         });
     }
