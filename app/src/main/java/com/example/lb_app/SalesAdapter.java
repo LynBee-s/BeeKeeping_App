@@ -83,7 +83,7 @@ public SalesAdapter(ArrayList<Sales>data){this.data=data;}
                         values.put(Structure_BBDD.COLUMNA4, descrip4.getText().toString());
                         values.put(Structure_BBDD.COLUMNA5, amt4.getText().toString());
                         values.put(Structure_BBDD.COLUMNA6, price4.getText().toString());
-                        values.put(Structure_BBDD.COLUMNA7, total4.getText().toString());
+                        values.put(Structure_BBDD.COLUMNA7, TotalI);
                         values.put(Structure_BBDD.COLUMNA8, notes4.getText().toString());
                         String selection = Structure_BBDD.COLUMNAID + " LIKE ?";
                         String[] selectionArgs = {id4.getText().toString()};

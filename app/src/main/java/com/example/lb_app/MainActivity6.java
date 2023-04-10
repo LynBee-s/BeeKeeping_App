@@ -32,6 +32,7 @@ public class MainActivity6 extends AppCompatActivity {
     String url="https://www.weather.gd/";
 
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -110,9 +111,11 @@ public class MainActivity6 extends AppCompatActivity {
     }
     private void event() {
         try{
+
         Intent intent = new Intent(Intent.ACTION_INSERT)
                 .setData(CalendarContract.Events.CONTENT_URI)
-                .putExtra(CalendarContract.Events.TITLE, "Reminder: ");
+                .putExtra(CalendarContract.Events.TITLE, "Reminder: ")
+                .putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY,true);
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }

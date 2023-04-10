@@ -19,6 +19,10 @@ public class ExpenditureAdapter extends RecyclerView.Adapter<ExpenditureAdapter.
     LayoutInflater inflater;
     ArrayList<Expenditure> data;
     HiveDB_Helper hiveDB_helper;
+    private float TotalI;
+    private float AmtI;
+    private float PriceI;
+
     public ExpenditureAdapter(Context context){
         this.inflater=LayoutInflater.from(context);
     }
@@ -70,6 +74,9 @@ public class ExpenditureAdapter extends RecyclerView.Adapter<ExpenditureAdapter.
                 @Override
                 public void onClick(View v) {
                     try {
+                        PriceI= Float.parseFloat(price5.getText().toString());
+                        AmtI=Float.parseFloat(amt5.getText().toString());
+                        TotalI=PriceI*AmtI;
                         SQLiteDatabase db = helper.getReadableDatabase();
 // New value for one column
                         ContentValues values = new ContentValues();
@@ -79,7 +86,7 @@ public class ExpenditureAdapter extends RecyclerView.Adapter<ExpenditureAdapter.
                         values.put(Structure_BBDD.COLUMNB4, descrip5.getText().toString());
                         values.put(Structure_BBDD.COLUMNB5, amt5.getText().toString());
                         values.put(Structure_BBDD.COLUMNB6, price5.getText().toString());
-                        values.put(Structure_BBDD.COLUMNB7, total5.getText().toString());
+                        values.put(Structure_BBDD.COLUMNB7, TotalI);
                         values.put(Structure_BBDD.COLUMNB8, notes5.getText().toString());
                         String selection = Structure_BBDD.COLUMNBID + " LIKE ?";
                         String[] selectionArgs = {id5.getText().toString()};
