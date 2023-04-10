@@ -10,9 +10,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_v3"
         android:layout_width="match_parent"
-        android:layout_height="305dp"
-        android:background="@color/yellow7c1"
-        android:clipChildren="true" />
+        android:layout_height="305dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
