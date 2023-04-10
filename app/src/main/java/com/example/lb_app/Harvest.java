@@ -4,9 +4,9 @@ public class Harvest {
     private String ID;
     private String Hive_ID;
     private String Date;
-    private String Amount;
+    private String Amount_H;
     private String Other;
-    private String O_Amount;
+    private String Amount_O;
     private String Notes;
 
     public String getID() {
@@ -33,12 +33,12 @@ public class Harvest {
         Date = date;
     }
 
-    public String getAmount() {
-        return Amount;
+    public String getAmount_H() {
+        return Amount_H;
     }
 
-    public void setAmount(String amount) {
-        Amount = amount;
+    public void setAmount_H(String amount_H) {
+        Amount_H = amount_H;
     }
 
     public String getOther() {
@@ -49,12 +49,12 @@ public class Harvest {
         Other = other;
     }
 
-    public String getO_Amount() {
-        return O_Amount;
+    public String getAmount_O() {
+        return Amount_O;
     }
 
-    public void setO_Amount(String o_Amount) {
-        O_Amount = o_Amount;
+    public void setAmount_O(String amount_O) {
+        Amount_O = amount_O;
     }
 
     public String getNotes() {

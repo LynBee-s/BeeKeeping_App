@@ -30,4 +30,6 @@
     <string name="TEMPERATURE">temperature</string>
     <string name="check_forecast">Check Weather Forecast</string>
     <string name="otro_producto">Otro Producto</string>
+    <string name="update_record">Update Record</string>
+    <string name="delete">Delete</string>
 </resources>
