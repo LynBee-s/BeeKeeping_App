@@ -13,7 +13,7 @@ public class HiveDB_Helper extends SQLiteOpenHelper {
     public static final String TABLE1 = "Hive_Rec";
     public static final String TABLE2 = "Sales";
     public static final String TABLE3 = "Expenditure";
-    public static final String TABLE4 = "Honey_Rec";
+    public static final String TABLE4 = "Harvest_Rec";
 
 
     public HiveDB_Helper(Context context) {

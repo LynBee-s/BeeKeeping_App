@@ -83,7 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/otro_producto" />
+            android:text="Other Product" />
 
         <EditText
             android:id="@+id/other7"

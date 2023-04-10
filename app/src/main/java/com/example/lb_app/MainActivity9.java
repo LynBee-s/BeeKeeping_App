@@ -121,6 +121,7 @@ public class MainActivity9 extends AppCompatActivity {
         other9=(EditText) findViewById(R.id.other9);
         amtt9=(EditText) findViewById(R.id.amtt9) ;
         notes9=(EditText) findViewById(R.id.notes9);
+
         btnInsert=(Button) findViewById(R.id.btninsert8);
         btnExport=(Button) findViewById(R.id.btnexport8);
         btnDelete=(Button)findViewById(R.id.btnDelete);
@@ -188,14 +189,12 @@ public class MainActivity9 extends AppCompatActivity {
 
                     SQLiteDatabase db = helper.getWritableDatabase();
                     ContentValues values = new ContentValues();
-                    values.put(Structure_BBDD.COLUMNA2, hiveid9.getText().toString());
-                    values.put(Structure_BBDD.COLUMNA3, DateNow);
-                    values.put(Structure_BBDD.COLUMNA4, amt9.getText().toString());
-                    values.put(Structure_BBDD.COLUMNA5, other9.getText().toString());
-                    values.put(Structure_BBDD.COLUMNA6,amtt9.getText().toString());
-                    values.put(Structure_BBDD.COLUMNA8, notes9.getText().toString());
-
-                    long newRowId = db.insert(TABLE2, null, values);
+                    values.put(Structure_BBDD.COLUMNC2, hiveid9.getText().toString());
+                    values.put(Structure_BBDD.COLUMNC3, DateNow);
+                    values.put(Structure_BBDD.COLUMNC4, amt9.getText().toString());
+                    values.put(Structure_BBDD.COLUMNC5, other9.getText().toString());
+                    values.put(Structure_BBDD.COLUMNC6,amtt9.getText().toString());
+                    long newRowId = db.insert(TABLE4, null, values);
                     Toast.makeText(getApplicationContext(), "The register was saved with ID: " + newRowId, Toast.LENGTH_SHORT).show();
 
                     //Clear text from fields
@@ -242,8 +241,7 @@ public class MainActivity9 extends AppCompatActivity {
                         curCSV.getString(3),
                         curCSV.getString(4),
                         curCSV.getString(5),
-                        curCSV.getString(6),
-                        curCSV.getString(7)};
+                        curCSV.getString(6)};
                 csvWrite.writeNext(arrStr);
             }
             csvWrite.close();
@@ -337,7 +335,7 @@ public class MainActivity9 extends AppCompatActivity {
     private  void  getInfo(){
         SQLiteDatabase db=helper.getReadableDatabase();
         Harvest harvest = null;
-        Cursor cur = db.rawQuery("select * from "+TABLE2 ,null);
+        Cursor cur = db.rawQuery("select * from "+TABLE4 ,null);
         while (cur.moveToNext()) {
             harvest=new Harvest();
             harvest.setID(cur.getString(0));

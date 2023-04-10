@@ -30,7 +30,7 @@ public class HarvestAdapter extends RecyclerView.Adapter<HarvestAdapter.ViewHold
                 }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull HarvestAdapter.ViewHolder holder, int position) {
         holder.id8.setText(data.get(position).getID());
         holder.hiveid8.setText(data.get(position).getHive_ID());
         holder.date8.setText(data.get(position).getDate());
@@ -68,7 +68,6 @@ public class HarvestAdapter extends RecyclerView.Adapter<HarvestAdapter.ViewHold
                     public void onClick(View v) {
                         try {
                             SQLiteDatabase db = helper.getReadableDatabase();
-        // New value for one column
                             ContentValues values = new ContentValues();
                             values.put(Structure_BBDD.COLUMNCID,id8.getText().toString() );
                             values.put(Structure_BBDD.COLUMNC2, hiveid8.getText().toString());
@@ -77,7 +76,7 @@ public class HarvestAdapter extends RecyclerView.Adapter<HarvestAdapter.ViewHold
                             values.put(Structure_BBDD.COLUMNC5, other8.getText().toString());
                             values.put(Structure_BBDD.COLUMNC6, amtt8.getText().toString());
                             values.put(Structure_BBDD.COLUMNC7, notes8.getText().toString());
-                            String selection = Structure_BBDD.COLUMNBID + " LIKE ?";
+                            String selection = Structure_BBDD.COLUMNCID + " LIKE ?";
                             String[] selectionArgs = {id8.getText().toString()};
                             int count = db.update(
                                     Structure_BBDD.TABLE4,

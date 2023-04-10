@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnHR,btnS,btnE,btnMp,btnActP;
+    Button btnHR,btnS,btnE,btnMp,btnActP,btnHarV;
     ActivityResultLauncher<String[]> mPermissionResultlauncher;
     private boolean isReadPermissionGranted = false;
     private boolean isLocationPermissionGranted = false;
@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
         btnE=(Button)findViewById(R.id.exp);
         btnMp=(Button)findViewById(R.id.gl);
         btnActP=(Button)findViewById(R.id.button);
+        btnHarV=(Button) findViewById(R.id.btnharvestrec);
 
         btnMp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,6 +132,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     Intent intent = new Intent(MainActivity.this, MainActivity6.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        btnHarV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(MainActivity.this, MainActivity9.class);
                     startActivity(intent);
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();

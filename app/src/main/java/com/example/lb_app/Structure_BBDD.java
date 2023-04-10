@@ -35,7 +35,7 @@ public class Structure_BBDD {
     public static final String COLUMNB7 = "Total";
     public static final String COLUMNB8 = "Notes";
 
-    public static final String TABLE4 = "Honey_Rec";
+    public static final String TABLE4 = "Harvest_Rec";
     public static final String COLUMNCID = "ID";
     public static final String COLUMNC2 = "Hive_ID";
     public static final String COLUMNC3 = "Date";
@@ -94,7 +94,7 @@ public class Structure_BBDD {
     public static final String SQL_CREATE_ENTRIES4 =
 
             " CREATE TABLE " + Structure_BBDD.TABLE4 + " ( " +
-                    Structure_BBDD.COLUMNCID + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
+                    Structure_BBDD.COLUMNCID + " INTEGER PRIMARY KEY ," +
                     Structure_BBDD.COLUMNC2 + " TEXT,"+
                     Structure_BBDD.COLUMNC3 +" TEXT," +
                     Structure_BBDD.COLUMNC4 + " TEXT,"+
