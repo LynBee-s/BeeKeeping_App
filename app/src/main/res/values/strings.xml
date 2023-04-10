@@ -29,4 +29,5 @@
     <string name="WEATHER">weather</string>
     <string name="TEMPERATURE">temperature</string>
     <string name="check_forecast">Check Weather Forecast</string>
+    <string name="otro_producto">Otro Producto</string>
 </resources>

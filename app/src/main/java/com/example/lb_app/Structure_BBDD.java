@@ -39,9 +39,9 @@ public class Structure_BBDD {
     public static final String COLUMNCID = "ID";
     public static final String COLUMNC2 = "Hive_ID";
     public static final String COLUMNC3 = "Date";
-    public static final String COLUMNC4 = "Amount";
+    public static final String COLUMNC4 = "Amount_H";
     public static final String COLUMNC5 = "Other";
-    public static final String COLUMNC6 = "O_Amount";
+    public static final String COLUMNC6 = "Amount_O";
     public static final String COLUMNC7 = "Notes";
 
 
