@@ -10,7 +10,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_v3"
         android:layout_width="match_parent"
-        android:layout_height="264dp" />
+        android:layout_height="305dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -50,11 +50,11 @@
 
         <EditText
             android:id="@+id/hiveid9"
-            android:layout_width="158dp"
+            android:layout_width="128dp"
             android:layout_height="match_parent"
-            android:inputType="textPersonName"
+            android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:layout_weight="1" />
+            android:inputType="textPersonName" />
     </LinearLayout>
 
     <LinearLayout
@@ -106,7 +106,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="@string/otro_producto" />
+            android:text="Other Product" />
 
         <EditText
             android:id="@+id/other9"
@@ -166,7 +166,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="Button" />
+            android:text="Insert" />
 
         <Button
             android:id="@+id/btnexport8"

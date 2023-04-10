@@ -48,6 +48,7 @@ public class HarvestAdapter extends RecyclerView.Adapter<HarvestAdapter.ViewHold
             EditText id8,hiveid8,date8,amt8,other8,amtt8,notes8;
             Button btnupdate8;
             HiveDB_Helper helper;
+
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
                 hiveDB_helper=new HiveDB_Helper(itemView.getContext());

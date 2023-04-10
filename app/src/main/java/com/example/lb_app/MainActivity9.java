@@ -3,6 +3,7 @@ package com.example.lb_app;
 import static com.example.lb_app.HiveDB_Helper.DATABASE_NAME;
 import static com.example.lb_app.HiveDB_Helper.TABLE4;
 import static com.example.lb_app.Structure_BBDD.TABLE2;
+import static com.example.lb_app.Structure_BBDD.TABLE3;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -335,7 +336,7 @@ public class MainActivity9 extends AppCompatActivity {
     private  void  getInfo(){
         SQLiteDatabase db=helper.getReadableDatabase();
         Harvest harvest = null;
-        Cursor cur = db.rawQuery("select * from "+TABLE4 ,null);
+        Cursor cur = db.rawQuery("select * from "+ HiveDB_Helper.TABLE4 ,null);
         while (cur.moveToNext()) {
             harvest=new Harvest();
             harvest.setID(cur.getString(0));
