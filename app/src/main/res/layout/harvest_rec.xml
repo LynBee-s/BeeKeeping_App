@@ -132,6 +132,7 @@
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:fontFamily="@font/alice"
-        android:text="@string/update_record" />
+        android:text="@string/update_record"
+        android:textColor="@color/black" />
 
 </LinearLayout>
