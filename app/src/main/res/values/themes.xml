@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="LB_App" >
+    <style name="LB_App">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/LBYellow_700</item>
         <item name="colorPrimaryVariant">@color/LBYellow_200</item>
@@ -13,4 +13,13 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.LB_App.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.LB_App.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.LB_App.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

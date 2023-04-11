@@ -6,12 +6,14 @@ import static com.example.lb_app.Structure_BBDD.TABLE3;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.browser.customtabs.CustomTabsIntent;
 
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.Editable;
@@ -48,9 +50,10 @@ import au.com.bytecode.opencsv.CSVWriter;
 public class MainActivity3 extends AppCompatActivity {
     HiveListHelper helper;
     public ArrayList<Sales> data;
-    Button btninsert2,btnSearch2,btnUpdate2,btnDelete,btnClear,btnSendrecipt;
+    Button btninsert2,btnSearch2,btnUpdate2,btnDelete,btnClear,btnSendrecipt,btnPay;
     EditText id,transid,date2,descrip2,amt2,price2,total2,coment2;
     ImageButton shistory;
+    String url="https://www.paypal.com/mep/dashboard";
 
     private float TotalI;
     private float AmtI;
@@ -116,6 +119,7 @@ public class MainActivity3 extends AppCompatActivity {
         btnClear=(Button) findViewById(R.id.clear2);
         btnSendrecipt=(Button) findViewById(R.id.send2);
         btnDelete=(Button)findViewById(R.id.delete1);
+        btnPay=(Button) findViewById(R.id.pay);
 
         shistory=(ImageButton)findViewById(R.id.shistory);
 
@@ -128,7 +132,18 @@ public class MainActivity3 extends AppCompatActivity {
         total2=(EditText) findViewById(R.id.total2);
         coment2=(EditText) findViewById(R.id.coment);
 
-
+        btnPay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try{
+                    CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                    CustomTabsIntent customTabsIntent = builder.build();
+                    customTabsIntent.launchUrl(MainActivity3.this, Uri.parse(url));
+                }catch (Exception e){
+                    Toast.makeText(getApplication(),"Error",Toast.LENGTH_LONG).show();
+            }
+                }
+        });
 
         btninsert2.setOnClickListener(new View.OnClickListener() {
             @Override

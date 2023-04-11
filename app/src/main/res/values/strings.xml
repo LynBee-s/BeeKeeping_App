@@ -33,4 +33,5 @@
     <string name="update_record">Update Record</string>
     <string name="delete">Delete</string>
     <string name="harvest_records">Harvest Records</string>
+    <string name="title_activity_main10">MainActivity10</string>
 </resources>
