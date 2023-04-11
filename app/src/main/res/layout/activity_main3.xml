@@ -298,4 +298,9 @@
             android:layout_weight="1" />
     </LinearLayout>
 
+    <WebView
+        android:id="@+id/webv1"
+        android:layout_width="match_parent"
+        android:layout_height="12dp" />
+
 </LinearLayout>

@@ -16,11 +16,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.CalendarContract;
 import android.text.Editable;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -54,6 +56,7 @@ public class MainActivity3 extends AppCompatActivity {
     EditText id,transid,date2,descrip2,amt2,price2,total2,coment2;
     ImageButton shistory;
     String url="https://www.paypal.com/mep/dashboard";
+    WebView webp;
 
     private float TotalI;
     private float AmtI;
@@ -131,6 +134,22 @@ public class MainActivity3 extends AppCompatActivity {
         price2=(EditText) findViewById(R.id.price2);
         total2=(EditText) findViewById(R.id.total2);
         coment2=(EditText) findViewById(R.id.coment);
+
+        btnPay=(Button)findViewById(R.id.pay);
+        webp=(WebView)findViewById(R.id.webv1);
+
+        WebView wv=new WebView(MainActivity3.this);
+        /*btnPay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try{
+                    webp.getUrl(url);
+                }catch (Exception e){
+                    Toast.makeText(getApplication(),"Error",Toast.LENGTH_LONG).show();
+                }
+            }
+        });*/
+
 
         btnPay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -364,6 +383,11 @@ public class MainActivity3 extends AppCompatActivity {
                 }
             }
         });
+    }
+    private void pay(Uri url){
+        Intent intent = new Intent(Intent.ACTION_SEARCH)
+                .setData(url);
+        startActivity(intent);
     }
     private void MainMenu() {
         try {
