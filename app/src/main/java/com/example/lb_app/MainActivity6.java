@@ -23,7 +23,6 @@ import java.sql.Time;
 import java.util.Map;
 
 public class MainActivity6 extends AppCompatActivity {
-    Calendar calendar;
     CalendarView calendarView;
     Button newevent;
     WebView webp;
@@ -85,7 +84,7 @@ public class MainActivity6 extends AppCompatActivity {
         setContentView(R.layout.activity_main6);
         frameLayout=(FrameLayout)findViewById(R.id.framelayout1);
         newevent=(Button) findViewById(R.id.setrecuerdo);
-        calendarView=(CalendarView) findViewById(R.id.calendarView7);
+        calendarView=(CalendarView) findViewById(R.id.calendarView7);View
         webview=(Button)findViewById(R.id.wv);
         webp=(WebView)findViewById(R.id.webv);
         WebView wv=new WebView(MainActivity6.this);
