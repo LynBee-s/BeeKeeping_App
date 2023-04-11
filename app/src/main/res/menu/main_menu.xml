@@ -12,6 +12,10 @@
         android:title="@string/hive_activity"
         app:showAsAction="never"/>
     <item
+        android:id="@+id/planner"
+        android:title="Activity Planner"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/ventas"
         android:title="@string/sales"
         app:showAsAction="never" />

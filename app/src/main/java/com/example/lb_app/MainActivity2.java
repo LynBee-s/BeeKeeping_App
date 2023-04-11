@@ -68,6 +68,10 @@ public class MainActivity2 extends AppCompatActivity {
                 HiveRecords();
                 return true;
 
+            case R.id.planner:
+                ActivityPlanner();
+                return true;
+
             case R.id.ventas:
                 s:
                 Sales();
@@ -420,6 +424,14 @@ public class MainActivity2 extends AppCompatActivity {
     private void HiveRecords() {
         try {
             Intent intent = new Intent(this, MainActivity2.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+        }
+    }
+    private void ActivityPlanner() {
+        try {
+            Intent intent=new Intent(this,MainActivity9.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();

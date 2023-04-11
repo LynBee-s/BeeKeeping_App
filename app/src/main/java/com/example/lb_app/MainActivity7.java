@@ -52,29 +52,26 @@ public class MainActivity7 extends AppCompatActivity {
             case R.id.hivrec:
                 HiveRecords();
                 return true;
+            case R.id.planner:
+                ActivityPlanner();
+                return true;
 
             case R.id.ventas:
-                s:
                 Sales();
                 return true;
             case R.id.gastos:
-                s:
                 Expenditure();
                 return true;
             case R.id.gastoshstry:
-                s:
                 ExpenditureHistory();
                 return true;
             case R.id.salesresum:
-                s:
                 SalesResume();
                 return true;
             case R.id.event:
-                s:
                 PlanEvent();
                 return true;
             case R.id.geoloc:
-                s:
                 HiveMap();
                 return true;
             default:
@@ -154,6 +151,15 @@ public class MainActivity7 extends AppCompatActivity {
     private void HiveRecords() {
         try {
             Intent intent = new Intent(this, MainActivity2.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void ActivityPlanner() {
+        try {
+            Intent intent=new Intent(this,MainActivity9.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();

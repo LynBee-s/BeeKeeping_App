@@ -70,30 +70,27 @@ public boolean onCreateOptionsMenu(Menu menu) {
             case R.id.hivrec:
                 HiveRecords();
                 return true;
+            case R.id.planner:
+                ActivityPlanner();
+                return true;
 
             case R.id.ventas:
-                s:
                 Sales();
                 return true;
 
             case R.id.gastos:
-                s:
                 Expenditure();
                 return true;
             case R.id.gastoshstry:
-                s:
                 ExpenditureHistory();
                 return true;
             case R.id.salesresum:
-                s:
                 SalesResume();
                 return true;
             case R.id.event:
-                s:
                 PlanEvent();
                 return true;
             case R.id.geoloc:
-                s:
                 HiveMap();
                 return true;
             default:
@@ -329,7 +326,14 @@ public boolean onCreateOptionsMenu(Menu menu) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
-
+    private void ActivityPlanner() {
+        try {
+            Intent intent=new Intent(this,MainActivity9.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+        }
+    }
     private void Sales() {
         try {
             Intent intent = new Intent(this, MainActivity3.class);
