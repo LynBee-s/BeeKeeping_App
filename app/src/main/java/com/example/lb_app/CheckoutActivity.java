@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -28,6 +29,7 @@ import com.example.lb_app.databinding.ActivityCheckoutBinding;
  * Checkout implementation for the app
  */
 public class CheckoutActivity extends AppCompatActivity {
+    ScrollView scrollView;
     Button checkout;
     String url="https://www.paypal.com/mep/dashboard";
 

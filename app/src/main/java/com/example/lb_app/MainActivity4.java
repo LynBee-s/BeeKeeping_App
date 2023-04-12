@@ -384,4 +384,12 @@ public boolean onCreateOptionsMenu(Menu menu) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
+    private void Products() {
+        try {
+            Intent intent=new Intent(this,CheckoutActivity.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+        }
+    }
 }

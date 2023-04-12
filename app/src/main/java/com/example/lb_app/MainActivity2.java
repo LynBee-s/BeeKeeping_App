@@ -485,4 +485,12 @@ public class MainActivity2 extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
+    private void Products() {
+        try {
+            Intent intent=new Intent(this,CheckoutActivity.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+        }
+    }
 }

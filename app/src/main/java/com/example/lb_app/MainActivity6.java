@@ -28,8 +28,7 @@ public class MainActivity6 extends AppCompatActivity {
     WebView webp;
     Button webview;
     FrameLayout frameLayout;
-    String url="https://www.weather.gd/";
-
+    String url = "https://www.weather.gd/";
 
 
     @Override
@@ -78,16 +77,18 @@ public class MainActivity6 extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main6);
-        frameLayout=(FrameLayout)findViewById(R.id.framelayout1);
-        newevent=(Button) findViewById(R.id.setrecuerdo);
-        calendarView=(CalendarView) findViewById(R.id.calendarView7);View
-        webview=(Button)findViewById(R.id.wv);
-        webp=(WebView)findViewById(R.id.webv);
-        WebView wv=new WebView(MainActivity6.this);
+        frameLayout = (FrameLayout) findViewById(R.id.framelayout1);
+        newevent = (Button) findViewById(R.id.setrecuerdo);
+        calendarView = (CalendarView) findViewById(R.id.calendarView7);
+        View
+                webview = (Button) findViewById(R.id.wv);
+        webp = (WebView) findViewById(R.id.webv);
+        WebView wv = new WebView(MainActivity6.this);
 
 
         newevent.setOnClickListener(new View.OnClickListener() {
@@ -105,20 +106,22 @@ public class MainActivity6 extends AppCompatActivity {
             }
         });
     }
-    private void event() {
-        try{
 
-        Intent intent = new Intent(Intent.ACTION_INSERT)
-                .setData(CalendarContract.Events.CONTENT_URI)
-                .putExtra(CalendarContract.Events.TITLE, "Reminder: ")
-                .putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY,true);
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivity(intent);
+    private void event() {
+        try {
+
+            Intent intent = new Intent(Intent.ACTION_INSERT)
+                    .setData(CalendarContract.Events.CONTENT_URI)
+                    .putExtra(CalendarContract.Events.TITLE, "Reminder: ")
+                    .putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent);
+            }
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
-    }catch (Exception e) {
-            Toast.makeText(getApplicationContext(),"ERROR",Toast.LENGTH_LONG).show();
-        }
-        }
+    }
+
     private void MainMenu() {
         try {
             Intent intent = new Intent(this, MainActivity.class);
@@ -127,6 +130,7 @@ public class MainActivity6 extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
+
     private void HiveRecords() {
         try {
             Intent intent = new Intent(this, MainActivity2.class);
@@ -135,14 +139,16 @@ public class MainActivity6 extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
+
     private void ActivityPlanner() {
         try {
-            Intent intent=new Intent(this,MainActivity9.class);
+            Intent intent = new Intent(this, MainActivity9.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
+
     private void Sales() {
         try {
             Intent intent = new Intent(this, MainActivity3.class);
@@ -160,6 +166,7 @@ public class MainActivity6 extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
+
     private void ExpenditureHistory() {
         try {
             Intent intent = new Intent(this, MainActivity8.class);
@@ -169,6 +176,7 @@ public class MainActivity6 extends AppCompatActivity {
         }
 
     }
+
     private void SalesResume() {
         try {
             Intent intent = new Intent(this, MainActivity5.class);
@@ -177,17 +185,27 @@ public class MainActivity6 extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
+
     private void PlanEvent() {
         try {
-            Intent intent=new Intent(this,MainActivity6.class);
+            Intent intent = new Intent(this, MainActivity6.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
+
     private void HiveMap() {
         try {
-            Intent intent=new Intent(this,MainActivity7.class);
+            Intent intent = new Intent(this, MainActivity7.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+        }
+    }
+    private void Products() {
+        try {
+            Intent intent=new Intent(this,CheckoutActivity.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();

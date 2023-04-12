@@ -98,6 +98,9 @@ public class MainActivity9 extends AppCompatActivity {
             case R.id.geoloc:
                 HiveMap();
                 return true;
+            case R.id.products:
+                Products();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -416,6 +419,14 @@ public class MainActivity9 extends AppCompatActivity {
     private void HiveMap() {
         try {
             Intent intent=new Intent(this,MainActivity7.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+        }
+    }
+    private void Products() {
+        try {
+            Intent intent=new Intent(this,CheckoutActivity.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();

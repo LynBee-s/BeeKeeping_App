@@ -39,5 +39,9 @@
         android:id="@+id/geoloc"
         android:title="Hive Tracker"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/products"
+        android:title="Products"
+        app:showAsAction="never" />
 
 </menu>
