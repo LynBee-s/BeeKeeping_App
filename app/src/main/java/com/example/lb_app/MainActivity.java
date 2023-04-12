@@ -199,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void MainMenu() {
         try {
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, CheckoutActivity.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();

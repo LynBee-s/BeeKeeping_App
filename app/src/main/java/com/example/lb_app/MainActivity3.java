@@ -138,17 +138,6 @@ public class MainActivity3 extends AppCompatActivity {
         btnPay=(Button)findViewById(R.id.pay);
         webp=(WebView)findViewById(R.id.webv1);
 
-        WebView wv=new WebView(MainActivity3.this);
-        /*btnPay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try{
-                    webp.getUrl(url);
-                }catch (Exception e){
-                    Toast.makeText(getApplication(),"Error",Toast.LENGTH_LONG).show();
-                }
-            }
-        });*/
 
 
         btnPay.setOnClickListener(new View.OnClickListener() {
@@ -383,11 +372,6 @@ public class MainActivity3 extends AppCompatActivity {
                 }
             }
         });
-    }
-    private void pay(Uri url){
-        Intent intent = new Intent(Intent.ACTION_SEARCH)
-                .setData(url);
-        startActivity(intent);
     }
     private void MainMenu() {
         try {
