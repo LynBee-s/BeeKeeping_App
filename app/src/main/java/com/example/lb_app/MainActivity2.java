@@ -97,6 +97,10 @@ public class MainActivity2 extends AppCompatActivity {
                 s:
                 HiveMap();
                 return true;
+            case R.id.products:
+                s:
+                Products();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

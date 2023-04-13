@@ -93,6 +93,9 @@ public boolean onCreateOptionsMenu(Menu menu) {
             case R.id.geoloc:
                 HiveMap();
                 return true;
+            case R.id.products:
+                Products();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
