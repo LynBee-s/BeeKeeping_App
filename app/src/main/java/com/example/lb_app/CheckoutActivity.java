@@ -25,9 +25,7 @@ import org.json.JSONObject;
 
 import com.example.lb_app.databinding.ActivityCheckoutBinding;
 
-/**
- * Checkout implementation for the app
- */
+
 public class CheckoutActivity extends AppCompatActivity {
     ScrollView scrollView;
     Button checkout;
@@ -36,11 +34,7 @@ public class CheckoutActivity extends AppCompatActivity {
     // Arbitrarily-picked constant integer you define to track a request for payment data activity.
     private static final int LOAD_PAYMENT_DATA_REQUEST_CODE = 991;
     private ActivityCheckoutBinding layoutBinding;
-    /**
-     * Initialize the Google Pay API on creation of the activity
-     *
-     * @see AppCompatActivity#onCreate(android.os.Bundle)
-     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,16 +108,6 @@ public class CheckoutActivity extends AppCompatActivity {
             throw new RuntimeException("The selected garment cannot be parsed from the list of elements");
         }
     }
-
-    /**
-     * At this stage, the user has already seen a popup informing them an error occurred. Normally,
-     * only logging is required.
-     *
-     * @param status will hold the value of any constant from CommonStatusCode or one of the
-     *               WalletConstants.ERROR_CODE_* constants.
-     * @see <a href="https://developers.google.com/android/reference/com/google/android/gms/wallet/
-     * WalletConstants#constant-summary">Wallet Constants Library</a>
-     */
     private void handleError(@Nullable Status status) {
         String errorString = "Unknown error.";
         if (status != null) {
