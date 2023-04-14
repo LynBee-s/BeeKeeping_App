@@ -91,12 +91,12 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="Description:"
+            android:text="DESCRIPTION:"
             android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/descrip3"
-            android:layout_width="257dp"
+            android:layout_width="204dp"
             android:layout_height="match_parent"
             android:fontFamily="@font/alice"
             android:hint="Description"
@@ -252,7 +252,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/clear" />
+            android:text="Clear Fields" />
     </LinearLayout>
 
     <LinearLayout
