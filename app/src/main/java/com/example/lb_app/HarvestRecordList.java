@@ -1,9 +1,7 @@
 package com.example.lb_app;
 
 import static com.example.lb_app.HiveDB_Helper.DATABASE_NAME;
-import static com.example.lb_app.HiveDB_Helper.TABLE1;
-import static com.example.lb_app.HiveListHelper.TABLE3;
-import static com.example.lb_app.Structure_BBDD.TABLE2;
+import static com.example.lb_app.HiveDB_Helper.TABLE4;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -19,7 +17,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.Toast;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -38,20 +36,21 @@ import java.io.InputStreamReader;
 import java.time.MonthDay;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 import au.com.bytecode.opencsv.CSVWriter;
 
-public class MainActivity8 extends AppCompatActivity {
-    public ArrayList<Expenditure> data;
+public class HarvestRecordList extends AppCompatActivity {
     private RecyclerView recyclerView;
     HiveListHelper helper;
-    ImageButton export3;
+    Button btnExport;
+    public ArrayList<Harvest> data;
+    HarvestAdapter harvestAdapter=null;
+    HarvestAdapter.ViewHolder viewHolder=null;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_expensehist, menu);
+        inflater.inflate(R.menu.menu_harvestreclist, menu);
         return true;
     }
 
@@ -59,70 +58,66 @@ public class MainActivity8 extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.revexphist:
-                RevSaleshist();
+            case R.id.recevent:
+                SetReminder();
                 return true;
 
-            case R.id.insertnewexp:
-                InsertNewExp();
+            case R.id.tohiverec:
+                HiveRecords();
                 return true;
-
+            case R.id.insertnewharvrec:
+                NewHarvRec();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main8);
-        HiveDB_Helper hiveDB_helper = new HiveDB_Helper(MainActivity8.this);
-        helper = new HiveListHelper(getApplicationContext(), "LBDB.db", null, 1);
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view5);
-        data = new ArrayList<>();
-        export3 = (ImageButton) findViewById(R.id.export5);
+        setContentView(R.layout.activity_harvest_record_list);
+        HiveDB_Helper hiveDB_helper=new HiveDB_Helper(HarvestRecordList.this);
+        helper= new HiveListHelper(getApplicationContext(),"LBDB.db", null, 1);
+        recyclerView= findViewById(R.id.recycler_v3);
+        btnExport=(Button) findViewById(R.id.btnexport8);
+        data=new ArrayList<>();
 
-        export3.setOnClickListener(new View.OnClickListener() {
+        getAdapter();
+        getInfo();
+        btnExport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    SQLCSV();
                     csv2xl();
-                } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+                    SQLCSV();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         });
-        getAdapter();
-        getInfo();
-
     }
-
-    private void getAdapter() {
-        ExpenditureAdapter adapter = new ExpenditureAdapter(data);
+    private void getAdapter(){
+        HarvestAdapter adapter = new HarvestAdapter(data);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
     }
-
-    private void getInfo() {
-        SQLiteDatabase db = helper.getReadableDatabase();
-        Expenditure expenditure = null;
-        Cursor cur = db.rawQuery("select * from " + TABLE3, null);
+    private  void  getInfo(){
+        SQLiteDatabase db=helper.getReadableDatabase();
+        Harvest harvest = null;
+        Cursor cur = db.rawQuery("select * from "+ HiveDB_Helper.TABLE4 ,null);
         while (cur.moveToNext()) {
-            expenditure = new Expenditure();
-            expenditure.setID(cur.getString(0));
-            expenditure.setTrans_ID(cur.getString(1));
-            expenditure.setDate(cur.getString(2));
-            expenditure.setDescription(cur.getString(3));
-            expenditure.setAmount(cur.getString(4));
-            expenditure.setPrice(cur.getString(5));
-            expenditure.setTotal(cur.getString(6));
-            expenditure.setNotes(cur.getString(7));
-            data.add(expenditure);
+            harvest=new Harvest();
+            harvest.setID(cur.getString(0));
+            harvest.setHive_ID(cur.getString(1));
+            harvest.setDate(cur.getString(2));
+            harvest.setAmount_H(cur.getString(3));
+            harvest.setOther(cur.getString(4));
+            harvest.setAmount_O(cur.getString(5));
+            harvest.setNotes(cur.getString(6));
+            data.add(harvest);
         }
     }
-
     private void SQLCSV() {
         File dbFile = getDatabasePath(DATABASE_NAME);
         HiveDB_Helper dbhelper = new HiveDB_Helper(getApplicationContext());
@@ -141,7 +136,7 @@ public class MainActivity8 extends AppCompatActivity {
             }
             CSVWriter csvWrite = new CSVWriter(new FileWriter(file));
             SQLiteDatabase db = dbhelper.getWritableDatabase();
-            Cursor curCSV = db.rawQuery("SELECT * FROM " + TABLE3, null);
+            Cursor curCSV = db.rawQuery("SELECT * FROM " + TABLE4, null);
             csvWrite.writeNext(curCSV.getColumnNames());
             while (curCSV.moveToNext()) {
                 String arrStr[] = {
@@ -151,8 +146,7 @@ public class MainActivity8 extends AppCompatActivity {
                         curCSV.getString(3),
                         curCSV.getString(4),
                         curCSV.getString(5),
-                        curCSV.getString(6),
-                        curCSV.getString(7)};
+                        curCSV.getString(6)};
                 csvWrite.writeNext(arrStr);
             }
             csvWrite.close();
@@ -161,15 +155,13 @@ public class MainActivity8 extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
-
     private void csv2xl() throws IOException {
         ArrayList arList = null;
         ArrayList al = null;
         try {
-            Calendar calendar = Calendar.getInstance();
-            calendar.getTimeZone();
+            Calendar calendar=Calendar.getInstance();
             String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/LBdatos.csv";
-            String outFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/ExpenditureHistory" + MonthDay.now() + "_" + calendar.get(Calendar.YEAR) + ".xls";
+            String outFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/HarvestRecords_"+ MonthDay.now() +"_"+calendar.get(Calendar.YEAR)+".xls";
             String thisLine;
             int count = 0;
             try {
@@ -221,42 +213,46 @@ public class MainActivity8 extends AppCompatActivity {
                 fileOut.close();
                 System.out.println("Your excel file has been generated");
                 delete();
-                Toast.makeText(getApplicationContext(), "´Expenditure History´ has been successfully exported to " + getFilesDir(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Harvest Record has been successfully exported", Toast.LENGTH_SHORT).show();
             } catch (Exception ex) {
                 ex.printStackTrace();
-                Toast.makeText(getApplicationContext(), "ERROR: Failed to export ´Expenditure History´.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "ERROR: Failed to export Harvest Record document.", Toast.LENGTH_LONG).show();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-    private void delete() throws SecurityException {
+    private void delete()throws SecurityException{
         try {
             String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/LBdatos.csv";
             File file2 = new File(inFilePath);
             file2.delete();
-        } catch (Exception exc) {
+        }catch (Exception exc){
             exc.printStackTrace();
         }
     }
-
-    private void RevSaleshist() {
+    private void HiveRecords() {
         try {
-            Intent intent = new Intent(this, MainActivity5.class);
+            Intent intent = new Intent(this, MainActivity2.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
-
-    private void InsertNewExp() {
+    private void SetReminder() {
         try {
-            Intent intent = new Intent(this, MainActivity4.class);
+            Intent intent=new Intent(this,MainActivity8.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+        }
+    }
+    private void NewHarvRec() {
+        try {
+            Intent intent=new Intent(this,MainActivity9.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
 }
-

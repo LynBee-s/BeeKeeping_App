@@ -3,41 +3,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:orientation="vertical"
-    tools:context=".MainActivity5">
+    tools:context=".HarvestRecordList">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view2"
+        android:id="@+id/recycler_v3"
         android:layout_width="match_parent"
-        android:layout_height="424dp" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="16dp" />
+        android:layout_height="503dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="86dp"
+        android:layout_height="70dp"
         android:orientation="horizontal">
-
-        <Space
-            android:layout_width="21dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-        <ImageButton
-            android:id="@+id/export2"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/export_data__3_"
-            android:contentDescription="@string/export_sales_history_to_xls_file"
-            tools:ignore="SpeakableTextPresentCheck" />
 
         <Space
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/btnexport8"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/alice"
+            android:text="@string/Export"
+            android:textColor="#000000" />
 
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
 </LinearLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/revexphist"
+        android:title="@string/review_sales_history" />
+    <item
+        android:id="@+id/insertnewexp"
+        android:title="@string/register_new_expense_record" />
+</menu>

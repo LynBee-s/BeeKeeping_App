@@ -46,7 +46,6 @@ import au.com.bytecode.opencsv.CSVWriter;
 public class MainActivity4 extends AppCompatActivity {
     HiveListHelper helper;
     Button btnInsert,btnUpdate,btnSearch,btnDelete,btnClear;
-    ImageButton exphistry;
     EditText id3,transid3,date3,descrip3,amt3,price3,total3,coment3;
     private float TotalI;
     private float AmtI;
@@ -55,7 +54,7 @@ public class MainActivity4 extends AppCompatActivity {
     @Override
 public boolean onCreateOptionsMenu(Menu menu) {
     MenuInflater inflater = getMenuInflater();
-    inflater.inflate(R.menu.main_menu, menu);
+    inflater.inflate(R.menu.menu_expenses, menu);
     return true;
 }
 
@@ -63,38 +62,8 @@ public boolean onCreateOptionsMenu(Menu menu) {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.mmenu:
-                MainMenu();
-                return true;
-
-            case R.id.hivrec:
-                HiveRecords();
-                return true;
-            case R.id.planner:
-                ActivityPlanner();
-                return true;
-
-            case R.id.ventas:
-                Sales();
-                return true;
-
-            case R.id.gastos:
-                Expenditure();
-                return true;
-            case R.id.gastoshstry:
-                ExpenditureHistory();
-                return true;
-            case R.id.salesresum:
-                SalesResume();
-                return true;
-            case R.id.event:
-                PlanEvent();
-                return true;
-            case R.id.geoloc:
-                HiveMap();
-                return true;
-            case R.id.products:
-                Products();
+            case R.id.viewexp:
+                ViewExp();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -104,36 +73,35 @@ public boolean onCreateOptionsMenu(Menu menu) {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main4);
-        HiveDB_Helper hiveDB_helper=new HiveDB_Helper(MainActivity4.this);
-        helper=new HiveListHelper(getApplicationContext(),"LBDB.db",null,1);
+        HiveDB_Helper hiveDB_helper = new HiveDB_Helper(MainActivity4.this);
+        helper = new HiveListHelper(getApplicationContext(), "LBDB.db", null, 1);
 
-        btnInsert=(Button) findViewById(R.id.insert3);
-        btnUpdate=(Button) findViewById(R.id.update3);
-        btnSearch=(Button) findViewById(R.id.search3);
-        btnDelete=(Button) findViewById(R.id.delete3);
-        btnClear=(Button) findViewById(R.id.clear3);
+        btnInsert = (Button) findViewById(R.id.insert3);
+        btnUpdate = (Button) findViewById(R.id.update3);
+        btnSearch = (Button) findViewById(R.id.search3);
+        btnDelete = (Button) findViewById(R.id.delete3);
+        btnClear = (Button) findViewById(R.id.clear3);
 
-        exphistry=(ImageButton) findViewById(R.id.exp_history6);
 
-           id3=(EditText) findViewById(R.id.id3);
-           transid3=(EditText) findViewById(R.id.transid3);
-           date3=(EditText) findViewById(R.id.date3);
-           descrip3=(EditText) findViewById(R.id.descrip3);
-           amt3=(EditText) findViewById(R.id.amt3);
-           price3=(EditText) findViewById(R.id.price3);
-           total3=(EditText) findViewById(R.id.total3);
-           coment3=(EditText) findViewById(R.id.coment3);
+        id3 = (EditText) findViewById(R.id.id3);
+        transid3 = (EditText) findViewById(R.id.transid3);
+        date3 = (EditText) findViewById(R.id.date3);
+        descrip3 = (EditText) findViewById(R.id.descrip3);
+        amt3 = (EditText) findViewById(R.id.amt3);
+        price3 = (EditText) findViewById(R.id.price3);
+        total3 = (EditText) findViewById(R.id.total3);
+        coment3 = (EditText) findViewById(R.id.coment3);
 
         btnInsert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    Calendar calendar=Calendar.getInstance();
-                    String DateNow= MonthDay.now().toString()+"-"+calendar.get(Calendar.YEAR);
+                    Calendar calendar = Calendar.getInstance();
+                    String DateNow = MonthDay.now().toString() + "-" + calendar.get(Calendar.YEAR);
                     date3.setText(DateNow);
-                    PriceI= Float.parseFloat(price3.getText().toString());
-                    AmtI=Float.parseFloat(amt3.getText().toString());
-                    TotalI=PriceI*AmtI;
+                    PriceI = Float.parseFloat(price3.getText().toString());
+                    AmtI = Float.parseFloat(amt3.getText().toString());
+                    TotalI = PriceI * AmtI;
 
                     SQLiteDatabase db = helper.getWritableDatabase();
                     ContentValues values = new ContentValues();
@@ -273,6 +241,7 @@ public boolean onCreateOptionsMenu(Menu menu) {
                                 public void onClick(DialogInterface dialog, int which) {
 
                                 }
+
                                 public void onCick(DialogInterface dialogInterface, int i) {
 
                                 }
@@ -281,81 +250,28 @@ public boolean onCreateOptionsMenu(Menu menu) {
 
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "ERROR: Failed to delete the database.", Toast.LENGTH_LONG).show();
-            }
+                }
             }
         });
         btnClear.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            try {
-                id3.setText("");
-                transid3.setText("");
-                date3.setText("");
-                descrip3.setText("");
-                amt3.setText("");
-                price3.setText("");
-                total3.setText("");
-                coment3.setText("");
-            } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), "System Error.Please restart the application and try again.", Toast.LENGTH_LONG).show();
-            }
-        }
-        });
-        exphistry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    Intent intent = new Intent(MainActivity4.this, MainActivity8.class);
-                    startActivity(intent);
+                    id3.setText("");
+                    transid3.setText("");
+                    date3.setText("");
+                    descrip3.setText("");
+                    amt3.setText("");
+                    price3.setText("");
+                    total3.setText("");
+                    coment3.setText("");
                 } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "System Error.Please restart the application and try again.", Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
-    private void MainMenu() {
-        try {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-    }
-    private void HiveRecords() {
-        try {
-            Intent intent = new Intent(this, MainActivity2.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-    }
-    private void ActivityPlanner() {
-        try {
-            Intent intent=new Intent(this,MainActivity9.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-    }
-    private void Sales() {
-        try {
-            Intent intent = new Intent(this, MainActivity3.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    private void Expenditure() {
-        try {
-            Intent intent = new Intent(this, MainActivity4.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-
-    }
-    private void ExpenditureHistory() {
+    private void ViewExp() {
         try {
             Intent intent = new Intent(this, MainActivity8.class);
             startActivity(intent);
@@ -363,36 +279,5 @@ public boolean onCreateOptionsMenu(Menu menu) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
-    private void SalesResume() {
-        try {
-            Intent intent = new Intent(this, MainActivity5.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-    }
-    private void PlanEvent() {
-        try {
-            Intent intent=new Intent(this,MainActivity6.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-    }
-    private void HiveMap() {
-        try {
-            Intent intent=new Intent(this,MainActivity7.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-    }
-    private void Products() {
-        try {
-            Intent intent=new Intent(this,ScrollingActivity.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-    }
+
 }

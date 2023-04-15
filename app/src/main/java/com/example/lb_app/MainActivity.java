@@ -52,11 +52,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.planner:
                 ActivityPlanner();
                 return true;
-
             case R.id.ventas:
                 Sales();
                 return true;
-
             case R.id.gastos:
                 Expenditure();
                 return true;
