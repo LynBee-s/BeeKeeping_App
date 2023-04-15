@@ -72,8 +72,14 @@ public class MainActivity3 extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+            case R.id.tomainmenu5:
+                MainMenu();
+                return true;
             case R.id.revsaleshist:
                 SalesHist();
+                return true;
+            case R.id.reviewprod:
+                GotoProducts();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -332,9 +338,25 @@ public class MainActivity3 extends AppCompatActivity {
             }
         });
     }
+    private void MainMenu() {
+        try {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+        }
+    }
     private void SalesHist() {
         try {
             Intent intent = new Intent(MainActivity3.this, MainActivity5.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+        }
+    }
+    private void GotoProducts() {
+        try {
+            Intent intent = new Intent(MainActivity3.this, ScrollingActivity.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();

@@ -59,6 +59,9 @@ public class MainActivity8 extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+            case R.id.tomainmenu:
+                MainMenu();
+                return true;
             case R.id.revexphist:
                 RevSaleshist();
                 return true;
@@ -240,7 +243,14 @@ public class MainActivity8 extends AppCompatActivity {
             exc.printStackTrace();
         }
     }
-
+    private void MainMenu() {
+        try {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+        }
+    }
     private void RevSaleshist() {
         try {
             Intent intent = new Intent(this, MainActivity5.class);

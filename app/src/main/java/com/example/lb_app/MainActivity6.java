@@ -42,6 +42,9 @@ public class MainActivity6 extends AppCompatActivity {
 
 
         switch (item.getItemId()) {
+            case R.id.tomainmenu7:
+                MainMenu();
+                return true;
             case R.id.revweather:
                 Go2Records();
                 return true;
@@ -98,7 +101,14 @@ public class MainActivity6 extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
-
+    private void MainMenu() {
+        try {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+        }
+    }
     private void Go2Records() {
         try {
             Intent intent = new Intent(this, MainActivity2.class);

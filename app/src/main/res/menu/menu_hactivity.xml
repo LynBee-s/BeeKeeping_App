@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/tomainmenu12"
+        android:icon="@android:drawable/ic_input_add"
+        android:title="MainMenu"/>
 <item
     android:id="@+id/viewlist"
     android:icon="@android:drawable/ic_input_add"
     android:title="View Hive Records"/>
+<item
+    android:id="@+id/setevent"
+    android:icon="@android:drawable/ic_input_add"
+    android:title="Set Reminder"/>
 </menu>

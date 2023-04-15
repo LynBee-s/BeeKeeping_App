@@ -14,14 +14,14 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="25dp" />
+        android:layout_height="15dp" />
 
     <Button
         android:id="@+id/exportar"
         android:layout_width="match_parent"
-        android:layout_height="82dp"
+        android:layout_height="61dp"
         android:fontFamily="@font/alice"
-        android:text="@string/export"
+        android:text="Export to xls File"
         android:textColor="@color/black" />
 
 </LinearLayout>

@@ -63,6 +63,10 @@ public class MainActivity9 extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+            case R.id.tomainmenu:
+                MainMenu();
+                return true;
+
             case R.id.recevent:
                 SetReminder();
                 return true;
@@ -167,6 +171,14 @@ public class MainActivity9 extends AppCompatActivity {
             }
         });
     }
+    private void MainMenu() {
+        try {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+        }
+    }
     private void HiveRecords() {
         try {
             Intent intent = new Intent(this, MainActivity2.class);
@@ -177,7 +189,7 @@ public class MainActivity9 extends AppCompatActivity {
     }
     private void SetReminder() {
         try {
-            Intent intent=new Intent(this,MainActivity8.class);
+            Intent intent=new Intent(this,MainActivity6.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();

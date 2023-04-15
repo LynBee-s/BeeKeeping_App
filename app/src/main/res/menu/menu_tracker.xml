@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/tomainmenu"
+        android:title="@string/main_menu1"
+        />
     <item
         android:id="@+id/go2hiverec"
-        android:title="Go to Hive Activity Records"
+        android:title="@string/go_to_hive_activity_records"
         />
 
 

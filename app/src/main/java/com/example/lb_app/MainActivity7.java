@@ -45,6 +45,9 @@ public class MainActivity7 extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+            case R.id.tomainmenu:
+                MainMenu();
+                return true;
             case R.id.go2hiverec:
                 HiveRecords();
                 return true;
@@ -114,7 +117,14 @@ public class MainActivity7 extends AppCompatActivity {
             data.add(hives);
         }
     }
-
+    private void MainMenu() {
+        try {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+        }
+    }
     private void HiveRecords() {
         try {
             Intent intent = new Intent(this, MainActivity2.class);

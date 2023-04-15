@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/tomainmenu4"
+        android:title="Main Menu"
+        />
+
+    <item
         android:id="@+id/gastoshstry2"
         android:title="Expenditure History" />
 </menu>

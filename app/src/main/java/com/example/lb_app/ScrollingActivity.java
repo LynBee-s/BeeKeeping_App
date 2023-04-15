@@ -40,6 +40,9 @@ public class ScrollingActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+            case R.id.tomainmenu2:
+                MainMenu();
+                return true;
             case R.id.action_settings:
                 Insta();
                 return true;
@@ -86,6 +89,14 @@ public class ScrollingActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         });
+    }
+    private void MainMenu() {
+        try {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+        }
     }
     private  void Insta(){
         try{

@@ -62,6 +62,9 @@ public boolean onCreateOptionsMenu(Menu menu) {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+            case R.id.tomainmenu10:
+                MainMenu();
+                return true;
             case R.id.viewexp:
                 ViewExp();
                 return true;
@@ -279,5 +282,12 @@ public boolean onCreateOptionsMenu(Menu menu) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
-
+    private void MainMenu() {
+        try {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+        }
+    }
 }

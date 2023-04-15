@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/tomainmenu11"
+        android:title="@string/main_menu" />
+
     <item
         android:id="@+id/revexphist"
         android:title="@string/review_sales_history" />

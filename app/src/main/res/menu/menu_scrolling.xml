@@ -2,6 +2,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.lb_app.ScrollingActivity">
+
+    <item
+        android:id="@+id/tomainmenu2"
+        android:title="Main Menu"
+        />
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

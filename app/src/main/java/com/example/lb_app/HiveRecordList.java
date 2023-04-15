@@ -56,7 +56,11 @@ public class HiveRecordList extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.insertnew:
+
+            case R.id.tomainmenu6:
+                MainMenu();
+                return true;
+                case R.id.insertnew:
                 InsertNew();
                 return true;
             default:
@@ -235,6 +239,14 @@ public class HiveRecordList extends AppCompatActivity {
             file2.delete();
         }catch (Exception exc){
             exc.printStackTrace();
+        }
+    }
+    private void MainMenu() {
+        try {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
 

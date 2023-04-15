@@ -73,6 +73,10 @@ public class MainActivity5 extends AppCompatActivity {
 
         switch (item.getItemId()) {
 
+            case R.id.tomainmenu6:
+                MainMenu();
+                return true;
+
             case R.id.gastoshstry:
                 ExpenditureHistory();
                 return true;
@@ -243,7 +247,14 @@ public class MainActivity5 extends AppCompatActivity {
             data.add(sales);
         }
     }
-
+    private void MainMenu() {
+        try {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+        }
+    }
     private void ExpenditureHistory() {
         try {
             Intent intent = new Intent(this, MainActivity8.class);

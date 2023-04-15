@@ -59,8 +59,14 @@ public class MainActivity2 extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.viewlist:
+            case R.id.tomainmenu12:
                 MainMenu();
+                return true;
+            case R.id.viewlist:
+                ActivityList();
+                return true;
+            case R.id.setevent:
+                Gotoevent();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -222,6 +228,22 @@ public class MainActivity2 extends AppCompatActivity {
         });
     }
     private void MainMenu() {
+        try {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+        }
+    }
+    private void Gotoevent() {
+        try {
+            Intent intent = new Intent(this, MainActivity6.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+        }
+    }
+    private void ActivityList() {
         try {
             Intent intent = new Intent(this, HiveRecordList.class);
             startActivity(intent);

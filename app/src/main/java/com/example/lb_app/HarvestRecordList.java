@@ -58,6 +58,9 @@ public class HarvestRecordList extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+            case R.id.tomainmenu6:
+                SetReminder();
+                return true;
             case R.id.recevent:
                 SetReminder();
                 return true;
@@ -229,6 +232,14 @@ public class HarvestRecordList extends AppCompatActivity {
             file2.delete();
         }catch (Exception exc){
             exc.printStackTrace();
+        }
+    }
+    private void MainMenu() {
+        try {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
     private void HiveRecords() {

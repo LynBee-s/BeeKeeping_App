@@ -42,5 +42,7 @@
     <string name="export_sales_history_to_xls_file">Export sales history to xls file</string>
     <string name="review_sales_history">Review Sales History</string>
     <string name="register_new_expense_record">Register New Expense Record</string>
+    <string name="main_menu1">Main Menu</string>
+    <string name="go_to_hive_activity_records">Go to Hive Activity Records</string>
 
 </resources>
