@@ -1,5 +1,6 @@
 package com.example.lb_app;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -45,6 +46,9 @@ public class ScrollingActivity extends AppCompatActivity {
 
             case R.id.action_settings2:
                 Facebk();
+                return true;
+            case R.id.action_settings3:
+                TransCash();
                 return true;
 
             default:
@@ -100,5 +104,9 @@ public class ScrollingActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    private void  TransCash(){
+        Intent intent=new Intent(this,MainActivity3.class);
+        startActivity(intent);
     }
 }

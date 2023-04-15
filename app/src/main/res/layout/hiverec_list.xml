@@ -4,8 +4,8 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="123dp"
-        android:layout_height="235dp"
+        android:layout_width="97dp"
+        android:layout_height="232dp"
         android:orientation="vertical">
 
         <TextView
@@ -67,7 +67,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="287dp"
+        android:layout_width="311dp"
         android:layout_height="232dp"
         android:orientation="vertical">
 

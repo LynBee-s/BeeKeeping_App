@@ -282,24 +282,7 @@
             android:layout_weight="1"
             android:orientation="horizontal"></LinearLayout>
 
-        <Button
-            android:id="@+id/exportar"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:fontFamily="@font/alice"
-            android:text="Export"
-            android:textColor="@color/black" />
+
     </LinearLayout>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="13dp" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="237dp"
-        android:scrollbars="vertical"/>
 
 </LinearLayout>

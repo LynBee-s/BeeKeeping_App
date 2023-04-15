@@ -12,4 +12,9 @@
         android:orderInCategory="100"
         android:title="Facebook"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_settings3"
+        android:orderInCategory="100"
+        android:title="Make Transaction"
+        app:showAsAction="never" />
 </menu>
