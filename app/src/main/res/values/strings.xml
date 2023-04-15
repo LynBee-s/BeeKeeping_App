@@ -35,5 +35,8 @@
     <string name="harvest_records">Harvest Records</string>
     <string name="title_activity_main10">MainActivity10</string>
     <string name="lyn_bee_s_honey_comb_8_floz">Lyn Bee´s Honey+ Comb 8 floz</string>
+    <string name="title_activity_scrolling">ScrollingActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="make_transaction">Make transaction</string>
 
 </resources>

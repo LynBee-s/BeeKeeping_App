@@ -202,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void MainMenu() {
         try {
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, ScrollingActivity.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
@@ -276,7 +276,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void Products() {
         try {
-            Intent intent=new Intent(this,CheckoutActivity.class);
+            Intent intent=new Intent(this,ScrollingActivity.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();

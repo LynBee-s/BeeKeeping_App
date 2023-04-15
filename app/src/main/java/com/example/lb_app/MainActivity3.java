@@ -450,7 +450,7 @@ public class MainActivity3 extends AppCompatActivity {
     }
     private void Products() {
         try {
-            Intent intent=new Intent(this,CheckoutActivity.class);
+            Intent intent=new Intent(this,ScrollingActivity.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
