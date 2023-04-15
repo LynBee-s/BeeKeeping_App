@@ -275,29 +275,6 @@
         android:text="Make Payment"
         android:textColor="@color/black" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="82dp"
-        android:orientation="horizontal">
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-        <ImageButton
-            android:id="@+id/shistory"
-            android:layout_width="146dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/export_data__2_"
-            android:contentDescription="@string/search_history" />
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-    </LinearLayout>
-
     <WebView
         android:id="@+id/webv1"
         android:layout_width="match_parent"

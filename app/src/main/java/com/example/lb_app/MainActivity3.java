@@ -54,7 +54,6 @@ public class MainActivity3 extends AppCompatActivity {
     public ArrayList<Sales> data;
     Button btninsert2,btnSearch2,btnUpdate2,btnDelete,btnClear,btnSendrecipt,btnPay;
     EditText id,transid,date2,descrip2,amt2,price2,total2,coment2;
-    ImageButton shistory;
     String url="https://www.paypal.com/mep/dashboard";
     WebView webp;
 
@@ -65,7 +64,7 @@ public class MainActivity3 extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
+        inflater.inflate(R.menu.menu_sales, menu);
         return true;
     }
 
@@ -73,38 +72,8 @@ public class MainActivity3 extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.mmenu:
-                MainMenu();
-                return true;
-
-            case R.id.hivrec:
-                HiveRecords();
-                return true;
-            case R.id.planner:
-                ActivityPlanner();
-                return true;
-
-            case R.id.ventas:
-                Sales();
-                return true;
-
-            case R.id.gastos:
-                Expenditure();
-                return true;
-            case R.id.gastoshstry:
-                ExpenditureHistory();
-                return true;
-            case R.id.salesresum:
-                SalesResume();
-                return true;
-            case R.id.event:
-                PlanEvent();
-                return true;
-            case R.id.geoloc:
-                HiveMap();
-                return true;
-            case R.id.products:c:
-               Products();
+            case R.id.revsaleshist:
+                SalesHist();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -126,8 +95,6 @@ public class MainActivity3 extends AppCompatActivity {
         btnSendrecipt=(Button) findViewById(R.id.send2);
         btnDelete=(Button)findViewById(R.id.delete1);
         btnPay=(Button) findViewById(R.id.pay);
-
-        shistory=(ImageButton)findViewById(R.id.shistory);
 
         id=(EditText) findViewById(R.id.id2);
         transid=(EditText) findViewById(R.id.transid);
@@ -364,96 +331,14 @@ public class MainActivity3 extends AppCompatActivity {
                 }
             }
         });
-        shistory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    Intent intent = new Intent(MainActivity3.this, MainActivity5.class);
-                    startActivity(intent);
-                } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
     }
-    private void MainMenu() {
+    private void SalesHist() {
         try {
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(MainActivity3.this, MainActivity5.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
-    private void HiveRecords() {
-        try {
-            Intent intent = new Intent(this, MainActivity2.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-    }
-    private void ActivityPlanner() {
-        try {
-            Intent intent=new Intent(this,MainActivity9.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-    }
-    private void Sales() {
-        try {
-            Intent intent = new Intent(this, MainActivity3.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-    }
-    private void Expenditure() {
-        try {
-            Intent intent = new Intent(this, MainActivity4.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-    }
-    private void ExpenditureHistory() {
-        try {
-            Intent intent = new Intent(this, MainActivity8.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-    }
-    private void SalesResume() {
-        try {
-            Intent intent = new Intent(this, MainActivity5.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-    }
-    private void PlanEvent() {
-        try {
-            Intent intent=new Intent(this,MainActivity6.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-    }
-    private void HiveMap() {
-        try {
-            Intent intent=new Intent(this,MainActivity7.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-    }
-    private void Products() {
-        try {
-            Intent intent=new Intent(this,ScrollingActivity.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-    }
+
 }

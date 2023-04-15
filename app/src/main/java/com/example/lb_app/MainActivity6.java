@@ -26,7 +26,6 @@ public class MainActivity6 extends AppCompatActivity {
     CalendarView calendarView;
     Button newevent;
     WebView webp;
-    Button webview;
     FrameLayout frameLayout;
     String url = "https://www.weather.gd/";
 
@@ -34,7 +33,7 @@ public class MainActivity6 extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
+        inflater.inflate(R.menu.menu_planner, menu);
         return true;
     }
 
@@ -43,39 +42,10 @@ public class MainActivity6 extends AppCompatActivity {
 
 
         switch (item.getItemId()) {
-            case R.id.mmenu:
-                MainMenu();
+            case R.id.revweather:
+                Go2Records();
                 return true;
 
-            case R.id.hivrec:
-                HiveRecords();
-                return true;
-            case R.id.planner:
-                ActivityPlanner();
-                return true;
-
-            case R.id.ventas:
-                Sales();
-                return true;
-
-            case R.id.gastos:
-                Expenditure();
-                return true;
-            case R.id.gastoshstry:
-                ExpenditureHistory();
-                return true;
-            case R.id.salesresum:
-                SalesResume();
-                return true;
-            case R.id.event:
-                PlanEvent();
-                return true;
-            case R.id.geoloc:
-                HiveMap();
-                return true;
-            case R.id.products:
-               Products();
-                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -129,90 +99,9 @@ public class MainActivity6 extends AppCompatActivity {
         }
     }
 
-    private void MainMenu() {
-        try {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    private void HiveRecords() {
+    private void Go2Records() {
         try {
             Intent intent = new Intent(this, MainActivity2.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    private void ActivityPlanner() {
-        try {
-            Intent intent = new Intent(this, MainActivity9.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    private void Sales() {
-        try {
-            Intent intent = new Intent(this, MainActivity3.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    private void Expenditure() {
-        try {
-            Intent intent = new Intent(this, MainActivity4.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    private void ExpenditureHistory() {
-        try {
-            Intent intent = new Intent(this, MainActivity8.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-
-    }
-
-    private void SalesResume() {
-        try {
-            Intent intent = new Intent(this, MainActivity5.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    private void PlanEvent() {
-        try {
-            Intent intent = new Intent(this, MainActivity6.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    private void HiveMap() {
-        try {
-            Intent intent = new Intent(this, MainActivity7.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-    }
-    private void Products() {
-        try {
-            Intent intent=new Intent(this,ScrollingActivity.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
