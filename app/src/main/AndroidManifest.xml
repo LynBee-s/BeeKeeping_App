@@ -24,7 +24,7 @@
         <activity
             android:name=".ScrollingActivity"
             android:exported="false"
-            android:label="@string/title_activity_scrolling"
+            android:label="Lyn Bee´s Products"
             android:theme="@style/Theme.LB_App.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"

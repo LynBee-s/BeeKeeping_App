@@ -103,10 +103,14 @@ public class MainActivity6 extends AppCompatActivity {
         webview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                try{
                 CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
                 CustomTabsIntent customTabsIntent = builder.build();
                 customTabsIntent.launchUrl(MainActivity6.this, Uri.parse(url));
-            }
+            }catch (Exception e){
+                    e.printStackTrace();
+                }
+        }
         });
     }
 

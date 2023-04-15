@@ -24,7 +24,6 @@ public class ScrollingActivity extends AppCompatActivity {
     String url="https://www.paypal.com/mep/dashboard";
 
     private ActivityScrollingBinding binding;
-    private ContentScrollingBinding bind;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,26 +36,24 @@ public class ScrollingActivity extends AppCompatActivity {
         CollapsingToolbarLayout toolBarLayout = binding.toolbarLayout;
         toolBarLayout.setTitle(getTitle());
 
-        Button btn=binding.buy;
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try{
-                    CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-                    CustomTabsIntent customTabsIntent = builder.build();
-                    customTabsIntent.launchUrl(ScrollingActivity.this, Uri.parse(url));
-                }catch (Exception e){
-                    Toast.makeText(getApplication(),"Error",Toast.LENGTH_LONG).show();
-                }
+        buy1=(Button) findViewById(R.id.buy);
+        buy2=(Button) findViewById(R.id.buy2);
+        buy1.setOnClickListener(v -> {
+            try{
+                CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                CustomTabsIntent customTabsIntent = builder.build();
+                customTabsIntent.launchUrl(ScrollingActivity.this, Uri.parse(url));
+            }catch (Exception e){
+                e.printStackTrace();
             }
         });
-
-        FloatingActionButton fab = binding.fab;
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+        buy2.setOnClickListener(v -> {
+            try{
+                CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                CustomTabsIntent customTabsIntent = builder.build();
+                customTabsIntent.launchUrl(ScrollingActivity.this, Uri.parse(url));
+            }catch (Exception e){
+                e.printStackTrace();
             }
         });
     }
