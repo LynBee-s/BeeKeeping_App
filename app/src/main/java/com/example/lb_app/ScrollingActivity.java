@@ -13,6 +13,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.browser.customtabs.CustomTabsIntent;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -22,9 +25,32 @@ import com.example.lb_app.databinding.ActivityScrollingBinding;
 public class ScrollingActivity extends AppCompatActivity {
     Button buy1,buy2;
     String url="https://www.paypal.com/mep/dashboard";
-
+    String urlinsta="https://www.instagram.com/lynbeehoney/?hl=en";
+    String urlfb="https://www.facebook.com/profile.php?id=100067959146512&notif_id=1680897311748116&notif_t=page_user_activity&ref=notif";
     private ActivityScrollingBinding binding;
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_scrolling, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Insta();
+                return true;
+
+            case R.id.action_settings2:
+                Facebk();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,5 +82,23 @@ public class ScrollingActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         });
+    }
+    private  void Insta(){
+        try{
+            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+            CustomTabsIntent customTabsIntent = builder.build();
+            customTabsIntent.launchUrl(ScrollingActivity.this, Uri.parse(urlinsta));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    private  void Facebk() {
+        try {
+            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+            CustomTabsIntent customTabsIntent = builder.build();
+            customTabsIntent.launchUrl(ScrollingActivity.this, Uri.parse(urlfb));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
