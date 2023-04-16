@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity9">
 
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="51dp"
-        android:orientation="horizontal">
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,7 +27,8 @@
             android:layout_height="match_parent"
             android:inputType="textPersonName"
             android:fontFamily="@font/alice"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:autofillHints="" />
 
         <TextView
             android:id="@+id/textView56"
@@ -51,7 +44,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:autofillHints="" />
     </LinearLayout>
 
     <LinearLayout
@@ -73,7 +67,8 @@
             android:layout_height="match_parent"
             android:inputType="textPersonName"
             android:fontFamily="@font/alice"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:autofillHints="" />
 
         <TextView
             android:id="@+id/textView63"
@@ -89,7 +84,8 @@
             android:layout_height="match_parent"
             android:inputType="textPersonName"
             android:fontFamily="@font/alice"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:autofillHints="" />
     </LinearLayout>
 
     <LinearLayout
@@ -103,7 +99,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="Other Product" />
+            android:text="@string/other_product" />
 
         <EditText
             android:id="@+id/other9"
@@ -111,7 +107,9 @@
             android:layout_height="match_parent"
             android:inputType="textPersonName"
             android:fontFamily="@font/alice"
-            android:layout_weight="1" />
+            android:hint="@string/other_product"
+            android:layout_weight="1"
+            android:autofillHints="" />
 
         <TextView
             android:id="@+id/textView69"
@@ -127,7 +125,8 @@
             android:layout_height="match_parent"
             android:inputType="textPersonName"
             android:fontFamily="@font/alice"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:autofillHints="" />
     </LinearLayout>
 
     <LinearLayout
@@ -141,7 +140,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="@string/notes" />
+            android:text="@string/noteslc" />
 
         <EditText
             android:id="@+id/notes9"
@@ -149,7 +148,8 @@
             android:layout_height="match_parent"
             android:inputType="textPersonName"
             android:fontFamily="@font/alice"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:autofillHints="" />
     </LinearLayout>
 
     <LinearLayout
@@ -168,7 +168,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="Insert"
+            android:text="@string/insert"
             android:textColor="#000000"/>
 
         <Space

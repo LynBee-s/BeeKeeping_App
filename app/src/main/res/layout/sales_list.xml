@@ -24,43 +24,43 @@
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
-                android:text="Trans_ID:" />
+                android:text="@string/trans_id" />
 
             <TextView
                 android:id="@+id/textView11"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
-                android:text="Date:" />
+                android:text="@string/datelc" />
 
             <TextView
                 android:id="@+id/textView14"
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
-                android:text="Description:" />
+                android:text="@string/description" />
 
             <TextView
                 android:id="@+id/textView16"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:text="Amount:" />
+                android:text="@string/amount" />
 
             <TextView
                 android:id="@+id/textView18"
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
-                android:text="Price:" />
+                android:text="@string/price" />
 
             <TextView
                 android:id="@+id/textView28"
                 android:layout_width="match_parent"
                 android:layout_height="33dp"
-                android:text="Total:" />
+                android:text="@string/total" />
 
             <TextView
                 android:id="@+id/textView29"
                 android:layout_width="match_parent"
                 android:layout_height="34dp"
-                android:text="Notes:" />
+                android:text="@string/noteslc" />
         </LinearLayout>
 
         <LinearLayout
@@ -73,56 +73,64 @@
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:inputType="textPersonName"
-                android:textSize="10sp" />
+                android:textSize="11sp"
+                android:autofillHints="" />
 
             <EditText
                 android:id="@+id/transid4"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
                 android:inputType="textPersonName"
-                android:textSize="10sp" />
+                android:textSize="11sp"
+                android:autofillHints="" />
 
             <EditText
                 android:id="@+id/date4"
                 android:layout_width="match_parent"
                 android:layout_height="34dp"
                 android:inputType="textPersonName"
-                android:textSize="11sp" />
+                android:textSize="11sp"
+                android:autofillHints="" />
 
             <EditText
                 android:id="@+id/descrip4"
                 android:layout_width="match_parent"
                 android:layout_height="33dp"
                 android:inputType="textPersonName"
-                android:textSize="11sp" />
+                android:textSize="11sp"
+                android:autofillHints="" />
 
             <EditText
                 android:id="@+id/amt4"
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:inputType="textPersonName"
-                android:textSize="10sp" />
+                android:textSize="11sp"
+                android:autofillHints="" />
 
             <EditText
                 android:id="@+id/price4"
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:inputType="textPersonName"
-                android:textSize="10sp" />
+                android:textSize="11sp"
+                android:autofillHints="" />
 
             <EditText
                 android:id="@+id/total4"
                 android:layout_width="match_parent"
                 android:layout_height="33dp"
                 android:inputType="textPersonName"
-                android:textSize="10sp" />
+                android:textSize="11sp"
+                android:autofillHints="" />
 
             <EditText
                 android:id="@+id/notes4"
                 android:layout_width="match_parent"
                 android:layout_height="34dp"
                 android:inputType="textPersonName"
-                android:textSize="10sp" />
+                android:textSize="11sp"
+                android:autofillHints="" />
         </LinearLayout>
 
     </LinearLayout>
@@ -132,7 +140,7 @@
         android:layout_width="match_parent"
         android:layout_height="66dp"
         android:fontFamily="@font/alice"
-        android:text="Update"
+        android:text="@string/update"
         android:textColor="@color/black" />
 
 </LinearLayout>

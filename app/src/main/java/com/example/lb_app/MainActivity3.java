@@ -85,7 +85,7 @@ public class MainActivity3 extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-//Expenditure
+//Sales
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

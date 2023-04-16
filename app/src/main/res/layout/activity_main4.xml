@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -19,7 +19,7 @@
             android:layout_weight="1"
             android:allowClickWhenDisabled="false"
             android:fontFamily="@font/alice"
-            android:text="ID:"
+            android:text="@string/id"
             android:textColor="@color/black" />
 
         <EditText
@@ -27,8 +27,9 @@
             android:layout_width="42dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:hint="ID"
-            android:inputType="textPersonName" />
+            android:hint="@string/id"
+            android:inputType="textPersonName"
+            android:autofillHints="" />
 
     </LinearLayout>
 
@@ -43,7 +44,7 @@
             android:layout_weight="1"
             android:allowClickWhenDisabled="false"
             android:fontFamily="@font/alice"
-            android:text="TRANS. ID:"
+            android:text="@string/trans_id"
             android:textColor="@color/black" />
 
         <EditText
@@ -51,8 +52,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:hint="Transaction"
-            android:inputType="textPersonName" />
+            android:hint="@string/trans_id"
+            android:inputType="textPersonName"
+            android:autofillHints="" />
     </LinearLayout>
 
     <LinearLayout
@@ -67,7 +69,7 @@
             android:layout_weight="1"
             android:allowClickWhenDisabled="false"
             android:fontFamily="@font/alice"
-            android:text="DATE:"
+            android:text="@string/datelc"
             android:textColor="@color/black" />
 
         <EditText
@@ -76,7 +78,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:inputType="textPersonName"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck"
+            android:autofillHints="" />
 
     </LinearLayout>
 
@@ -87,11 +90,11 @@
 
         <TextView
             android:id="@+id/textView50"
-            android:layout_width="59dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="DESCRIPTION:"
+            android:text="@string/description"
             android:textColor="@color/black" />
 
         <EditText
@@ -99,9 +102,10 @@
             android:layout_width="204dp"
             android:layout_height="match_parent"
             android:fontFamily="@font/alice"
-            android:hint="Description"
+            android:hint="@string/description"
             android:inputType="textPersonName"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:autofillHints="" />
     </LinearLayout>
 
     <LinearLayout
@@ -115,9 +119,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:allowClickWhenDisabled="false"
-            android:autoHandwritingEnabled="false"
             android:fontFamily="@font/alice"
-            android:text="AMT:"
+            android:text="@string/amount"
             android:textColor="@color/black" />
 
         <EditText
@@ -126,7 +129,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:inputType="textPersonName"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck"
+            android:autofillHints="" />
 
         <TextView
             android:id="@+id/textView26"
@@ -134,7 +138,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:allowClickWhenDisabled="false"
-            android:text="PRICE (XCD):"
+            android:text="@string/price_xcd"
             android:textColor="@color/black" />
 
         <EditText
@@ -142,7 +146,8 @@
             android:layout_width="130dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:autofillHints="" />
     </LinearLayout>
 
     <LinearLayout
@@ -157,7 +162,7 @@
             android:layout_weight="1"
             android:allowClickWhenDisabled="false"
             android:fontFamily="@font/alice"
-            android:text="TOTAL:"
+            android:text="@string/total"
             android:textColor="@color/black" />
 
         <EditText
@@ -165,7 +170,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:autofillHints="" />
 
     </LinearLayout>
 
@@ -176,11 +182,11 @@
 
         <TextView
             android:id="@+id/textView51"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="NOTES:"
+            android:text="@string/noteslc"
             android:textColor="@color/black" />
 
         <EditText
@@ -188,9 +194,10 @@
             android:layout_width="322dp"
             android:layout_height="66dp"
             android:fontFamily="@font/alice"
-            android:hint="Comment"
+            android:hint="@string/noteslc"
             android:inputType="textPersonName"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:autofillHints="" />
     </LinearLayout>
 
     <LinearLayout
@@ -216,7 +223,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Search"
+            android:text="@string/search"
             android:textColor="#000000"/>
 
         <Space
@@ -229,7 +236,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Update"
+            android:text="@string/update"
             android:textColor="#000000"/>
     </LinearLayout>
 
@@ -243,7 +250,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Delete"
+            android:text="@string/delete"
             android:textColor="#000000"/>
 
         <Space
@@ -256,7 +263,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Clear Fields"
+            android:text="@string/clear_fields"
             android:textColor="#000000"/>
     </LinearLayout>
 

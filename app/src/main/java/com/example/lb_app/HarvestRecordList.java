@@ -59,7 +59,7 @@ public class HarvestRecordList extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.tomainmenu6:
-                SetReminder();
+                MainMenu();
                 return true;
             case R.id.recevent:
                 SetReminder();

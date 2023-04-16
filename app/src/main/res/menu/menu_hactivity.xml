@@ -4,13 +4,13 @@
     <item
         android:id="@+id/tomainmenu12"
         android:icon="@android:drawable/ic_input_add"
-        android:title="MainMenu"/>
+        android:title="@string/main_menu"/>
 <item
     android:id="@+id/viewlist"
     android:icon="@android:drawable/ic_input_add"
-    android:title="View Hive Records"/>
+    android:title="@string/view_hive_records"/>
 <item
     android:id="@+id/setevent"
     android:icon="@android:drawable/ic_input_add"
-    android:title="Set Reminder"/>
+    android:title="@string/set_reminder"/>
 </menu>

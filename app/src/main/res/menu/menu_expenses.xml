@@ -7,6 +7,6 @@
 
     <item
         android:id="@+id/viewexp"
-        android:title="View Expenditure History" />
+        android:title="@string/view_expenditure_history" />
 
 </menu>

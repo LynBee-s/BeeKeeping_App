@@ -5,21 +5,21 @@
 
     <item
         android:id="@+id/tomainmenu2"
-        android:title="Main Menu"
+        android:title="@string/main_menu"
         />
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:title="Instagram"
+        android:title="@string/instagram"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_settings2"
         android:orderInCategory="100"
-        android:title="Facebook"
+        android:title="@string/facebook"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_settings3"
         android:orderInCategory="100"
-        android:title="Make Transaction"
+        android:title="@string/make_transaction"
         app:showAsAction="never" />
 </menu>

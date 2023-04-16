@@ -3,10 +3,10 @@
 
     <item
         android:id="@+id/tomainmenu7"
-        android:title="Main Menu"
+        android:title="@string/main_menu"
         />
     <item
         android:id="@+id/revweather"
-        android:title="Go to Hive Activity" />
+        android:title="@string/go_to_hive_activity" />
 
 </menu>

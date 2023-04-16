@@ -5,8 +5,8 @@
         android:title="@string/main_menu" />
     <item
         android:id="@+id/gastoshstry2"
-        android:title="Expenditure History" />
+        android:title="@string/expenditure_history" />
     <item
         android:id="@+id/insertnewshistry"
-        android:title="New Sales Transaction" />
+        android:title="@string/new_sales_transaction" />
 </menu>

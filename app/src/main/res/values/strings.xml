@@ -62,5 +62,29 @@
     <string name="make_payment">Make Payment</string>
     <string name="datelc">Date</string>
     <string name="noteslc">Notes:</string>
+    <string name="price_xcd">Price (XCD):</string>
+    <string name="other_product">Other Product</string>
+    <string name="_100_pure_honey_with_honey_comb">100% Pure Honey With Honey Comb</string>
+    <string name="honey_comb">Honey+Comb</string>
+    <string name="_19_45">$19.45</string>
+    <string name="main_presentation_that_is_a_great_gift_for_any_occasion">Main presentation that is a great gift for any occasion.</string>
+    <string name="raw_honey_comb">Raw honey comb</string>
+    <string name="_10_45">$10.45</string>
+    <string name="raw_honey_comb_straight_from_hive">Raw honey comb straight from hive.</string>
+    <string name="update_data">Update data</string>
+    <string name="hive_location">Hive Location:</string>
+    <string name="update_hive_location">Update Hive Location</string>
+    <string name="sales_history">Sales History</string>
+    <string name="expenditure_history">Expenditure History</string>
+    <string name="products">Products</string>
+    <string name="view_expenditure_history">View Expenditure History</string>
+    <string name="view_hive_records">View Hive Records</string>
+    <string name="create_new_harvest_record">Create New Harvest Record</string>
+    <string name="go_to_hive_activity">Go to Hive Activity</string>
+    <string name="insert_new_activity">Insert New Activity</string>
+    <string name="review_products">Review Products</string>
+    <string name="new_sales_transaction">New Sales Transaction</string>
+    <string name="instagram">Instagram</string>
+    <string name="facebook">Facebook</string>
 
 </resources>

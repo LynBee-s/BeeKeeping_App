@@ -22,14 +22,15 @@
             android:layout_width="327dp"
             android:layout_height="289dp"
             android:layout_marginTop="20dp"
-            android:foreground="@mipmap/lbeejar_foreground" />
+            android:foreground="@mipmap/lbeejar_foreground"
+            android:contentDescription="@string/honey_comb" />
 
         <TextView
             android:id="@+id/detailTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="Description"
+            android:text="@string/_100_pure_honey_with_honey_comb"
             android:textColor="?android:textColorPrimary"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -39,14 +40,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="$19.45"
+            android:text="@string/_19_45"
             android:textColor="?android:textColorSecondary" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="Description"
+            android:text="@string/description"
             android:textColor="?android:textColorPrimary"
             android:textStyle="bold" />
 
@@ -56,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="15dp"
-            android:text="Main presentation that is a great gift for any occasion."
+            android:text="@string/main_presentation_that_is_a_great_gift_for_any_occasion"
             android:textColor="?android:textColorSecondary" />
 
 
@@ -76,14 +77,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="289dp"
                 android:layout_marginTop="20dp"
-                android:foreground="@mipmap/comb" />
+                android:foreground="@mipmap/comb"
+                android:contentDescription="@string/raw_honey_comb" />
 
             <TextView
                 android:id="@+id/detailTitle2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="Description"
+                android:text="@string/raw_honey_comb"
                 android:textColor="?android:textColorPrimary"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -93,7 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="$10.45"
+                android:text="@string/_10_45"
                 android:textColor="?android:textColorSecondary" />
 
             <TextView
@@ -101,7 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="Description"
+                android:text="@string/description"
                 android:textColor="?android:textColorPrimary"
                 android:textStyle="bold" />
 
@@ -111,15 +113,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="15dp"
-                android:text="Raw honey comb straight from hive."
+                android:text="@string/raw_honey_comb_straight_from_hive"
                 android:textColor="?android:textColorSecondary" />
 
             <Button
                 android:id="@+id/buy2"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:text="Make transaction"
-                android:onClick="pay"/>
+                android:text="@string/make_payment" />
 
         </LinearLayout>
 

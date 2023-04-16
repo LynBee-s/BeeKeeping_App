@@ -16,7 +16,7 @@
             android:layout_weight="1"
             android:clickable="false"
             android:fontFamily="@font/alice"
-            android:text="ID:" />
+            android:text="@string/id" />
 
         <EditText
             android:id="@+id/id5"
@@ -24,7 +24,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:autofillHints="" />
     </LinearLayout>
 
     <LinearLayout
@@ -39,7 +40,7 @@
             android:layout_weight="1"
             android:clickable="false"
             android:fontFamily="@font/alice"
-            android:text="Trans_ID:" />
+            android:text="@string/trans_id" />
 
         <EditText
             android:id="@+id/transid5"
@@ -47,7 +48,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:autofillHints="" />
     </LinearLayout>
 
     <LinearLayout
@@ -62,7 +64,7 @@
             android:layout_weight="1"
             android:clickable="false"
             android:fontFamily="@font/alice"
-            android:text="Date:" />
+            android:text="@string/datelc" />
 
         <EditText
             android:id="@+id/date5"
@@ -70,7 +72,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:autofillHints="" />
     </LinearLayout>
 
     <LinearLayout
@@ -93,7 +96,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:autofillHints="" />
     </LinearLayout>
 
     <LinearLayout
@@ -117,7 +121,8 @@
             android:layout_weight="1"
             android:fontFamily="@font/alice"
             android:inputType="textPersonName"
-            android:text="@string/amount" />
+            android:text="@string/amount"
+            android:autofillHints="" />
     </LinearLayout>
 
     <LinearLayout
@@ -140,7 +145,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:autofillHints="" />
     </LinearLayout>
 
     <LinearLayout
@@ -163,7 +169,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:autofillHints="" />
     </LinearLayout>
 
     <LinearLayout
@@ -178,7 +185,7 @@
             android:layout_weight="1"
             android:clickable="false"
             android:fontFamily="@font/alice"
-            android:text="@string/notes" />
+            android:text="@string/noteslc" />
 
         <EditText
             android:id="@+id/notes5"
@@ -186,12 +193,13 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:autofillHints="" />
     </LinearLayout>
 
     <Button
         android:id="@+id/updateexp"
         android:layout_width="match_parent"
         android:layout_height="59dp"
-        android:text="Update data" />
+        android:text="@string/update_data" />
 </LinearLayout>

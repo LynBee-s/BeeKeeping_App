@@ -175,7 +175,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="@string/notes"
+            android:text="@string/noteslc"
             android:textColor="@color/black" />
 
         <EditText

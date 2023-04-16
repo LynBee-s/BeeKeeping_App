@@ -3,11 +3,11 @@
 
     <item
         android:id="@+id/tomainmenu6"
-        android:title="Main Menu"
+        android:title="@string/main_menu"
         />
     <item
         android:id="@+id/insertnew"
         android:icon="@android:drawable/ic_input_add"
-        android:title="Insert New Activity"/>
+        android:title="@string/insert_new_activity"/>
 
 </menu>

@@ -13,7 +13,7 @@
         app:showAsAction="never"/>
     <item
         android:id="@+id/planner"
-        android:title="Activity Planner"
+        android:title="@string/activity_planner"
         app:showAsAction="never" />
     <item
         android:id="@+id/ventas"
@@ -21,7 +21,7 @@
         app:showAsAction="never" />
     <item
         android:id="@+id/salesresum"
-        android:title="Sales History"
+        android:title="@string/sales_history"
         app:showAsAction="never" />
     <item
         android:id="@+id/gastos"
@@ -29,19 +29,19 @@
         app:showAsAction="never" />
     <item
         android:id="@+id/gastoshstry"
-        android:title="Expenditure History"
+        android:title="@string/expenditure_history"
         app:showAsAction="never" />
     <item
         android:id="@+id/event"
-        android:title="Set Reminder"
+        android:title="@string/set_reminder"
         app:showAsAction="never" />
     <item
         android:id="@+id/geoloc"
-        android:title="Hive Tracker"
+        android:title="@string/hive_tracker"
         app:showAsAction="never" />
     <item
         android:id="@+id/products"
-        android:title="Products"
+        android:title="@string/products"
         app:showAsAction="never" />
 
 </menu>

@@ -3,15 +3,15 @@
 
     <item
         android:id="@+id/tomainmenu8"
-        android:title="Main Menu"
+        android:title="@string/main_menu"
         />
     <item
         android:id="@+id/recevent"
-        android:title="Set Reminder" />
+        android:title="@string/set_reminder" />
     <item
         android:id="@+id/tohiverec"
-        android:title="Register new Activity" />
+        android:title="@string/register_new_activity" />
     <item
         android:id="@+id/insertnewharvrec"
-        android:title="Create New Harvest Record" />
+        android:title="@string/create_new_harvest_record" />
 </menu>
