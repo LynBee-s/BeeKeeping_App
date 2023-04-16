@@ -38,6 +38,7 @@ public  HiveAdapter(ArrayList<Hives> data) {
         holder.tvhivestat.setText(data.get(position).getHive_Stat());
         holder.tvframes.setText(data.get(position).getFrames());
         holder.tvpop.setText(data.get(position).getPopulation());
+        holder.tvghivestat.setText(data.get(position).getGeneral_Stat());
         holder.tvloc.setText(data.get(position).getLocation());
         holder.tvnotes.setText(data.get(position).getNotes());
 
@@ -48,7 +49,7 @@ public  HiveAdapter(ArrayList<Hives> data) {
         return data.size();
     }
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvid,tvhid,tvdate,tvhivestat,tvframes,tvpop,tvloc,tvnotes;
+        TextView tvid,tvhid,tvdate,tvhivestat,tvframes,tvpop,tvloc,tvnotes,tvghivestat;
 
         public ViewHolder(final View itemView) {
             super(itemView);
@@ -58,6 +59,7 @@ public  HiveAdapter(ArrayList<Hives> data) {
             tvframes=(TextView)itemView.findViewById(R.id.rvframes);
             tvhivestat=(TextView) itemView.findViewById(R.id.rvhivestat);
             tvpop=(TextView) itemView.findViewById(R.id.rvpop);
+            tvghivestat=(TextView) itemView.findViewById(R.id.ghivestat);
             tvloc=(TextView) itemView.findViewById(R.id.rvlocate);
             tvnotes=(TextView) itemView.findViewById(R.id.rvnote);
         }

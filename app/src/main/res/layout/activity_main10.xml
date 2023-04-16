@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Yellow86"
+    android:orientation="vertical"
+    tools:context=".MainActivity10">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="61dp" />
+
+    <TextView
+        android:id="@+id/textView68"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:text="@string/hive_inspection_report"
+        android:textAlignment="center"
+        android:fontFamily="@font/alice"
+        android:textSize="20sp"
+        android:textColor="@color/black"/>
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/chart"
+        android:layout_width="match_parent"
+        android:layout_height="240dp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="35dp" />
+
+    <TextView
+        android:id="@+id/textView58"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:text="@string/honey_harvest_report"
+        android:textAlignment="center"
+        android:fontFamily="@font/alice"
+        android:textSize="20sp"
+        android:textColor="@color/black"/>
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barChart"
+        android:layout_width="match_parent"
+        android:layout_height="250dp" />
+
+</LinearLayout>

@@ -12,8 +12,9 @@ public class Structure_BBDD {
     public static final String COLUMN4 = "Frames";
     public static final String COLUMN5 = "Hive_Stat";
     public static final String COLUMN6 = "Population";
-    public static final String COLUMN7 = "Location";
-    public static final String COLUMN8 = "Notes";
+    public static final String COLUMN7 = "General_Stat";
+    public static final String COLUMN8 = "Location";
+    public static final String COLUMN9= "Notes";
 
     public static final String TABLE2 = "Sales";
     public static final String COLUMNAID = "ID";
@@ -56,7 +57,8 @@ public class Structure_BBDD {
                     Structure_BBDD.COLUMN5 + " TEXT,"+
                     Structure_BBDD.COLUMN6 + " TEXT,"+
                     Structure_BBDD.COLUMN7 + " TEXT,"+
-                    Structure_BBDD.COLUMN8 + " TEXT ); ";
+                    Structure_BBDD.COLUMN8 + " TEXT,"+
+                    Structure_BBDD.COLUMN9 + " TEXT ); ";
 
     // public static final String SQL_DELETE_ENTRIES =
     // "DROP TABLE IF EXISTS " + Estructura_BBDD.TABLE_NAME;

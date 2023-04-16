@@ -150,7 +150,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
         mPermissionResultlauncher = registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), new ActivityResultCallback<Map<String, Boolean>>() {
             @Override
             public void onActivityResult(Map<String, Boolean> result) {
@@ -234,7 +233,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
-
     private void Expenditure() {
         try {
             Intent intent = new Intent(this, MainActivity4.class);

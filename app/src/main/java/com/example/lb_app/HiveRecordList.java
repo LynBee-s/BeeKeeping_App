@@ -111,8 +111,9 @@ public class HiveRecordList extends AppCompatActivity {
             hives.setHive_Stat(cur.getString(3));
             hives.setFrames(cur.getString(4));
             hives.setPopulation(cur.getString(5));
-            hives.setLocation(cur.getString(6));
-            hives.setNotes(cur.getString(7));
+            hives.setGeneral_Stat(cur.getString(6));
+            hives.setLocation(cur.getString(7));
+            hives.setNotes(cur.getString(8));
             data.add(hives);
         }
     }
@@ -153,7 +154,8 @@ public class HiveRecordList extends AppCompatActivity {
                         curCSV.getString(4),
                         curCSV.getString(5),
                         curCSV.getString(6),
-                        curCSV.getString(7)};
+                        curCSV.getString(7),
+                        curCSV.getString(8)};
                 csvWrite.writeNext(arrStr);
             }
             csvWrite.close();

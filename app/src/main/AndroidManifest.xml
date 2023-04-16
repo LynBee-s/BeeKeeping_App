@@ -22,17 +22,25 @@
         android:theme="@style/Theme.LB_App"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivity10"
+            android:exported="false"
+            android:label="Hive Activity Report">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".HarvestRecordList"
-            android:label="Harvest Records"
-            android:exported="false">
+            android:exported="false"
+            android:label="Harvest Records">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".HiveRecordList"
-            android:label="Hive Activity Records"
-            android:exported="false">
+            android:exported="false"
+            android:label="Hive Activity Records">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

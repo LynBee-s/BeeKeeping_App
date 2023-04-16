@@ -44,7 +44,7 @@ import au.com.bytecode.opencsv.CSVWriter;
 
 public class MainActivity2 extends AppCompatActivity {
     Button btnRead,btnUpdate,btnClear,btnInsert;
-    EditText id,hid,date,frame,hivst,pop,locate,note;
+    EditText id,hid,date,frame,hivst,pop,locate,note,ghivestat;
     public  ArrayList<Hives>data;
     HiveListHelper helper;
 
@@ -68,6 +68,9 @@ public class MainActivity2 extends AppCompatActivity {
             case R.id.setevent:
                 Gotoevent();
                 return true;
+            case R.id.tohiveresum:
+                HiveResumen();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -80,7 +83,6 @@ public class MainActivity2 extends AppCompatActivity {
         HiveDB_Helper hiveDB_helper=new HiveDB_Helper(MainActivity2.this);
         helper= new HiveListHelper(getApplicationContext(),"LBDB.db", null, 1);
         data=new ArrayList<>();
-
 //Declare Buttons..................................---------------------------------------------------
         btnInsert=(Button) findViewById(R.id.insert);
         btnUpdate=(Button) findViewById(R.id.actualizar);
@@ -93,9 +95,9 @@ public class MainActivity2 extends AppCompatActivity {
         hivst=(EditText)findViewById(R.id.hivstat);
         frame=(EditText)findViewById(R.id.frames);
         pop=(EditText) findViewById(R.id.popu);
+        ghivestat=(EditText)findViewById(R.id.ghivestat2);
         locate=(EditText) findViewById(R.id.location);
         note=(EditText)findViewById(R.id.notes);
-
 //Button actions when pressed------------------------------------------------------------------------------
         btnInsert.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,8 +113,9 @@ public class MainActivity2 extends AppCompatActivity {
                     values.put(Structure_BBDD.COLUMN4, frame.getText().toString());
                     values.put(Structure_BBDD.COLUMN5, hivst.getText().toString());
                     values.put(Structure_BBDD.COLUMN6, pop.getText().toString());
-                    values.put(Structure_BBDD.COLUMN7, locate.getText().toString());
-                    values.put(Structure_BBDD.COLUMN8, note.getText().toString());
+                    values.put(Structure_BBDD.COLUMN7, ghivestat.getText().toString());
+                    values.put(Structure_BBDD.COLUMN8, locate.getText().toString());
+                    values.put(Structure_BBDD.COLUMN9, note.getText().toString());
                     long newRowId = db.insert(Structure_BBDD.TABLE1, null, values);
                     Toast.makeText(getApplicationContext(), "The register was saved with ID: " + newRowId, Toast.LENGTH_LONG).show();
                     //Clear text from fields
@@ -122,6 +125,7 @@ public class MainActivity2 extends AppCompatActivity {
                     frame.setText("");
                     hivst.setText("");
                     pop.setText("");
+                    ghivestat.setText("");
                     locate.setText("");
                     note.setText("");
                 } catch (Exception e) {
@@ -141,7 +145,8 @@ public class MainActivity2 extends AppCompatActivity {
                         Structure_BBDD.COLUMN5,
                         Structure_BBDD.COLUMN6,
                         Structure_BBDD.COLUMN7,
-                        Structure_BBDD.COLUMN8
+                        Structure_BBDD.COLUMN8,
+                        Structure_BBDD.COLUMN9
                 };
                 String selection = Structure_BBDD.COLUMNID + " = ?";
                 String[] selectionArgs = {id.getText().toString()};
@@ -161,6 +166,7 @@ public class MainActivity2 extends AppCompatActivity {
                     frame.setText("");
                     hivst.setText("");
                     pop.setText("");
+                    ghivestat.setText("");
                     locate.setText("");
                     note.setText("");
 
@@ -169,8 +175,9 @@ public class MainActivity2 extends AppCompatActivity {
                     frame.setText(cursor.getString(2));
                     hivst.setText(cursor.getString(3));
                     pop.setText(cursor.getString(4));
-                    locate.setText(cursor.getString(5));
-                    note.setText(cursor.getString(6));
+                    ghivestat.setText(cursor.getString(5));
+                    locate.setText(cursor.getString(6));
+                    note.setText(cursor.getString(7));
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "ERROR: Could not find the requested register. ", Toast.LENGTH_LONG).show();
                 }
@@ -192,8 +199,9 @@ public class MainActivity2 extends AppCompatActivity {
                         values.put(Structure_BBDD.COLUMN4, frame.getText().toString());
                         values.put(Structure_BBDD.COLUMN5, hivst.getText().toString());
                         values.put(Structure_BBDD.COLUMN6, pop.getText().toString());
-                        values.put(Structure_BBDD.COLUMN7, locate.getText().toString());
+                        values.put(Structure_BBDD.COLUMN7, ghivestat.getText().toString());
                         values.put(Structure_BBDD.COLUMN8, note.getText().toString());
+                        values.put(Structure_BBDD.COLUMN9, note.getText().toString());
                         String selection = Structure_BBDD.COLUMNID + " LIKE ?";
                         String[] selectionArgs = {id.getText().toString()};
                         int count = db.update(
@@ -219,6 +227,7 @@ public class MainActivity2 extends AppCompatActivity {
                     frame.setText("");
                     hivst.setText("");
                     pop.setText("");
+                    ghivestat.setText("");
                     locate.setText("");
                     note.setText("");
                 } catch (Exception e) {
@@ -246,6 +255,14 @@ public class MainActivity2 extends AppCompatActivity {
     private void ActivityList() {
         try {
             Intent intent = new Intent(this, HiveRecordList.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+        }
+    }
+    private void HiveResumen() {
+        try {
+            Intent intent = new Intent(this,MainActivity10.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();

@@ -13,4 +13,7 @@
     android:id="@+id/setevent"
     android:icon="@android:drawable/ic_input_add"
     android:title="@string/set_reminder"/>
+    <item
+        android:id="@+id/tohiveresum"
+        android:title="@string/inspection_summary" />
 </menu>

@@ -5,8 +5,8 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="97dp"
-        android:layout_height="232dp"
+        android:layout_width="205dp"
+        android:layout_height="261dp"
         android:orientation="vertical">
 
         <TextView
@@ -52,24 +52,31 @@
             android:textColor="@color/black" />
 
         <TextView
+            android:id="@+id/textView62"
+            android:layout_width="match_parent"
+            android:layout_height="29dp"
+            android:text="@string/general_stat"
+            android:textColor="@color/black" />
+
+        <TextView
             android:id="@+id/textView24"
             android:layout_width="match_parent"
-            android:layout_height="26dp"
+            android:layout_height="34dp"
             android:text="@string/location"
             android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/textView25"
             android:layout_width="match_parent"
-            android:layout_height="25dp"
+            android:layout_height="23dp"
             android:text="@string/notes"
             android:textColor="@color/black" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="311dp"
-        android:layout_height="232dp"
+        android:layout_width="202dp"
+        android:layout_height="261dp"
         android:orientation="vertical">
 
         <TextView
@@ -109,9 +116,16 @@
             android:textColor="@color/black" />
 
         <TextView
+            android:id="@+id/ghivestat"
+            android:layout_width="match_parent"
+            android:layout_height="29dp"
+            android:autofillHints=""
+            android:textColor="@color/black" />
+
+        <TextView
             android:id="@+id/rvlocate"
             android:layout_width="match_parent"
-            android:layout_height="27dp"
+            android:layout_height="35dp"
             android:textColor="@color/black" />
 
         <TextView

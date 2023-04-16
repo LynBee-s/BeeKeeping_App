@@ -8,9 +8,10 @@ public class Hives {
     private String Frames;
     private String Population;
     private String Location;
+    private String General_Stat;
     private String Notes;
 
-    public Hives(String ID,String HiveID,String Date,String Hive_Stat,String Frames,String Population, String Location,String Notes){
+    public Hives(String ID,String HiveID,String Date,String Hive_Stat,String Frames,String Population, String Location,String General_Stat,String Notes){
         this.setID(ID);
         this.setHiveID(HiveID);
         this.setDate(Date);
@@ -18,6 +19,7 @@ public class Hives {
         this.setFrames(Frames);
         this.setPopulation(Population);
         this.setLocation(Location);
+        this.setGeneral_Stat(General_Stat);
         this.setNotes(Notes);
     }
     public Hives(){
@@ -79,6 +81,10 @@ public class Hives {
         return Location;
     }
 
+    public String getGeneral_Stat() {return General_Stat;}
+
+    public void setGeneral_Stat(String general_Stat) {General_Stat = general_Stat;}
+
     public void setLocation(String location) {
         Location = location;
     }
@@ -90,4 +96,6 @@ public class Hives {
     public void setNotes(String notes) {
         Notes = notes;
     }
+
+
 }
