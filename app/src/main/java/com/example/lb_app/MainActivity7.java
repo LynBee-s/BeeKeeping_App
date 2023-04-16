@@ -32,7 +32,7 @@ public class MainActivity7 extends AppCompatActivity {
     public  ArrayList<Hives>data;
     private RecyclerView recyclerView;
     HiveListHelper helper;
-    Button tomenu,tomap,updateloc;
+    Button tomap;
     MapView map;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -55,6 +55,7 @@ public class MainActivity7 extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+    //Hive Tracker
     public void showMap(Uri geoLocation) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(geoLocation);
@@ -71,7 +72,6 @@ public class MainActivity7 extends AppCompatActivity {
         recyclerView=(RecyclerView)findViewById(R.id.recycler_view7);
         data=new ArrayList<>();
         tomap=(Button) findViewById(R.id.tomap);
-        tomenu=(Button)findViewById(R.id.return1);
         map=(MapView)findViewById(R.id.mapView);
 
         MapView mapView = new MapView(this);
@@ -80,14 +80,6 @@ public class MainActivity7 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showMap(Uri.parse("geo:12,0428,-61.6966?z=11"));
-            }
-        });
-
-        tomenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(MainActivity7.this,MainActivity.class);
-                startActivity(intent);
             }
         });
         tomap.setOnClickListener(new View.OnClickListener() {

@@ -64,7 +64,7 @@ public class MainActivity5 extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
+        inflater.inflate(R.menu.menu_saleshist, menu);
         return true;
     }
 
@@ -73,18 +73,22 @@ public class MainActivity5 extends AppCompatActivity {
 
         switch (item.getItemId()) {
 
-            case R.id.tomainmenu6:
+            case R.id.tomainmenu4:
                 MainMenu();
                 return true;
 
-            case R.id.gastoshstry:
+            case R.id.gastoshstry2:
                 ExpenditureHistory();
+                return true;
+
+            case R.id.insertnewshistry:
+                InsertNewExp();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
-
+//Sales History
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -258,6 +262,14 @@ public class MainActivity5 extends AppCompatActivity {
     private void ExpenditureHistory() {
         try {
             Intent intent = new Intent(this, MainActivity8.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+        }
+    }
+    private void InsertNewExp() {
+        try {
+            Intent intent = new Intent(this, MainActivity3.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();

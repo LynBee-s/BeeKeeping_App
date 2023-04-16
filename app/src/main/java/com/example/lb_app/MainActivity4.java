@@ -72,6 +72,7 @@ public boolean onCreateOptionsMenu(Menu menu) {
                 return super.onOptionsItemSelected(item);
         }
     }
+    //Sales
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="190dp"
         android:background="@drawable/touch_here_to_set_hive_location"
-        android:clickable="false" />
+        android:clickable="false"
+        android:contentDescription="@string/map" />
 
     <Space
         android:layout_width="match_parent"
@@ -29,12 +30,6 @@
         android:id="@+id/tomap"
         android:layout_width="match_parent"
         android:layout_height="62dp"
-        android:text="Go to Map" />
-
-    <Button
-        android:id="@+id/return1"
-        android:layout_width="match_parent"
-        android:layout_height="63dp"
-        android:text="Return to Main Menu" />
+        android:text="@string/go_to_map" />
 
 </LinearLayout>

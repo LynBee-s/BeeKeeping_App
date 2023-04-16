@@ -5,12 +5,12 @@
         android:title="@string/main_menu" />
     <item
         android:id="@+id/recevent"
-        android:title="Set Reminder" />
+        android:title="@string/set_reminder" />
     <item
         android:id="@+id/tohiverec"
-        android:title="Register new Activity" />
+        android:title="@string/register_new_activity" />
     <item
         android:id="@+id/toharvrec"
-        android:title="Review Harvest Records" />
+        android:title="@string/review_harvest_records" />
 
 </menu>

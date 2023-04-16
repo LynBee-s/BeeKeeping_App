@@ -39,8 +39,6 @@ public class MainActivity6 extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-
         switch (item.getItemId()) {
             case R.id.tomainmenu7:
                 MainMenu();
@@ -53,7 +51,7 @@ public class MainActivity6 extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
+    //Event Planner
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,8 +59,7 @@ public class MainActivity6 extends AppCompatActivity {
         frameLayout = (FrameLayout) findViewById(R.id.framelayout1);
         newevent = (Button) findViewById(R.id.setrecuerdo);
         calendarView = (CalendarView) findViewById(R.id.calendarView7);
-        View
-                webview = (Button) findViewById(R.id.wv);
+        View webview = (Button) findViewById(R.id.wv);
         webp = (WebView) findViewById(R.id.webv);
         WebView wv = new WebView(MainActivity6.this);
 

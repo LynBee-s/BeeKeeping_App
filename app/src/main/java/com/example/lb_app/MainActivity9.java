@@ -63,7 +63,7 @@ public class MainActivity9 extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.tomainmenu:
+            case R.id.tomainmenu9:
                 MainMenu();
                 return true;
 
@@ -81,6 +81,7 @@ public class MainActivity9 extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+    //Expenditure
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

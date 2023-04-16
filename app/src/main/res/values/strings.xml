@@ -44,5 +44,10 @@
     <string name="register_new_expense_record">Register New Expense Record</string>
     <string name="main_menu1">Main Menu</string>
     <string name="go_to_hive_activity_records">Go to Hive Activity Records</string>
+    <string name="set_reminder">Set Reminder</string>
+    <string name="register_new_activity">Register new Activity</string>
+    <string name="review_harvest_records">Review Harvest Records</string>
+    <string name="map">Map</string>
+    <string name="go_to_map">Go to Map</string>
 
 </resources>

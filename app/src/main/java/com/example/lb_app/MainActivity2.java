@@ -72,7 +72,7 @@ public class MainActivity2 extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
+//Hive Activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
