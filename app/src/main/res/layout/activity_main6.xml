@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/Yellow86"
     android:orientation="vertical"
     tools:context=".MainActivity6">
 
@@ -35,6 +36,7 @@
         <WebView
         android:id="@+id/webv"
         android:layout_width="match_parent"
+        android:background="@color/Yellow86"
         android:layout_height="match_parent" />
     </FrameLayout>
 

@@ -112,7 +112,7 @@ public class MainActivity3 extends AppCompatActivity {
         coment2=(EditText) findViewById(R.id.coment);
 
         btnPay=(Button)findViewById(R.id.pay);
-        webp=(WebView)findViewById(R.id.webv1);
+
 
 
 

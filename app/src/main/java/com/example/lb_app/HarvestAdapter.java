@@ -77,13 +77,6 @@ public class HarvestAdapter extends RecyclerView.Adapter<HarvestAdapter.ViewHold
                             values.put(Structure_BBDD.COLUMNC5, other8.getText().toString());
                             values.put(Structure_BBDD.COLUMNC6, amtt8.getText().toString());
                             values.put(Structure_BBDD.COLUMNC7, notes8.getText().toString());
-                            String selection = Structure_BBDD.COLUMNCID + " LIKE ?";
-                            String[] selectionArgs = {id8.getText().toString()};
-                            int count = db.update(
-                                    Structure_BBDD.TABLE4,
-                                    values,
-                                    selection,
-                                    selectionArgs);
                             Toast.makeText(itemView.getContext(), "Register "+id8.getText()+" was successfully updated.",Toast.LENGTH_SHORT).show();
                         } catch (Exception e) {
                             Toast.makeText(itemView.getContext(), "ERROR",Toast.LENGTH_LONG).show();

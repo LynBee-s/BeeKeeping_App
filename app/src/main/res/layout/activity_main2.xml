@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/Yellow86"
     android:orientation="vertical"
     tools:context=".MainActivity2">
 
@@ -37,11 +38,11 @@
             android:layout_width="84dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:autofillHints="@string/id"
             android:hint="@string/id"
             android:inputType="textPersonName"
             android:textColor="@color/black"
-            android:textSize="12sp"
-            android:autofillHints="@string/id" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/textView2"
@@ -58,11 +59,11 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:autofillHints=""
             android:hint="@string/hive_id"
             android:inputType="textPersonName"
             android:textColor="@color/black"
-            android:textSize="12sp"
-            android:autofillHints="" />
+            android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -85,11 +86,11 @@
             android:layout_width="72dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:autofillHints=""
             android:hint="@string/date"
             android:inputType="textPersonName"
             android:textColor="@color/black"
-            android:textSize="12sp"
-            android:autofillHints="" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/textView4"
@@ -106,11 +107,11 @@
             android:layout_width="127dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:autofillHints=""
             android:hint="@string/frames_"
             android:inputType="textPersonName"
             android:textColor="@color/black"
-            android:textSize="12sp"
-            android:autofillHints="" />
+            android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -133,11 +134,11 @@
             android:layout_width="243dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:autofillHints=""
             android:hint="@string/hive_status"
             android:inputType="textPersonName"
             android:textColor="@color/black"
-            android:textSize="12sp"
-            android:autofillHints="" />
+            android:textSize="12sp" />
 
     </LinearLayout>
 
@@ -161,11 +162,11 @@
             android:layout_width="173dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:autofillHints=""
             android:hint="@string/population"
             android:inputType="textPersonName"
             android:textColor="@color/black"
-            android:textSize="12sp"
-            android:autofillHints="" />
+            android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -187,11 +188,11 @@
             android:id="@+id/location"
             android:layout_width="270dp"
             android:layout_height="match_parent"
+            android:autofillHints=""
             android:hint="@string/location"
             android:inputType="textPersonName"
             android:textColor="@color/black"
-            android:textSize="12sp"
-            android:autofillHints="" />
+            android:textSize="12sp" />
 
     </LinearLayout>
 
@@ -214,10 +215,10 @@
             android:id="@+id/notes"
             android:layout_width="270dp"
             android:layout_height="match_parent"
+            android:autofillHints=""
             android:hint="@string/notes"
             android:inputType="textPersonName"
-            android:textSize="12sp"
-            android:autofillHints="" />
+            android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout

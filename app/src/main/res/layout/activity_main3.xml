@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/Yellow86"
+    android:backgroundTint="@color/Yellow86"
+    android:foregroundTint="@color/Yellow86"
     android:orientation="vertical"
     tools:context=".MainActivity3">
 
@@ -25,9 +28,9 @@
             android:layout_width="45dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:autofillHints=""
             android:hint="@string/id"
-            android:inputType="textPersonName"
-            android:autofillHints="" />
+            android:inputType="textPersonName" />
 
         <TextView
             android:id="@+id/textView34"
@@ -69,10 +72,10 @@
             android:layout_width="241dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:autofillHints=""
             android:ems="10"
             android:hint="@string/datelc"
-            android:inputType="textPersonName"
-            android:autofillHints="" />
+            android:inputType="textPersonName" />
 
     </LinearLayout>
 
@@ -94,9 +97,9 @@
             android:id="@+id/descrip2"
             android:layout_width="268dp"
             android:layout_height="match_parent"
+            android:autofillHints=""
             android:hint="@string/description"
-            android:inputType="textPersonName"
-            android:autofillHints="" />
+            android:inputType="textPersonName" />
     </LinearLayout>
 
     <LinearLayout
@@ -118,9 +121,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:autofillHints=""
             android:hint="@string/amount"
-            android:inputType="textPersonName"
-            android:autofillHints="" />
+            android:inputType="textPersonName" />
 
         <TextView
             android:id="@+id/textView45"
@@ -136,9 +139,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:autofillHints=""
             android:hint="@string/price"
-            android:inputType="textPersonName"
-            android:autofillHints="" />
+            android:inputType="textPersonName" />
     </LinearLayout>
 
     <LinearLayout
@@ -159,9 +162,9 @@
             android:id="@+id/total2"
             android:layout_width="314dp"
             android:layout_height="match_parent"
+            android:autofillHints=""
             android:hint="@string/total"
-            android:inputType="textPersonName"
-            android:autofillHints="" />
+            android:inputType="textPersonName" />
     </LinearLayout>
 
     <LinearLayout
@@ -182,9 +185,9 @@
             android:id="@+id/coment"
             android:layout_width="290dp"
             android:layout_height="match_parent"
+            android:autofillHints=""
             android:hint="@string/noteslc"
-            android:inputType="textPersonName"
-            android:autofillHints="" />
+            android:inputType="textPersonName" />
     </LinearLayout>
 
     <LinearLayout
@@ -280,10 +283,5 @@
         android:fontFamily="@font/alice"
         android:text="@string/make_payment"
         android:textColor="@color/black" />
-
-    <WebView
-        android:id="@+id/webv1"
-        android:layout_width="match_parent"
-        android:layout_height="12dp" />
 
 </LinearLayout>
