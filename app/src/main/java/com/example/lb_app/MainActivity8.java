@@ -59,7 +59,7 @@ public class MainActivity8 extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.tomainmenu:
+            case R.id.tomainmenu11:
                 MainMenu();
                 return true;
             case R.id.revexphist:

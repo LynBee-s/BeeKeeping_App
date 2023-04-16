@@ -16,6 +16,11 @@
         android:title="@string/activity_planner"
         app:showAsAction="never" />
     <item
+        android:id="@+id/harvestrec"
+        android:title="@string/harvest_records"
+        android:visible="true"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/ventas"
         android:title="@string/sales"
         app:showAsAction="never" />

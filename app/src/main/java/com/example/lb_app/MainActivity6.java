@@ -25,7 +25,6 @@ import java.util.Map;
 public class MainActivity6 extends AppCompatActivity {
     CalendarView calendarView;
     Button newevent;
-    WebView webp;
     FrameLayout frameLayout;
     String url = "https://www.weather.gd/";
 
@@ -60,7 +59,6 @@ public class MainActivity6 extends AppCompatActivity {
         newevent = (Button) findViewById(R.id.setrecuerdo);
         calendarView = (CalendarView) findViewById(R.id.calendarView7);
         View webview = (Button) findViewById(R.id.wv);
-        webp = (WebView) findViewById(R.id.webv);
         WebView wv = new WebView(MainActivity6.this);
 
 

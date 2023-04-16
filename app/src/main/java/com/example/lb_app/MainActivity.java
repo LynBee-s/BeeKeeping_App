@@ -70,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.geoloc:
                 HiveMap();
                 return true;
+            case R.id.harvestrec:
+                HarvestRecords();
+                return true;
             case R.id.products:
                 Products();
                 return true;
@@ -217,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void ActivityPlanner() {
         try {
-            Intent intent=new Intent(this,MainActivity9.class);
+            Intent intent=new Intent(this,MainActivity6.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
@@ -267,6 +270,14 @@ public class MainActivity extends AppCompatActivity {
     private void HiveMap() {
         try {
             Intent intent=new Intent(this,MainActivity7.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+        }
+    }
+    private void HarvestRecords() {
+        try {
+            Intent intent=new Intent(this,MainActivity9.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
