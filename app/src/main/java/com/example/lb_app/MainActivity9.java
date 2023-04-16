@@ -1,50 +1,25 @@
 package com.example.lb_app;
 
-import static com.example.lb_app.HiveDB_Helper.DATABASE_NAME;
+
 import static com.example.lb_app.HiveDB_Helper.TABLE4;
 import static com.example.lb_app.Structure_BBDD.TABLE2;
-import static com.example.lb_app.Structure_BBDD.TABLE3;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Toast;
-
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.time.MonthDay;
 import java.util.ArrayList;
 import java.util.Calendar;
-
-import au.com.bytecode.opencsv.CSVWriter;
 
 public class MainActivity9 extends AppCompatActivity {
     public ArrayList<Harvest> data;
