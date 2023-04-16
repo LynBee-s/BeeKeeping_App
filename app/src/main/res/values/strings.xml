@@ -49,5 +49,18 @@
     <string name="review_harvest_records">Review Harvest Records</string>
     <string name="map">Map</string>
     <string name="go_to_map">Go to Map</string>
+    <string name="activity_planner">Activity Planner</string>
+    <string name="hive_tracker">Hive Tracker</string>
+    <string name="data_registry">DATA REGISTRY</string>
+    <string name="frames_">FRAMES</string>
+    <string name="create">Create</string>
+    <string name="update">Update</string>
+    <string name="search">Search</string>
+    <string name="clear_fields">Clear Fields</string>
+    <string name="comment">Comment</string>
+    <string name="send_reciept">Send Reciept</string>
+    <string name="make_payment">Make Payment</string>
+    <string name="datelc">Date</string>
+    <string name="noteslc">Notes:</string>
 
 </resources>

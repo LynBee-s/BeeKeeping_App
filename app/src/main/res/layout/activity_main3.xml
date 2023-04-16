@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,7 +17,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="ID:"
+            android:text="@string/id"
             android:textColor="@color/black" />
 
         <EditText
@@ -26,8 +25,9 @@
             android:layout_width="45dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:hint="ID"
-            android:inputType="textPersonName" />
+            android:hint="@string/id"
+            android:inputType="textPersonName"
+            android:autofillHints="" />
 
         <TextView
             android:id="@+id/textView34"
@@ -35,7 +35,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="Trans. ID:"
+            android:text="@string/trans_id"
             android:textColor="@color/black" />
 
         <EditText
@@ -44,7 +44,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Trans_ID"
+            android:hint="@string/trans_id"
             android:importantForAutofill="no"
             android:inputType="textPersonName" />
 
@@ -61,7 +61,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="Date:"
+            android:text="@string/datelc"
             android:textColor="@color/black" />
 
         <EditText
@@ -70,8 +70,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Date"
-            android:inputType="textPersonName" />
+            android:hint="@string/datelc"
+            android:inputType="textPersonName"
+            android:autofillHints="" />
 
     </LinearLayout>
 
@@ -82,19 +83,20 @@
 
         <TextView
             android:id="@+id/textView38"
-            android:layout_width="58dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="Description:"
+            android:text="@string/description"
             android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/descrip2"
             android:layout_width="268dp"
             android:layout_height="match_parent"
-            android:hint="Descripción"
-            android:inputType="textPersonName" />
+            android:hint="@string/description"
+            android:inputType="textPersonName"
+            android:autofillHints="" />
     </LinearLayout>
 
     <LinearLayout
@@ -108,7 +110,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="Amount:"
+            android:text="@string/amount"
             android:textColor="@color/black" />
 
         <EditText
@@ -116,8 +118,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:hint="Amount"
-            android:inputType="textPersonName"/>
+            android:hint="@string/amount"
+            android:inputType="textPersonName"
+            android:autofillHints="" />
 
         <TextView
             android:id="@+id/textView45"
@@ -125,7 +128,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="Price:"
+            android:text="@string/price"
             android:textColor="@color/black" />
 
         <EditText
@@ -133,8 +136,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:hint="Price"
-            android:inputType="textPersonName"/>
+            android:hint="@string/price"
+            android:inputType="textPersonName"
+            android:autofillHints="" />
     </LinearLayout>
 
     <LinearLayout
@@ -144,19 +148,20 @@
 
         <TextView
             android:id="@+id/textView47"
-            android:layout_width="154dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="Total:"
+            android:text="@string/total"
             android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/total2"
             android:layout_width="314dp"
             android:layout_height="match_parent"
-            android:hint="Total"
-            android:inputType="textPersonName" />
+            android:hint="@string/total"
+            android:inputType="textPersonName"
+            android:autofillHints="" />
     </LinearLayout>
 
     <LinearLayout
@@ -166,19 +171,20 @@
 
         <TextView
             android:id="@+id/textView49"
-            android:layout_width="179dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="Notes:"
+            android:text="@string/notes"
             android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/coment"
             android:layout_width="290dp"
             android:layout_height="match_parent"
-            android:hint="Comment"
-            android:inputType="textPersonName" />
+            android:hint="@string/noteslc"
+            android:inputType="textPersonName"
+            android:autofillHints="" />
     </LinearLayout>
 
     <LinearLayout
@@ -206,7 +212,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="Search"
+            android:text="@string/search"
             android:textColor="@color/black" />
 
         <Space
@@ -220,7 +226,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="Update"
+            android:text="@string/update"
             android:textColor="@color/black" />
     </LinearLayout>
 
@@ -235,7 +241,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="Delete"
+            android:text="@string/delete"
             android:textColor="@color/black" />
 
         <Space
@@ -249,22 +255,22 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="Clear Fields"
+            android:text="@string/clear_fields"
             android:textColor="@color/black" />
 
     </LinearLayout>
 
-    <LinearLayout
+    <Space
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:orientation="horizontal"></LinearLayout>
+        android:orientation="horizontal" />
 
     <Button
         android:id="@+id/send2"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:fontFamily="@font/alice"
-        android:text="Send Reciept"
+        android:text="@string/send_reciept"
         android:textColor="@color/black" />
 
     <Button
@@ -272,7 +278,7 @@
         android:layout_width="match_parent"
         android:layout_height="53dp"
         android:fontFamily="@font/alice"
-        android:text="Make Payment"
+        android:text="@string/make_payment"
         android:textColor="@color/black" />
 
     <WebView

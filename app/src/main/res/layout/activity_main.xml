@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,17 +7,16 @@
     tools:context=".MainActivity">
 
 
-    <LinearLayout
+    <Space
         android:layout_width="match_parent"
-        android:layout_height="97dp"
-        android:orientation="horizontal"></LinearLayout>
+        android:layout_height="91dp" />
 
     <Button
         android:id="@+id/hr"
         android:layout_width="match_parent"
         android:layout_height="94dp"
         android:fontFamily="@font/alice"
-        android:text="Hive Activity"
+        android:text="@string/hive_activity"
         android:textColor="@color/black"
         android:textSize="16sp" />
 
@@ -27,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="94dp"
         android:fontFamily="@font/alice"
-        android:text="Activity  Planner"
+        android:text="@string/activity_planner"
         android:textColor="@color/black"
         android:textSize="16sp" />
 
@@ -36,7 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="94dp"
         android:fontFamily="@font/alice"
-        android:text="Sales"
+        android:text="@string/sales"
         android:textColor="@color/black"
         android:textSize="16sp" />
 
@@ -45,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="94dp"
         android:fontFamily="@font/alice"
-        android:text="Expenditure"
+        android:text="@string/expenditure"
         android:textColor="@color/black"
         android:textSize="16sp" />
 
@@ -54,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="94dp"
         android:fontFamily="@font/alice"
-        android:text="Hive Tracker"
+        android:text="@string/hive_tracker"
         android:textColor="@color/black"
         android:textSize="16sp" />
 

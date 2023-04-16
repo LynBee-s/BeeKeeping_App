@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:fontFamily="@font/alice"
-        android:text="DATA REGISTRY"
+        android:text="@string/data_registry"
         android:textAlignment="center"
         android:textColor="@color/LBYellow_700"
         android:textSize="16sp"
@@ -29,7 +28,7 @@
             android:layout_height="55dp"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="ID:"
+            android:text="@string/id"
             android:textColor="@color/black"
             android:textSize="12sp" />
 
@@ -38,10 +37,11 @@
             android:layout_width="84dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:hint="ID"
+            android:hint="@string/id"
             android:inputType="textPersonName"
             android:textColor="@color/black"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:autofillHints="@string/id" />
 
         <TextView
             android:id="@+id/textView2"
@@ -49,7 +49,7 @@
             android:layout_height="55dp"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="HIVE ID:"
+            android:text="@string/hive_id"
             android:textColor="@color/black"
             android:textSize="12sp" />
 
@@ -58,10 +58,11 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:hint="HIVE ID"
+            android:hint="@string/hive_id"
             android:inputType="textPersonName"
             android:textColor="@color/black"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:autofillHints="" />
     </LinearLayout>
 
     <LinearLayout
@@ -75,7 +76,7 @@
             android:layout_height="46dp"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="DATE:"
+            android:text="@string/date"
             android:textColor="@color/black"
             android:textSize="12sp" />
 
@@ -87,7 +88,8 @@
             android:hint="@string/date"
             android:inputType="textPersonName"
             android:textColor="@color/black"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:autofillHints="" />
 
         <TextView
             android:id="@+id/textView4"
@@ -95,7 +97,7 @@
             android:layout_height="48dp"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="# FRAMES: "
+            android:text="@string/frames"
             android:textColor="@color/black"
             android:textSize="12sp" />
 
@@ -104,10 +106,11 @@
             android:layout_width="127dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:hint="FRAMES"
+            android:hint="@string/frames_"
             android:inputType="textPersonName"
             android:textColor="@color/black"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:autofillHints="" />
     </LinearLayout>
 
     <LinearLayout
@@ -121,7 +124,7 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="HIVE STATUS:"
+            android:text="@string/hive_status"
             android:textColor="@color/black"
             android:textSize="12sp" />
 
@@ -130,10 +133,11 @@
             android:layout_width="243dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:hint="HIVE STATUS"
+            android:hint="@string/hive_status"
             android:inputType="textPersonName"
             android:textColor="@color/black"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:autofillHints="" />
 
     </LinearLayout>
 
@@ -148,7 +152,7 @@
             android:layout_height="53dp"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="POPULATION:"
+            android:text="@string/population"
             android:textColor="@color/black"
             android:textSize="12sp" />
 
@@ -157,10 +161,11 @@
             android:layout_width="173dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:hint="HIVE POPULATION"
+            android:hint="@string/population"
             android:inputType="textPersonName"
             android:textColor="@color/black"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:autofillHints="" />
     </LinearLayout>
 
     <LinearLayout
@@ -170,11 +175,11 @@
 
         <TextView
             android:id="@+id/textView10"
-            android:layout_width="305dp"
+            android:layout_width="0dp"
             android:layout_height="49dp"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="LOCATION:"
+            android:text="@string/location"
             android:textColor="@color/black"
             android:textSize="12sp" />
 
@@ -182,10 +187,11 @@
             android:id="@+id/location"
             android:layout_width="270dp"
             android:layout_height="match_parent"
-            android:hint="Location"
+            android:hint="@string/location"
             android:inputType="textPersonName"
             android:textColor="@color/black"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:autofillHints="" />
 
     </LinearLayout>
 
@@ -196,11 +202,11 @@
 
         <TextView
             android:id="@+id/textView12"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="NOTES: "
+            android:text="@string/notes"
             android:textColor="@color/black"
             android:textSize="12sp" />
 
@@ -208,9 +214,10 @@
             android:id="@+id/notes"
             android:layout_width="270dp"
             android:layout_height="match_parent"
-            android:hint="NOTES"
+            android:hint="@string/notes"
             android:inputType="textPersonName"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:autofillHints="" />
     </LinearLayout>
 
     <LinearLayout
@@ -224,15 +231,15 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="Create"
+            android:text="@string/create"
             android:textColor="@color/black"
             android:textSize="14sp" />
 
-        <LinearLayout
+        <Space
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="horizontal"></LinearLayout>
+            android:orientation="horizontal" />
 
         <Button
             android:id="@+id/leer"
@@ -240,15 +247,15 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="Search"
+            android:text="@string/search"
             android:textColor="@color/black"
             android:textSize="14sp" />
 
-        <LinearLayout
+        <Space
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="horizontal"></LinearLayout>
+            android:orientation="horizontal" />
 
         <Button
             android:id="@+id/actualizar"
@@ -256,7 +263,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="Update"
+            android:text="@string/update"
             android:textColor="@color/black"
             android:textSize="14sp" />
     </LinearLayout>
@@ -277,7 +284,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
-            android:text="Clear Fields"
+            android:text="@string/clear_fields"
             android:textColor="@color/black"
             android:textSize="14sp" />
 
