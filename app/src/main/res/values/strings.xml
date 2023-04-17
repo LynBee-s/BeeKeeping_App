@@ -91,5 +91,6 @@
     <string name="inspection_summary">Inspection Summary</string>
     <string name="hive_inspection_report">Hive Inspection Report</string>
     <string name="honey_harvest_report">Honey Harvest Report</string>
+    <string name="review_production_summary">Review Production Summary</string>
 
 </resources>

@@ -48,5 +48,9 @@
         android:id="@+id/products"
         android:title="@string/products"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/resumen"
+        android:title="@string/review_production_summary"
+        app:showAsAction="never" />
 
 </menu>

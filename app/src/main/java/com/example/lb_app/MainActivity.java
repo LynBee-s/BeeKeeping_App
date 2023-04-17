@@ -76,6 +76,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.products:
                 Products();
                 return true;
+            case R.id.resumen:
+                ProductionHistory();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -284,6 +287,14 @@ public class MainActivity extends AppCompatActivity {
     private void Products() {
         try {
             Intent intent=new Intent(this,ScrollingActivity.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+        }
+    }
+    private void ProductionHistory() {
+        try {
+            Intent intent=new Intent(this,MainActivity10.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
