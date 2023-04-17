@@ -39,7 +39,7 @@
     <string name="action_settings">Settings</string>
     <string name="make_transaction">Make transaction</string>
     <string name="export">Export</string>
-    <string name="export_sales_history_to_xls_file">Export sales history to xls file</string>
+    <string name="export_sales_history_to_xls_file">Export sales history to excel file</string>
     <string name="review_sales_history">Review Sales History</string>
     <string name="register_new_expense_record">Register New Expense Record</string>
     <string name="main_menu1">Main Menu</string>
