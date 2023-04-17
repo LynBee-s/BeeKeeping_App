@@ -77,13 +77,12 @@ public class MainActivity10 extends AppCompatActivity {
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setAxisMinimum(0f);
 
-
-
         YAxis yAxis= chart.getAxisLeft();
         yAxis.setAxisMinimum(0f);
 
         YAxis raxis=chart.getAxisRight();
         raxis.setLabelCount(0,false);
+        raxis.setAxisMaximum(1);
 //-------------------------------------------------------------------------------------------------------------------
         BarChart hchart = (BarChart) findViewById(R.id.barChart);
         BarDataSet hset=new BarDataSet(getHdata(),"Total Honey produced per Hive (L)");
@@ -107,8 +106,9 @@ public class MainActivity10 extends AppCompatActivity {
         YAxis yAxish= hchart.getAxisLeft();
         yAxish.setAxisMinimum(0f);
 
-        YAxis raxish=hchart.getAxisRight();
-        raxish.setLabelCount(0,false);
+       yAxish=hchart.getAxisRight();
+       yAxish.setLabelCount(0,false);
+       yAxish.setAxisMaximum(5);
 
     }
     private ArrayList<BarEntry>getData(){
