@@ -20,6 +20,7 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
@@ -62,10 +63,10 @@ public class MainActivity10 extends AppCompatActivity {
         BarDataSet set=new BarDataSet(getData(),"Hive Performance Rating");
         set.setColors(ColorTemplate.COLORFUL_COLORS);
         set.setValueTextColor(Color.BLACK);
-        set.setValueTextSize(16f);
+        set.setValueTextSize(10f);
 
         BarData data=new BarData(set);
-        data.setBarWidth(0.9f);
+        data.setBarWidth(0.5f);
         chart.setData(data);
         chart.setFitBars(true);
         chart.getDescription().setText("Hive ID");
@@ -75,6 +76,8 @@ public class MainActivity10 extends AppCompatActivity {
         XAxis xAxis= chart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setAxisMinimum(0f);
+
+
 
         YAxis yAxis= chart.getAxisLeft();
         yAxis.setAxisMinimum(0f);
@@ -86,10 +89,10 @@ public class MainActivity10 extends AppCompatActivity {
         BarDataSet hset=new BarDataSet(getHdata(),"Total Honey produced per Hive (L)");
         hset.setColors(ColorTemplate.COLORFUL_COLORS);
         hset.setValueTextColor(Color.BLACK);
-        hset.setValueTextSize(16f);
+        hset.setValueTextSize(10f);
 
         BarData hdata=new BarData(hset);
-        hdata.setBarWidth(0.9f);
+        hdata.setBarWidth(0.5f);
         hchart.setData(hdata);
         hchart.setFitBars(true);
         hchart.getDescription().setText("Hive ID");
@@ -100,12 +103,12 @@ public class MainActivity10 extends AppCompatActivity {
         xAxish.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxish.setAxisMinimum(0f);
 
+
         YAxis yAxish= hchart.getAxisLeft();
         yAxish.setAxisMinimum(0f);
 
         YAxis raxish=hchart.getAxisRight();
         raxish.setLabelCount(0,false);
-
 
     }
     private ArrayList<BarEntry>getData(){
