@@ -86,8 +86,8 @@
     <string name="new_sales_transaction">New Sales Transaction</string>
     <string name="instagram">Instagram</string>
     <string name="facebook">Facebook</string>
-    <string name="general_hive_stat">General Hive Status</string>
-    <string name="general_stat">GENERAL HIVE STATUS:</string>
+    <string name="general_hive_stat">OVERALL HIVE PERFORMANCE:</string>
+    <string name="general_stat">Hive Performance:</string>
     <string name="inspection_summary">Inspection Summary</string>
     <string name="hive_inspection_report">Hive Inspection Report</string>
     <string name="honey_harvest_report">Honey Harvest Report</string>
