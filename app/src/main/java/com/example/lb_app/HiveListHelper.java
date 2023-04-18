@@ -17,7 +17,7 @@ public class HiveListHelper extends SQLiteOpenHelper {
     public static final String TABLE3 = "Expenditure";
     public static final String TABLE4 = "Harvest_Rec";
     public HiveListHelper( Context context,String name,SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, name, factory, DATABASE_VERSION);
     }
 
     @Override
