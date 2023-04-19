@@ -93,5 +93,7 @@
     <string name="honey_harvest_report">Honey Harvest Report</string>
     <string name="review_production_summary">Review Production Summary</string>
     <string name="delete_record">Delete Record</string>
+    <string name="new_expense_record">New Expense Record</string>
+    <string name="to_hive_activity">Go to Hive Activity</string>
 
 </resources>

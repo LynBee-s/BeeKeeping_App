@@ -7,7 +7,7 @@
         />
     <item
         android:id="@+id/go2hiverec"
-        android:title="@string/go_to_hive_activity_records"
+        android:title="@string/to_hive_activity"
         />
 
 </menu>

@@ -7,12 +7,12 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="368dp"
+        android:layout_height="303dp"
         android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="154dp"
-            android:layout_height="313dp"
+            android:layout_height="305dp"
             android:orientation="vertical">
 
             <TextView
@@ -66,80 +66,100 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="313dp"
+            android:layout_height="303dp"
             android:orientation="vertical">
 
             <EditText
                 android:id="@+id/id4"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
+                android:autofillHints=""
                 android:inputType="textPersonName"
-                android:textSize="11sp"
-                android:autofillHints="" />
+                android:textSize="11sp" />
 
             <EditText
                 android:id="@+id/transid4"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
+                android:autofillHints=""
                 android:inputType="textPersonName"
-                android:textSize="11sp"
-                android:autofillHints="" />
+                android:textSize="11sp" />
 
             <EditText
                 android:id="@+id/date4"
                 android:layout_width="match_parent"
                 android:layout_height="34dp"
+                android:autofillHints=""
                 android:inputType="textPersonName"
-                android:textSize="11sp"
-                android:autofillHints="" />
+                android:textSize="11sp" />
 
             <EditText
                 android:id="@+id/descrip4"
                 android:layout_width="match_parent"
                 android:layout_height="33dp"
+                android:autofillHints=""
                 android:inputType="textPersonName"
-                android:textSize="11sp"
-                android:autofillHints="" />
+                android:textSize="11sp" />
 
             <EditText
                 android:id="@+id/amt4"
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
+                android:autofillHints=""
                 android:inputType="textPersonName"
-                android:textSize="11sp"
-                android:autofillHints="" />
+                android:textSize="11sp" />
 
             <EditText
                 android:id="@+id/price4"
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
+                android:autofillHints=""
                 android:inputType="textPersonName"
-                android:textSize="11sp"
-                android:autofillHints="" />
+                android:textSize="11sp" />
 
             <EditText
                 android:id="@+id/total4"
                 android:layout_width="match_parent"
                 android:layout_height="33dp"
+                android:autofillHints=""
                 android:inputType="textPersonName"
-                android:textSize="11sp"
-                android:autofillHints="" />
+                android:textSize="11sp" />
 
             <EditText
                 android:id="@+id/notes4"
                 android:layout_width="match_parent"
                 android:layout_height="34dp"
+                android:autofillHints=""
                 android:inputType="textPersonName"
-                android:textSize="11sp"
-                android:autofillHints="" />
+                android:textSize="11sp" />
         </LinearLayout>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/delete1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/alice"
+            android:text="@string/delete"
+            android:textColor="@color/black" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
     </LinearLayout>
 
     <Button
         android:id="@+id/btnupdate5"
         android:layout_width="match_parent"
-        android:layout_height="66dp"
+        android:layout_height="59dp"
         android:fontFamily="@font/alice"
         android:text="@string/update"
         android:textColor="@color/black" />

@@ -1,7 +1,10 @@
 package com.example.lb_app;
 
+import static com.example.lb_app.Structure_BBDD.TABLE2;
+
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -51,13 +55,15 @@ public SalesAdapter(ArrayList<Sales>data){this.data=data;}
     }
     public class ViewHolder extends RecyclerView.ViewHolder{
         EditText id4,transid4,date4,descrip4,amt4,price4,total4,notes4;
-        Button btnupdate;
+        Button btnupdate,btndelete;
         HiveDB_Helper helper;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             hiveDB_helper=new HiveDB_Helper(itemView.getContext());
             helper= new HiveDB_Helper(itemView.getContext().getApplicationContext(), "LBDB.db", null, 1);
             btnupdate=(Button) itemView.findViewById(R.id.btnupdate5);
+            btndelete=(Button) itemView.findViewById(R.id.delete1);
+
             id4=(EditText) itemView.findViewById(R.id.id4);
             transid4=(EditText) itemView.findViewById(R.id.transid4);
             date4=(EditText) itemView.findViewById(R.id.date4);
@@ -66,6 +72,44 @@ public SalesAdapter(ArrayList<Sales>data){this.data=data;}
             price4=(EditText)itemView.findViewById(R.id.price4);
             total4=(EditText) itemView.findViewById(R.id.total4);
             notes4=(EditText) itemView.findViewById(R.id.notes4);
+
+            btndelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    try {
+                        SQLiteDatabase db = helper.getWritableDatabase();
+                        // Define 'where' part of query.
+                        String selection = Structure_BBDD.COLUMNAID + " LIKE ?";
+// Specify arguments in placeholder order.
+                        String[] selectionArgs = {id4.getText().toString()};
+// Issue SQL statement.
+                        AlertDialog.Builder builder = new AlertDialog.Builder(itemView.getContext());
+                        builder.setMessage("Are you sure you would like to delete this register?").setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        db.delete(TABLE2, selection, selectionArgs);
+                                        Toast.makeText(itemView.getContext(), "The register has been deleted", Toast.LENGTH_LONG).show();
+                                        id4.setText("");
+                                        transid4.setText("");
+                                        date4.setText("");
+                                        descrip4.setText("");
+                                        amt4.setText("");
+                                        price4.setText("");
+                                        total4.setText("");
+                                        notes4.setText("");
+                                    }
+                                })
+                                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+
+                                    }
+                                }).show();
+                    } catch (Exception e) {
+                        Toast.makeText(itemView.getContext(), "ERROR", Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
 
             btnupdate.setOnClickListener(new View.OnClickListener() {
                 @Override

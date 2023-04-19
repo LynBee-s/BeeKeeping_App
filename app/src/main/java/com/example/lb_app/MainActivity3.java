@@ -29,7 +29,7 @@ import java.util.Calendar;
 public class MainActivity3 extends AppCompatActivity {
     HiveListHelper helper;
     public ArrayList<Sales> data;
-    Button btninsert2,btnSearch2,btnUpdate2,btnDelete,btnClear,btnSendrecipt,btnPay;
+    Button btninsert2,btnSearch2,btnUpdate2,btnClear,btnSendrecipt,btnPay;
     EditText id,transid,date2,descrip2,amt2,price2,total2,coment2;
     String url="https://www.paypal.com/mep/dashboard";
 
@@ -75,7 +75,6 @@ public class MainActivity3 extends AppCompatActivity {
         btnUpdate2=(Button) findViewById(R.id.update2);
         btnClear=(Button) findViewById(R.id.clear2);
         btnSendrecipt=(Button) findViewById(R.id.send2);
-        btnDelete=(Button)findViewById(R.id.delete1);
         btnPay=(Button) findViewById(R.id.pay);
 
         id=(EditText) findViewById(R.id.id2);
@@ -219,45 +218,6 @@ public class MainActivity3 extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "ERROR:Please insert ID and try again.", Toast.LENGTH_LONG).show();
                 }
                 }
-        });
-        btnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    SQLiteDatabase db = helper.getWritableDatabase();
-                    // Define 'where' part of query.
-                    String selection = Structure_BBDD.COLUMNAID + " LIKE ?";
-// Specify arguments in placeholder order.
-                    String[] selectionArgs = {id.getText().toString()};
-// Issue SQL statement.
-                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity3.this);
-                    builder.setMessage("Are you sure you would like to delete this register?").setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    db.delete(TABLE2, selection, selectionArgs);
-                                    Toast.makeText(getApplicationContext(), "The register has been deleted", Toast.LENGTH_LONG).show();
-                                    id.setText("");
-                                    transid.setText("");
-                                    date2.setText("");
-                                    descrip2.setText("");
-                                    amt2.setText("");
-                                    price2.setText("");
-                                    total2.setText("");
-                                    coment2.setText("");
-                                }
-                            })
-                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-
-                                }
-                                public void onCick(DialogInterface dialogInterface, int i) {
-                                }
-                            }).show();
-                } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-                }
-            }
         });
         btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
