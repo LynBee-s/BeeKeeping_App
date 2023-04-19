@@ -82,7 +82,7 @@ public class MainActivity10 extends AppCompatActivity {
 
         YAxis raxis=chart.getAxisRight();
         raxis.setLabelCount(0,false);
-        raxis.setAxisMaximum(1);
+        raxis.setAxisMaximum(5);
 //-------------------------------------------------------------------------------------------------------------------
         BarChart hchart = (BarChart) findViewById(R.id.barChart);
         BarDataSet hset=new BarDataSet(getHdata(),"Total Honey produced per Hive (L)");

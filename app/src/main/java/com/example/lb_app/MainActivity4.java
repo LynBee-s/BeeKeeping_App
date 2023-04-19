@@ -26,7 +26,7 @@ import java.util.Calendar;
 
 public class MainActivity4 extends AppCompatActivity {
     HiveListHelper helper;
-    Button btnInsert,btnUpdate,btnSearch,btnDelete,btnClear;
+    Button btnInsert,btnUpdate,btnSearch,btnClear;
     EditText id3,transid3,date3,descrip3,amt3,price3,total3,coment3;
     private float TotalI;
     private float AmtI;
@@ -64,7 +64,6 @@ public boolean onCreateOptionsMenu(Menu menu) {
         btnInsert = (Button) findViewById(R.id.insert3);
         btnUpdate = (Button) findViewById(R.id.update3);
         btnSearch = (Button) findViewById(R.id.search3);
-        btnDelete = (Button) findViewById(R.id.delete3);
         btnClear = (Button) findViewById(R.id.clear3);
 
 
@@ -195,49 +194,7 @@ public boolean onCreateOptionsMenu(Menu menu) {
                 }
             }
         });
-        btnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    SQLiteDatabase db = helper.getWritableDatabase();
-                    // Define 'where' part of query.
-                    String selection = Structure_BBDD.COLUMNBID + " LIKE ?";
-// Specify arguments in placeholder order.
-                    String[] selectionArgs = {id3.getText().toString()};
-// Issue SQL statement.
-                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity4.this);
-                    builder.setMessage("Are you sure you would like to delete this register?").setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    db.delete(TABLE3, selection, selectionArgs);
-                                    Toast.makeText(getApplicationContext(), "The register has been deleted", Toast.LENGTH_LONG).show();
-                                    id3.setText("");
-                                    transid3.setText("");
-                                    date3.setText("");
-                                    descrip3.setText("");
-                                    amt3.setText("");
-                                    price3.setText("");
-                                    total3.setText("");
-                                    coment3.setText("");
-                                }
-                            })
-                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
 
-                                }
-
-                                public void onCick(DialogInterface dialogInterface, int i) {
-
-                                }
-
-                            }).show();
-
-                } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), "ERROR: Failed to delete the database.", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
         btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

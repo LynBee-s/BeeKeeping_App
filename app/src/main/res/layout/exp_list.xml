@@ -203,4 +203,24 @@
         android:layout_width="match_parent"
         android:layout_height="59dp"
         android:text="@string/update_data" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/delete3"
+            android:layout_width="76dp"
+            android:layout_height="55dp"
+            android:layout_weight="1"
+            android:text="@string/delete_record"
+            android:textColor="#000000" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+
 </LinearLayout>
