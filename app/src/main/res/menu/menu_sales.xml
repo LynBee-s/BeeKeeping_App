@@ -6,9 +6,9 @@
         />
     <item
         android:id="@+id/revsaleshist"
-        android:title="@string/review_sales_history" />
+        android:title="@string/view_sales_history"/>
     <item
         android:id="@+id/reviewprod"
-        android:title="@string/review_products" />
+        android:title="@string/view_products" />
 
 </menu>

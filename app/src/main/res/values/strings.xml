@@ -82,7 +82,6 @@
     <string name="create_new_harvest_record">Create New Harvest Record</string>
     <string name="go_to_hive_activity">Go to Hive Activity</string>
     <string name="insert_new_activity">Insert New Activity</string>
-    <string name="review_products">Review Products</string>
     <string name="new_sales_transaction">New Sales Transaction</string>
     <string name="instagram">Instagram</string>
     <string name="facebook">Facebook</string>
@@ -95,5 +94,7 @@
     <string name="delete_record">Delete Record</string>
     <string name="new_expense_record">New Expense Record</string>
     <string name="to_hive_activity">Go to Hive Activity</string>
+    <string name="view_sales_history">View Sales History</string>
+    <string name="view_products">View Products</string>
 
 </resources>

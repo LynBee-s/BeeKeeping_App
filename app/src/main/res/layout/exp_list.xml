@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/Yellow86"
@@ -24,9 +25,11 @@
             android:layout_width="284dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:autofillHints=""
             android:fontFamily="@font/alice"
+            android:hint="@string/id"
             android:inputType="textPersonName"
-            android:autofillHints="" />
+            tools:ignore="DuplicateSpeakableTextCheck" />
     </LinearLayout>
 
     <LinearLayout
@@ -48,9 +51,11 @@
             android:layout_width="224dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:autofillHints=""
             android:fontFamily="@font/alice"
+            android:hint="@string/trans_id"
             android:inputType="textPersonName"
-            android:autofillHints="" />
+            tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
     </LinearLayout>
 
     <LinearLayout
@@ -72,9 +77,10 @@
             android:layout_width="218dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:autofillHints=""
             android:fontFamily="@font/alice"
-            android:inputType="textPersonName"
-            android:autofillHints="" />
+            android:hint="@string/date"
+            android:inputType="textPersonName" />
     </LinearLayout>
 
     <LinearLayout
@@ -96,9 +102,11 @@
             android:layout_width="211dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:autofillHints=""
             android:fontFamily="@font/alice"
+            android:hint="@string/description"
             android:inputType="textPersonName"
-            android:autofillHints="" />
+            tools:ignore="DuplicateSpeakableTextCheck" />
     </LinearLayout>
 
     <LinearLayout
@@ -120,10 +128,11 @@
             android:layout_width="211dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:autofillHints=""
             android:fontFamily="@font/alice"
             android:inputType="textPersonName"
             android:text="@string/amount"
-            android:autofillHints="" />
+            tools:ignore="DuplicateSpeakableTextCheck" />
     </LinearLayout>
 
     <LinearLayout
@@ -145,9 +154,11 @@
             android:layout_width="211dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:autofillHints=""
             android:fontFamily="@font/alice"
+            android:hint="@string/price"
             android:inputType="textPersonName"
-            android:autofillHints="" />
+            tools:ignore="DuplicateSpeakableTextCheck" />
     </LinearLayout>
 
     <LinearLayout
@@ -169,9 +180,11 @@
             android:layout_width="209dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:autofillHints=""
             android:fontFamily="@font/alice"
+            android:hint="@string/total"
             android:inputType="textPersonName"
-            android:autofillHints="" />
+            tools:ignore="DuplicateSpeakableTextCheck" />
     </LinearLayout>
 
     <LinearLayout
@@ -193,16 +206,12 @@
             android:layout_width="215dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:autofillHints=""
             android:fontFamily="@font/alice"
+            android:hint="@string/noteslc"
             android:inputType="textPersonName"
-            android:autofillHints="" />
+            tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/updateexp"
-        android:layout_width="match_parent"
-        android:layout_height="59dp"
-        android:text="@string/update_data" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -211,16 +220,21 @@
 
         <Button
             android:id="@+id/delete3"
-            android:layout_width="76dp"
+            android:layout_width="12dp"
             android:layout_height="55dp"
             android:layout_weight="1"
-            android:text="@string/delete_record"
-            android:textColor="#000000" />
+            android:text="@string/delete_record" />
 
         <Space
-            android:layout_width="wrap_content"
+            android:layout_width="125dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/updateexp"
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
+        android:text="@string/update_data" />
 
 </LinearLayout>
