@@ -122,7 +122,7 @@ public class MainActivity5 extends AppCompatActivity {
         if (!exportDir.exists()) {
             exportDir.mkdirs();
         }
-        File file = new File(exportDir, "LBdatos.csv");
+        File file = new File(exportDir, "Sadatos.csv");
         try {
             if (file.createNewFile()) {
                 System.out.println("file.csv " + file.getAbsolutePath());
@@ -157,7 +157,7 @@ public class MainActivity5 extends AppCompatActivity {
         ArrayList al = null;
         try {
             Calendar calendar=Calendar.getInstance();
-            String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/LBdatos.csv";
+            String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/Sadatos.csv";
             String outFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/SalesHistory_"+ MonthDay.now() +"_"+calendar.get(Calendar.YEAR)+".xls";
             String thisLine;
             int count = 0;
@@ -221,7 +221,7 @@ public class MainActivity5 extends AppCompatActivity {
     }
     private void delete()throws SecurityException{
         try {
-            String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/LBdatos.csv";
+            String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/Sadatos.csv";
             File file2 = new File(inFilePath);
             file2.delete();
         }catch (Exception exc){
