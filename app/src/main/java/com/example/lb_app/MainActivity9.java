@@ -24,7 +24,7 @@ import java.util.Calendar;
 public class MainActivity9 extends AppCompatActivity {
     public ArrayList<Harvest> data;
    EditText id9,hiveid9,date9,amt9,other9,amtt9,notes9;
-   Button btnDelete,btnInsert;
+   Button btnInsert;
    HiveListHelper helper;
 
     @Override
@@ -62,60 +62,20 @@ public class MainActivity9 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main9);
         HiveDB_Helper hiveDB_helper=new HiveDB_Helper(MainActivity9.this);
+        helper= new HiveListHelper(getApplicationContext(),"LBDB.db", null, 1);
         data=new ArrayList<>();
 
-        id9=(EditText) findViewById(R.id.id9);
-        hiveid9=(EditText) findViewById(R.id.hiveid9);
-        date9=(EditText) findViewById(R.id.date9);
-        amt9=(EditText) findViewById(R.id.amt9);
-        other9=(EditText) findViewById(R.id.other9);
-        amtt9=(EditText) findViewById(R.id.amtt9) ;
-        notes9=(EditText) findViewById(R.id.notes9);
+        id9= findViewById(R.id.id9);
+        hiveid9= findViewById(R.id.hiveid9);
+        date9= findViewById(R.id.date9);
+        amt9= findViewById(R.id.amt9);
+        other9= findViewById(R.id.other9);
+        amtt9= findViewById(R.id.amtt9);
+        notes9= findViewById(R.id.notes9);
 
         btnInsert=(Button) findViewById(R.id.btninsert8);
-        btnDelete=(Button)findViewById(R.id.btnDelete);
 
 
-
-        btnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    SQLiteDatabase db = helper.getWritableDatabase();
-                    // Define 'where' part of query.
-                    String selection = Structure_BBDD.COLUMNAID + " LIKE ?";
-// Specify arguments in placeholder order.
-                    String[] selectionArgs = {id9.getText().toString()};
-// Issue SQL statement.
-                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity9.this);
-                    builder.setMessage("Are you sure you would like to delete this register?").setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    db.delete(TABLE2, selection, selectionArgs);
-                                    Toast.makeText(getApplicationContext(), "The register has been deleted", Toast.LENGTH_SHORT).show();
-                                    id9.setText("");
-                                    hiveid9.setText("");
-                                    date9.setText("");
-                                    amt9.setText("");
-                                    other9.setText("");
-                                    amtt9.setText("");
-                                    notes9.setText("");
-                                }
-                            })
-                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-
-                                }
-
-                                public void onCick(DialogInterface dialogInterface, int i) {
-                                }
-                            }).show();
-                } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-            }
-            }
-        });
         btnInsert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,6 +90,7 @@ public class MainActivity9 extends AppCompatActivity {
                     values.put(Structure_BBDD.COLUMNC4, amt9.getText().toString());
                     values.put(Structure_BBDD.COLUMNC5, other9.getText().toString());
                     values.put(Structure_BBDD.COLUMNC6,amtt9.getText().toString());
+                    values.put(Structure_BBDD.COLUMNC7,notes9.getText().toString());
                     long newRowId = db.insert(TABLE4, null, values);
                     Toast.makeText(getApplicationContext(), "The register was saved with ID: " + newRowId, Toast.LENGTH_SHORT).show();
 

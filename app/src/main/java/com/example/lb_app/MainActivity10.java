@@ -59,7 +59,7 @@ public class MainActivity10 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main10);
 
-        BarChart chart = (BarChart) findViewById(R.id.chart);
+        BarChart chart = findViewById(R.id.chart);
         BarDataSet set=new BarDataSet(getData(),"Hive Performance Rating");
         set.setColors(ColorTemplate.COLORFUL_COLORS);
         set.setValueTextColor(Color.BLACK);
@@ -84,7 +84,7 @@ public class MainActivity10 extends AppCompatActivity {
         raxis.setLabelCount(0,false);
         raxis.setAxisMaximum(5);
 //-------------------------------------------------------------------------------------------------------------------
-        BarChart hchart = (BarChart) findViewById(R.id.barChart);
+        BarChart hchart = findViewById(R.id.barChart);
         BarDataSet hset=new BarDataSet(getHdata(),"Total Honey produced per Hive (L)");
         hset.setColors(ColorTemplate.COLORFUL_COLORS);
         hset.setValueTextColor(Color.BLACK);

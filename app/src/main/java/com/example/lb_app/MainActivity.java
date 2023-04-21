@@ -5,7 +5,6 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -13,7 +12,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -87,70 +85,52 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnHR=(Button) findViewById(R.id.hr);
-        btnS=(Button) findViewById(R.id.sls);
-        btnE=(Button)findViewById(R.id.exp);
-        btnMp=(Button)findViewById(R.id.gl);
-        btnActP=(Button)findViewById(R.id.button);
-        btnHarV=(Button) findViewById(R.id.btnharvestrec);
+        btnHR= findViewById(R.id.hr);
+        btnS= findViewById(R.id.sls);
+        btnE= findViewById(R.id.exp);
+        btnMp= findViewById(R.id.gl);
+        btnActP= findViewById(R.id.button);
+        btnHarV= findViewById(R.id.btnharvestrec);
 
-        btnMp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MainActivity7.class);
-                startActivity(intent);
+        btnMp.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, MainActivity7.class);
+            startActivity(intent);
 
-            }
         });
-        btnE.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MainActivity4.class);
+        btnE.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, MainActivity4.class);
+            startActivity(intent);
+        });
+        btnHR.setOnClickListener(v -> {
+            try {
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
                 startActivity(intent);
+            } catch (Exception e) {
+                Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
             }
         });
-        btnHR.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-                    startActivity(intent);
-                } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-                }
+        btnS.setOnClickListener(v -> {
+            try {
+                Intent intent = new Intent(MainActivity.this, MainActivity3.class);
+                startActivity(intent);
+            } catch (Exception e) {
+                Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
             }
         });
-        btnS.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    Intent intent = new Intent(MainActivity.this, MainActivity3.class);
-                    startActivity(intent);
-                } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-                }
+        btnActP.setOnClickListener(v -> {
+            try {
+                Intent intent = new Intent(MainActivity.this, MainActivity6.class);
+                startActivity(intent);
+            } catch (Exception e) {
+                Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
             }
         });
-        btnActP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    Intent intent = new Intent(MainActivity.this, MainActivity6.class);
-                    startActivity(intent);
-                } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-        btnHarV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    Intent intent = new Intent(MainActivity.this, MainActivity9.class);
-                    startActivity(intent);
-                } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-                }
+        btnHarV.setOnClickListener(v -> {
+            try {
+                Intent intent = new Intent(MainActivity.this, MainActivity9.class);
+                startActivity(intent);
+            } catch (Exception e) {
+                Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
             }
         });
         mPermissionResultlauncher = registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), new ActivityResultCallback<Map<String, Boolean>>() {

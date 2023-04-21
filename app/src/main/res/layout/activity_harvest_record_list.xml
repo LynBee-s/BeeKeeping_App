@@ -11,7 +11,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_v3"
         android:layout_width="match_parent"
-        android:layout_height="293dp" />
+        android:layout_height="415dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,9 +32,6 @@
             android:text="@string/Export"
             android:textColor="#000000" />
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
+
     </LinearLayout>
 </LinearLayout>

@@ -81,15 +81,12 @@ public class HiveRecordList extends AppCompatActivity {
         getAdapter();
         getInfo();
 
-        btnexport.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    SQLCSV();
-                    csv2xl();
-                } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), "ERROR: Failed to export the database.", Toast.LENGTH_LONG).show();
-                }
+        btnexport.setOnClickListener(v -> {
+            try {
+                SQLCSV();
+                csv2xl();
+            } catch (Exception e) {
+                Toast.makeText(getApplicationContext(), "ERROR: Failed to export the database.", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -133,7 +130,7 @@ public class HiveRecordList extends AppCompatActivity {
         if (!exportDir.exists()) {
             exportDir.mkdirs();
         }
-        File file = new File(exportDir, "LBdatos.csv");
+        File file = new File(exportDir, "HivRdatos.csv");
         try {
             if (file.createNewFile()) {
                 System.out.println("file.csv " + file.getAbsolutePath());
@@ -167,12 +164,15 @@ public class HiveRecordList extends AppCompatActivity {
     private void csv2xl() throws IOException {
         ArrayList arList = null;
         ArrayList al = null;
+        File exportDir = new File(Environment.getExternalStorageDirectory() + "/Documents");
+        if (!exportDir.exists()) {
+            exportDir.mkdirs();
+        }
         try {
             Calendar calendar = Calendar.getInstance();
             calendar.getTime();
             calendar.getTimeZone();
-            String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/LBdatos.csv";
-
+            String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/HivRdatos.csv";
             String outFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/HiveActivity"+ MonthDay.now() +"_"+calendar.get(Calendar.YEAR)+".xls";
             String thisLine;
             int count = 0;
@@ -236,7 +236,7 @@ public class HiveRecordList extends AppCompatActivity {
     }
     private void delete()throws SecurityException{
         try {
-            String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/LBdatos.csv";
+            String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/HivRdatos.csv";
             File file2 = new File(inFilePath);
             file2.delete();
         }catch (Exception exc){

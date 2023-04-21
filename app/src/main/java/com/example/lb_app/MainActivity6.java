@@ -55,31 +55,23 @@ public class MainActivity6 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main6);
-        frameLayout = (FrameLayout) findViewById(R.id.framelayout1);
-        newevent = (Button) findViewById(R.id.setrecuerdo);
-        calendarView = (CalendarView) findViewById(R.id.calendarView7);
-        View webview = (Button) findViewById(R.id.wv);
+        frameLayout = findViewById(R.id.framelayout1);
+        newevent = findViewById(R.id.setrecuerdo);
+        calendarView = findViewById(R.id.calendarView7);
+        View webview = findViewById(R.id.wv);
         WebView wv = new WebView(MainActivity6.this);
 
 
-        newevent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                event();
+        newevent.setOnClickListener(v -> event());
+        webview.setOnClickListener(v -> {
+            try{
+            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+            CustomTabsIntent customTabsIntent = builder.build();
+            customTabsIntent.launchUrl(MainActivity6.this, Uri.parse(url));
+        }catch (Exception e){
+                e.printStackTrace();
             }
-        });
-        webview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try{
-                CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-                CustomTabsIntent customTabsIntent = builder.build();
-                customTabsIntent.launchUrl(MainActivity6.this, Uri.parse(url));
-            }catch (Exception e){
-                    e.printStackTrace();
-                }
-        }
-        });
+    });
     }
 
     private void event() {

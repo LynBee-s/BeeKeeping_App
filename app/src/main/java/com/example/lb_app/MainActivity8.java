@@ -1,15 +1,12 @@
 package com.example.lb_app;
 
 import static com.example.lb_app.HiveDB_Helper.DATABASE_NAME;
-import static com.example.lb_app.HiveDB_Helper.TABLE1;
-import static com.example.lb_app.HiveListHelper.TABLE3;
-import static com.example.lb_app.Structure_BBDD.TABLE2;
 
+import static com.example.lb_app.HiveListHelper.TABLE3;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -21,7 +18,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
-
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -38,7 +34,6 @@ import java.io.InputStreamReader;
 import java.time.MonthDay;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 import au.com.bytecode.opencsv.CSVWriter;
 
@@ -81,19 +76,16 @@ public class MainActivity8 extends AppCompatActivity {
         setContentView(R.layout.activity_main8);
         HiveDB_Helper hiveDB_helper = new HiveDB_Helper(MainActivity8.this);
         helper = new HiveListHelper(getApplicationContext(), "LBDB.db", null, 1);
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view5);
+        recyclerView = findViewById(R.id.recycler_view5);
         data = new ArrayList<>();
-        export3 = (ImageButton) findViewById(R.id.export5);
+        export3 = findViewById(R.id.export5);
 
-        export3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    SQLCSV();
-                    csv2xl();
-                } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-                }
+        export3.setOnClickListener(v -> {
+            try {
+                SQLCSV();
+                csv2xl();
+            } catch (Exception e) {
+                Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
             }
         });
         getAdapter();
@@ -134,7 +126,7 @@ public class MainActivity8 extends AppCompatActivity {
         if (!exportDir.exists()) {
             exportDir.mkdirs();
         }
-        File file = new File(exportDir, "LBdatos.csv");
+        File file = new File(exportDir, "Exdatos.csv");
         try {
             if (file.createNewFile()) {
                 System.out.println("file.csv " + file.getAbsolutePath());
@@ -171,7 +163,7 @@ public class MainActivity8 extends AppCompatActivity {
         try {
             Calendar calendar = Calendar.getInstance();
             calendar.getTimeZone();
-            String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/LBdatos.csv";
+            String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/Exdatos.csv";
             String outFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/ExpenditureHistory" + MonthDay.now() + "_" + calendar.get(Calendar.YEAR) + ".xls";
             String thisLine;
             int count = 0;
@@ -236,7 +228,7 @@ public class MainActivity8 extends AppCompatActivity {
 
     private void delete() throws SecurityException {
         try {
-            String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/LBdatos.csv";
+            String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/Exdatos.csv";
             File file2 = new File(inFilePath);
             file2.delete();
         } catch (Exception exc) {

@@ -61,155 +61,143 @@ public boolean onCreateOptionsMenu(Menu menu) {
         HiveDB_Helper hiveDB_helper = new HiveDB_Helper(MainActivity4.this);
         helper = new HiveListHelper(getApplicationContext(), "LBDB.db", null, 1);
 
-        btnInsert = (Button) findViewById(R.id.insert3);
-        btnUpdate = (Button) findViewById(R.id.update3);
-        btnSearch = (Button) findViewById(R.id.search3);
-        btnClear = (Button) findViewById(R.id.clear3);
+        btnInsert = findViewById(R.id.insert3);
+        btnUpdate = findViewById(R.id.update3);
+        btnSearch = findViewById(R.id.search3);
+        btnClear = findViewById(R.id.clear3);
 
 
-        id3 = (EditText) findViewById(R.id.id3);
-        transid3 = (EditText) findViewById(R.id.transid3);
-        date3 = (EditText) findViewById(R.id.date3);
-        descrip3 = (EditText) findViewById(R.id.descrip3);
-        amt3 = (EditText) findViewById(R.id.amt3);
-        price3 = (EditText) findViewById(R.id.price3);
-        total3 = (EditText) findViewById(R.id.total3);
-        coment3 = (EditText) findViewById(R.id.coment3);
+        id3 = findViewById(R.id.id3);
+        transid3 = findViewById(R.id.transid3);
+        date3 = findViewById(R.id.date3);
+        descrip3 = findViewById(R.id.descrip3);
+        amt3 = findViewById(R.id.amt3);
+        price3 = findViewById(R.id.price3);
+        total3 = findViewById(R.id.total3);
+        coment3 = findViewById(R.id.coment3);
 
-        btnInsert.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    Calendar calendar = Calendar.getInstance();
-                    String DateNow = MonthDay.now().toString() + "-" + calendar.get(Calendar.YEAR);
-                    date3.setText(DateNow);
-                    PriceI = Float.parseFloat(price3.getText().toString());
-                    AmtI = Float.parseFloat(amt3.getText().toString());
-                    TotalI = PriceI * AmtI;
+        btnInsert.setOnClickListener(v -> {
+            try {
+                Calendar calendar = Calendar.getInstance();
+                String DateNow = MonthDay.now().toString() + "-" + calendar.get(Calendar.YEAR);
+                date3.setText(DateNow);
+                PriceI = Float.parseFloat(price3.getText().toString());
+                AmtI = Float.parseFloat(amt3.getText().toString());
+                TotalI = PriceI * AmtI;
 
-                    SQLiteDatabase db = helper.getWritableDatabase();
-                    ContentValues values = new ContentValues();
-                    values.put(Structure_BBDD.COLUMNB2, transid3.getText().toString());
-                    values.put(Structure_BBDD.COLUMNB3, DateNow);
-                    values.put(Structure_BBDD.COLUMNB4, descrip3.getText().toString());
-                    values.put(Structure_BBDD.COLUMNB5, amt3.getText().toString());
-                    values.put(Structure_BBDD.COLUMNB6, price3.getText().toString());
-                    values.put(Structure_BBDD.COLUMNB7, TotalI);
-                    values.put(Structure_BBDD.COLUMNB8, coment3.getText().toString());
-                    long newRowId = db.insert(TABLE3, null, values);
-                    Toast.makeText(getApplicationContext(), "The register was saved with ID: " + newRowId, Toast.LENGTH_LONG).show();
+                SQLiteDatabase db = helper.getWritableDatabase();
+                ContentValues values = new ContentValues();
+                values.put(Structure_BBDD.COLUMNB2, transid3.getText().toString());
+                values.put(Structure_BBDD.COLUMNB3, DateNow);
+                values.put(Structure_BBDD.COLUMNB4, descrip3.getText().toString());
+                values.put(Structure_BBDD.COLUMNB5, amt3.getText().toString());
+                values.put(Structure_BBDD.COLUMNB6, price3.getText().toString());
+                values.put(Structure_BBDD.COLUMNB7, TotalI);
+                values.put(Structure_BBDD.COLUMNB8, coment3.getText().toString());
+                long newRowId = db.insert(TABLE3, null, values);
+                Toast.makeText(getApplicationContext(), "The register was saved with ID: " + newRowId, Toast.LENGTH_LONG).show();
 
-                    //Clear text from fields
-                    id3.setText("");
-                    transid3.setText("");
-                    date3.setText("");
-                    descrip3.setText("");
-                    amt3.setText("");
-                    price3.setText("");
-                    total3.setText("");
-                    coment3.setText("");
-                } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-                }
+                //Clear text from fields
+                id3.setText("");
+                transid3.setText("");
+                date3.setText("");
+                descrip3.setText("");
+                amt3.setText("");
+                price3.setText("");
+                total3.setText("");
+                coment3.setText("");
+            } catch (Exception e) {
+                Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
             }
         });
-        btnSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SQLiteDatabase db = helper.getReadableDatabase();
-                String[] projection = {
-                        Structure_BBDD.COLUMNB2,
-                        Structure_BBDD.COLUMNB3,
-                        Structure_BBDD.COLUMNB4,
-                        Structure_BBDD.COLUMNB5,
-                        Structure_BBDD.COLUMNB6,
-                        Structure_BBDD.COLUMNB7,
-                        Structure_BBDD.COLUMNB8
-                };
+        btnSearch.setOnClickListener(v -> {
+            SQLiteDatabase db = helper.getReadableDatabase();
+            String[] projection = {
+                    Structure_BBDD.COLUMNB2,
+                    Structure_BBDD.COLUMNB3,
+                    Structure_BBDD.COLUMNB4,
+                    Structure_BBDD.COLUMNB5,
+                    Structure_BBDD.COLUMNB6,
+                    Structure_BBDD.COLUMNB7,
+                    Structure_BBDD.COLUMNB8
+            };
 
-                String selection = Structure_BBDD.COLUMNAID + " = ?";
+            String selection = Structure_BBDD.COLUMNAID + " = ?";
+            String[] selectionArgs = {id3.getText().toString()};
+
+
+            try {
+                Cursor cursor = db.query(
+                        TABLE3,   // The table to query
+                        projection,             // The array of columns to return (pass null to get all)
+                        selection,              // The columns for the WHERE clause
+                        selectionArgs,          // The values for the WHERE clause
+                        null,                   // don't group the rows
+                        null,                   // don't filter by row groups
+                        null               // The sort order
+                );
+                cursor.moveToFirst();
+                transid3.setText("");
+                date3.setText("");
+                descrip3.setText("");
+                amt3.setText("");
+                price3.setText("");
+                total3.setText("");
+                coment3.setText("");
+
+                transid3.setText(cursor.getString(0));
+                date3.setText(cursor.getString(1));
+                descrip3.setText(cursor.getString(2));
+                amt3.setText(cursor.getString(3));
+                price3.setText(cursor.getString(4));
+                total3.setText(cursor.getString(5));
+                coment3.setText(cursor.getString(6));
+            } catch (Exception e) {
+                Toast.makeText(getApplicationContext(), "ERROR: Could not find the requested register. ", Toast.LENGTH_LONG).show();
+            }
+        });
+        btnUpdate.setOnClickListener(v -> {
+            try {
+                PriceI = Float.parseFloat(price3.getText().toString());
+                AmtI = Float.parseFloat(amt3.getText().toString());
+                TotalI = PriceI * AmtI;
+                SQLiteDatabase db = helper.getReadableDatabase();
+// New value for one column
+                ContentValues values = new ContentValues();
+                values.put(Structure_BBDD.COLUMNAID, id3.getText().toString());
+                values.put(Structure_BBDD.COLUMNA2, transid3.getText().toString());
+                values.put(Structure_BBDD.COLUMNA3, date3.getText().toString());
+                values.put(Structure_BBDD.COLUMNA4, descrip3.getText().toString());
+                values.put(Structure_BBDD.COLUMNA5, amt3.getText().toString());
+                values.put(Structure_BBDD.COLUMNA6, price3.getText().toString());
+                values.put(Structure_BBDD.COLUMNA7, TotalI);
+                values.put(Structure_BBDD.COLUMNA8, coment3.getText().toString());
+                String selection = Structure_BBDD.COLUMNAID + " LIKE ?";
                 String[] selectionArgs = {id3.getText().toString()};
 
-
-                try {
-                    Cursor cursor = db.query(
-                            TABLE3,   // The table to query
-                            projection,             // The array of columns to return (pass null to get all)
-                            selection,              // The columns for the WHERE clause
-                            selectionArgs,          // The values for the WHERE clause
-                            null,                   // don't group the rows
-                            null,                   // don't filter by row groups
-                            null               // The sort order
-                    );
-                    cursor.moveToFirst();
-                    transid3.setText("");
-                    date3.setText("");
-                    descrip3.setText("");
-                    amt3.setText("");
-                    price3.setText("");
-                    total3.setText("");
-                    coment3.setText("");
-
-                    transid3.setText(cursor.getString(0));
-                    date3.setText(cursor.getString(1));
-                    descrip3.setText(cursor.getString(2));
-                    amt3.setText(cursor.getString(3));
-                    price3.setText(cursor.getString(4));
-                    total3.setText(cursor.getString(5));
-                    coment3.setText(cursor.getString(6));
-                } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), "ERROR: Could not find the requested register. ", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-        btnUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    PriceI = Float.parseFloat(price3.getText().toString());
-                    AmtI = Float.parseFloat(amt3.getText().toString());
-                    TotalI = PriceI * AmtI;
-                    SQLiteDatabase db = helper.getReadableDatabase();
-// New value for one column
-                    ContentValues values = new ContentValues();
-                    values.put(Structure_BBDD.COLUMNAID, id3.getText().toString());
-                    values.put(Structure_BBDD.COLUMNA2, transid3.getText().toString());
-                    values.put(Structure_BBDD.COLUMNA3, date3.getText().toString());
-                    values.put(Structure_BBDD.COLUMNA4, descrip3.getText().toString());
-                    values.put(Structure_BBDD.COLUMNA5, amt3.getText().toString());
-                    values.put(Structure_BBDD.COLUMNA6, price3.getText().toString());
-                    values.put(Structure_BBDD.COLUMNA7, TotalI);
-                    values.put(Structure_BBDD.COLUMNA8, coment3.getText().toString());
-                    String selection = Structure_BBDD.COLUMNAID + " LIKE ?";
-                    String[] selectionArgs = {id3.getText().toString()};
-
-                    int count = db.update(
-                            TABLE3,
-                            values,
-                            selection,
-                            selectionArgs);
-                    Toast.makeText(getApplicationContext(), "Register " + id3.getText() + " has been successfully updated.", Toast.LENGTH_LONG).show();
-                } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), "ERROR:Please insert ID and try again.", Toast.LENGTH_LONG).show();
-                }
+                int count = db.update(
+                        TABLE3,
+                        values,
+                        selection,
+                        selectionArgs);
+                Toast.makeText(getApplicationContext(), "Register " + id3.getText() + " has been successfully updated.", Toast.LENGTH_LONG).show();
+            } catch (Exception e) {
+                Toast.makeText(getApplicationContext(), "ERROR:Please insert ID and try again.", Toast.LENGTH_LONG).show();
             }
         });
 
-        btnClear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    id3.setText("");
-                    transid3.setText("");
-                    date3.setText("");
-                    descrip3.setText("");
-                    amt3.setText("");
-                    price3.setText("");
-                    total3.setText("");
-                    coment3.setText("");
-                } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), "System Error.Please restart the application and try again.", Toast.LENGTH_LONG).show();
-                }
+        btnClear.setOnClickListener(v -> {
+            try {
+                id3.setText("");
+                transid3.setText("");
+                date3.setText("");
+                descrip3.setText("");
+                amt3.setText("");
+                price3.setText("");
+                total3.setText("");
+                coment3.setText("");
+            } catch (Exception e) {
+                Toast.makeText(getApplicationContext(), "System Error.Please restart the application and try again.", Toast.LENGTH_LONG).show();
             }
         });
     }

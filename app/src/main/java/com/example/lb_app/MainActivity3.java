@@ -70,23 +70,23 @@ public class MainActivity3 extends AppCompatActivity {
         helper=new HiveListHelper(getApplicationContext(),"LBDB.db",null,1);
 
 
-        btninsert2=(Button) findViewById(R.id.insert2);
-        btnSearch2=(Button) findViewById(R.id.search2);
-        btnUpdate2=(Button) findViewById(R.id.update2);
-        btnClear=(Button) findViewById(R.id.clear2);
-        btnSendrecipt=(Button) findViewById(R.id.send2);
-        btnPay=(Button) findViewById(R.id.pay);
+        btninsert2= findViewById(R.id.insert2);
+        btnSearch2= findViewById(R.id.search2);
+        btnUpdate2= findViewById(R.id.update2);
+        btnClear= findViewById(R.id.clear2);
+        btnSendrecipt= findViewById(R.id.send2);
+        btnPay= findViewById(R.id.pay);
 
-        id=(EditText) findViewById(R.id.id2);
-        transid=(EditText) findViewById(R.id.transid);
-        date2=(EditText) findViewById(R.id.date2);
-        descrip2=(EditText) findViewById(R.id.descrip2);
-        amt2=(EditText) findViewById(R.id.amt2);
-        price2=(EditText) findViewById(R.id.price2);
-        total2=(EditText) findViewById(R.id.total2);
-        coment2=(EditText) findViewById(R.id.coment);
+        id= findViewById(R.id.id2);
+        transid= findViewById(R.id.transid);
+        date2= findViewById(R.id.date2);
+        descrip2= findViewById(R.id.descrip2);
+        amt2= findViewById(R.id.amt2);
+        price2= findViewById(R.id.price2);
+        total2= findViewById(R.id.total2);
+        coment2= findViewById(R.id.coment);
 
-        btnPay=(Button)findViewById(R.id.pay);
+        btnPay= findViewById(R.id.pay);
 
         btnPay.setOnClickListener(new View.OnClickListener() {
             @Override

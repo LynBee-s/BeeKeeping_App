@@ -82,20 +82,17 @@ public class HarvestRecordList extends AppCompatActivity {
         HiveDB_Helper hiveDB_helper=new HiveDB_Helper(HarvestRecordList.this);
         helper= new HiveListHelper(getApplicationContext(),"LBDB.db", null, 1);
         recyclerView= findViewById(R.id.recycler_v3);
-        btnExport=(Button) findViewById(R.id.btnexport8);
+        btnExport= findViewById(R.id.btnexport8);
         data=new ArrayList<>();
 
         getAdapter();
         getInfo();
-        btnExport.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    csv2xl();
-                    SQLCSV();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        btnExport.setOnClickListener(v -> {
+            try {
+                SQLCSV();
+                csv2xl();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
     }
@@ -129,7 +126,7 @@ public class HarvestRecordList extends AppCompatActivity {
         if (!exportDir.exists()) {
             exportDir.mkdirs();
         }
-        File file = new File(exportDir, "LBdatos.csv");
+        File file = new File(exportDir, "HaRdatos.csv");
         try {
             if (file.createNewFile()) {
                 System.out.println("file.csv " + file.getAbsolutePath());
@@ -163,7 +160,9 @@ public class HarvestRecordList extends AppCompatActivity {
         ArrayList al = null;
         try {
             Calendar calendar=Calendar.getInstance();
-            String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/LBdatos.csv";
+            calendar.getTime();
+            calendar.getTimeZone();
+            String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/HaRdatos.csv";
             String outFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/HarvestRecords_"+ MonthDay.now() +"_"+calendar.get(Calendar.YEAR)+".xls";
             String thisLine;
             int count = 0;
@@ -227,7 +226,7 @@ public class HarvestRecordList extends AppCompatActivity {
     }
     private void delete()throws SecurityException{
         try {
-            String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/LBdatos.csv";
+            String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/HaRdatos.csv";
             File file2 = new File(inFilePath);
             file2.delete();
         }catch (Exception exc){

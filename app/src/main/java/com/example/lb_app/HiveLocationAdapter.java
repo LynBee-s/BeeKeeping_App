@@ -49,32 +49,29 @@ public class HiveLocationAdapter extends RecyclerView.Adapter<HiveLocationAdapte
             super(itemView);
             hiveDB_helper=new HiveDB_Helper(itemView.getContext());
             helper= new HiveDB_Helper(itemView.getContext().getApplicationContext(), "LBDB.db", null, 1);
-            id6=(EditText) itemView.findViewById(R.id.id6);
-            hiveid=(EditText) itemView.findViewById(R.id.hiveid2);
-            hivelocate=(EditText) itemView.findViewById(R.id.location2);
-            updateloc=(Button) itemView.findViewById(R.id.updatehiveloc);
+            id6= itemView.findViewById(R.id.id6);
+            hiveid= itemView.findViewById(R.id.hiveid2);
+            hivelocate= itemView.findViewById(R.id.location2);
+            updateloc= itemView.findViewById(R.id.updatehiveloc);
 
-            updateloc.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    try{
-                    SQLiteDatabase db = helper.getReadableDatabase();
-                    ContentValues values = new ContentValues();
-                    values.put(Structure_BBDD.COLUMNID,id6.getText().toString());
-                    values.put(Structure_BBDD.COLUMN2,hiveid.getText().toString());
-                    values.put(Structure_BBDD.COLUMN7, hivelocate.getText().toString());
+            updateloc.setOnClickListener(v -> {
+                try{
+                SQLiteDatabase db = helper.getReadableDatabase();
+                ContentValues values = new ContentValues();
+                values.put(Structure_BBDD.COLUMNID,id6.getText().toString());
+                values.put(Structure_BBDD.COLUMN2,hiveid.getText().toString());
+                values.put(Structure_BBDD.COLUMN7, hivelocate.getText().toString());
 
-                    Toast.makeText(itemView.getContext(), "Hive location for hive #"+hiveid.getText()+" was successfully updated.",Toast.LENGTH_LONG).show();
-                    String selection = Structure_BBDD.COLUMNID + " LIKE ?";
-                    String[] selectionArgs = {id6.getText().toString()};
-                    db.update(Structure_BBDD.TABLE1,
-                            values,
-                            selection,
-                            selectionArgs);
-                } catch (Exception e) {
-                    Toast.makeText(itemView.getContext(), "ERROR",Toast.LENGTH_LONG).show();
-                }
-                }
+                Toast.makeText(itemView.getContext(), "Hive location for hive #"+hiveid.getText()+" was successfully updated.",Toast.LENGTH_LONG).show();
+                String selection = Structure_BBDD.COLUMNID + " LIKE ?";
+                String[] selectionArgs = {id6.getText().toString()};
+                db.update(Structure_BBDD.TABLE1,
+                        values,
+                        selection,
+                        selectionArgs);
+            } catch (Exception e) {
+                Toast.makeText(itemView.getContext(), "ERROR",Toast.LENGTH_LONG).show();
+            }
             });
         }
     }
