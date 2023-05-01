@@ -39,5 +39,9 @@ public class HiveListHelper extends SQLiteOpenHelper {
         Cursor cur=db.rawQuery("SELECT * FROM "+ TABLE1,null);
         return cur;
     }
+
+    public SQLiteDatabase getWriteableDatabase() {
+        return null;
+    }
 }
 

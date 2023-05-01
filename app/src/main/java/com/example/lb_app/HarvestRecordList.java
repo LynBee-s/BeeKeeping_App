@@ -2,6 +2,7 @@ package com.example.lb_app;
 
 import static com.example.lb_app.HiveDB_Helper.DATABASE_NAME;
 import static com.example.lb_app.HiveDB_Helper.TABLE4;
+import static com.example.lb_app.Structure_BBDD.TABLE2;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -25,6 +26,10 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -89,9 +94,8 @@ public class HarvestRecordList extends AppCompatActivity {
         getInfo();
         btnExport.setOnClickListener(v -> {
             try {
-                SQLCSV();
-                csv2xl();
-            } catch (IOException e) {
+                export();
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         });
@@ -118,119 +122,106 @@ public class HarvestRecordList extends AppCompatActivity {
             data.add(harvest);
         }
     }
-    private void SQLCSV() {
-        File dbFile = getDatabasePath(DATABASE_NAME);
-        HiveDB_Helper dbhelper = new HiveDB_Helper(getApplicationContext());
-        System.out.println(dbFile);  // displays the data base path in your logcat
-        File exportDir = new File(Environment.getExternalStorageDirectory() + "/Documents");
-        if (!exportDir.exists()) {
-            exportDir.mkdirs();
-        }
-        File file = new File(exportDir, "HaRdatos.csv");
+    private void export() {
         try {
-            if (file.createNewFile()) {
-                System.out.println("file.csv " + file.getAbsolutePath());
-                Toast.makeText(getApplicationContext(), "Writing data to excel file...", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(getApplicationContext(), "ATTENTION:The file already exists!", Toast.LENGTH_LONG).show();
+            File dbFile = getDatabasePath(DATABASE_NAME);
+            helper= new HiveListHelper(getApplicationContext(),"LBDB.db", null, 1);
+            HiveDB_Helper dbhelper = new HiveDB_Helper(getApplicationContext());
+            System.out.println(dbFile);
+            File exportDir = new File(Environment.getExternalStorageDirectory() + "/Documents");
+            if (!exportDir.exists()) {
+                exportDir.mkdirs();
             }
-            CSVWriter csvWrite = new CSVWriter(new FileWriter(file));
-            SQLiteDatabase db = dbhelper.getWritableDatabase();
-            Cursor curCSV = db.rawQuery("SELECT * FROM " + TABLE4, null);
-            csvWrite.writeNext(curCSV.getColumnNames());
-            while (curCSV.moveToNext()) {
-                String arrStr[] = {
-                        curCSV.getString(0),
-                        curCSV.getString(1),
-                        curCSV.getString(2),
-                        curCSV.getString(3),
-                        curCSV.getString(4),
-                        curCSV.getString(5),
-                        curCSV.getString(6)};
-                csvWrite.writeNext(arrStr);
-            }
-            csvWrite.close();
-            curCSV.close();
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-        }
-    }
-    private void csv2xl() throws IOException {
-        ArrayList arList = null;
-        ArrayList al = null;
-        try {
             Calendar calendar=Calendar.getInstance();
-            calendar.getTime();
-            calendar.getTimeZone();
-            String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/HaRdatos.csv";
-            String outFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/HarvestRecords_"+ MonthDay.now() +"_"+calendar.get(Calendar.YEAR)+".xls";
-            String thisLine;
-            int count = 0;
+            String DateNow= MonthDay.now().toString()+"-"+calendar.get(Calendar.YEAR);
+            File file = new File(exportDir, "Harvest_History_"+DateNow+".xls");
+            file.createNewFile();
             try {
-                FileInputStream fis = new FileInputStream(inFilePath);
-                BufferedReader myInput = new BufferedReader(new InputStreamReader(fis));
-                int i = 0;
-                arList = new ArrayList();
-                while ((thisLine = myInput.readLine()) != null) {
-                    al = new ArrayList();
-                    String strar[] = thisLine.split(",");
-                    for (int j = 0; j < strar.length; j++) {
-                        al.add(strar[j]);
-                    }
-                    arList.add(al);
-                    System.out.println();
-                    i++;
+                if (file.exists()) {
+                    System.out.println("file.xls " + exportDir.getAbsolutePath());
+                    Toast.makeText(getApplicationContext(), "Writing data to excel file...", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "ATTENTION:The file already exists!", Toast.LENGTH_LONG).show();
                 }
-            } catch (Exception e) {
-                System.out.println();
-            }
-            try {
-                HSSFWorkbook hwb = new HSSFWorkbook();
-                HSSFSheet sheet = hwb.createSheet("Records");
-                for (int k = 0; k < arList.size(); k++) {
-                    ArrayList ardata = (ArrayList) arList.get(k);
-                    HSSFRow row = sheet.createRow((short) 0 + k);
-                    for (int p = 0; p < ardata.size(); p++) {
-                        HSSFCell cell = row.createCell((int) p);
-                        String data = ardata.get(p).toString();
-                        if (data.startsWith("=")) {
-                            cell.setCellType(Cell.CELL_TYPE_STRING);
-                            data = data.replaceAll("\"", "");
-                            data = data.replaceAll("=", "");
-                            cell.setCellValue(data);
-                        } else if (data.startsWith("\"")) {
-                            data = data.replaceAll("\"", "");
-                            cell.setCellType(Cell.CELL_TYPE_STRING);
-                            cell.setCellValue(data);
-                        } else {
-                            data = data.replaceAll("\"", "");
-                            cell.setCellType(Cell.CELL_TYPE_NUMERIC);
-                            cell.setCellValue(data);
+                HSSFWorkbook wb = new HSSFWorkbook();
+                SQLiteDatabase db = helper.getWriteableDatabase();
+                Cursor cur = helper.exportAll();
+                Sheet sheet = wb.createSheet("Harvest History");
+
+                data = new ArrayList<>();
+                db = helper.getReadableDatabase();
+                cur = db.rawQuery("select * from " + Structure_BBDD.TABLE4, null);
+                Row row = sheet.createRow(0);
+                row.setHeightInPoints(12);
+                while (cur.moveToNext()) {
+                    String arrStr[] = {
+                            String.valueOf(cur.getString(0)),
+                            String.valueOf(cur.getString(1)),
+                            String.valueOf(cur.getString(2)),
+                            String.valueOf(cur.getString(3)),
+                            String.valueOf(cur.getString(4)),
+                            String.valueOf(cur.getString(5)),
+                            String.valueOf(cur.getString(6))};
+                    for (int j = 0; j < arrStr.length; j++) {
+                        while (cur.moveToPosition(j++)) {
+                            Row row8 = sheet.createRow(j);
+                            Cell cell8 = row8.createCell(0);
+                            cell8.setCellValue(cur.getString(0));
+                            Cell cell10 = row8.createCell(1);
+                            cell10.setCellValue(cur.getString(1));
+                            Cell cell11 = row8.createCell(2);
+                            cell11.setCellValue(cur.getString(2));
+                            Cell cell12 = row8.createCell(3);
+                            cell12.setCellValue(cur.getString(3));
+                            Cell cell13 = row8.createCell(4);
+                            cell13.setCellValue(cur.getString(4));
+                            Cell cell14 = row8.createCell(5);
+                            cell14.setCellValue(cur.getString(5));
+                            Cell cell15 = row8.createCell(6);
+                            cell15.setCellValue(cur.getString(6));
                         }
                     }
-                    System.out.println();
                 }
-                FileOutputStream fileOut = new FileOutputStream(outFilePath);
-                hwb.write(fileOut);
+                Cell cell0 = row.createCell(0);
+                cell0.setCellValue(cur.getColumnName(0));
+                Cell cell = row.createCell(1);
+                cell.setCellValue(cur.getColumnName(1));
+                Cell cell2 = row.createCell(2);
+                cell2.setCellValue(cur.getColumnName(2));
+                Cell cell3 = row.createCell(3);
+                cell3.setCellValue(cur.getColumnName(3));
+                Cell cell4 = row.createCell(4);
+                cell4.setCellValue(cur.getColumnName(4));
+                Cell cell5 = row.createCell(5);
+                cell5.setCellValue(cur.getColumnName(5));
+                Cell cell6 = row.createCell(6);
+                cell6.setCellValue(cur.getColumnName(6));
+
+                CellStyle style = wb.createCellStyle();
+                style.setBorderBottom(CellStyle.THICK_HORZ_BANDS);
+                style.setBottomBorderColor(IndexedColors.YELLOW.getIndex());
+                style.setBorderLeft(CellStyle.THICK_HORZ_BANDS);
+                style.setLeftBorderColor(IndexedColors.YELLOW.getIndex());
+                style.setBorderRight(CellStyle.THICK_HORZ_BANDS);
+                style.setRightBorderColor(IndexedColors.YELLOW.getIndex());
+                style.setBorderTop(CellStyle.THICK_HORZ_BANDS);
+                style.setTopBorderColor(IndexedColors.YELLOW.getIndex());
+                cell0.setCellStyle(style);
+                cell.setCellStyle(style);
+                cell2.setCellStyle(style);
+                cell3.setCellStyle(style);
+                cell4.setCellStyle(style);
+                cell5.setCellStyle(style);
+                cell6.setCellStyle(style);
+                FileOutputStream fileOut = new FileOutputStream(file);
+                wb.write(fileOut);
                 fileOut.close();
-                System.out.println("Your excel file has been generated");
-                delete();
-                Toast.makeText(getApplicationContext(), "Harvest Record has been successfully exported", Toast.LENGTH_SHORT).show();
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                Toast.makeText(getApplicationContext(), "ERROR: Failed to export Harvest Record document.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"Exported to"+exportDir.getAbsolutePath(),Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_SHORT).show();
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-    private void delete()throws SecurityException{
-        try {
-            String inFilePath = Environment.getExternalStorageDirectory().toString() + "/Documents/HaRdatos.csv";
-            File file2 = new File(inFilePath);
-            file2.delete();
-        }catch (Exception exc){
-            exc.printStackTrace();
         }
     }
     private void MainMenu() {

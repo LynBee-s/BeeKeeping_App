@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 
 
 public class HiveDB_Helper extends SQLiteOpenHelper {
@@ -69,5 +70,17 @@ public class HiveDB_Helper extends SQLiteOpenHelper {
         SQLiteDatabase db=this.getWritableDatabase();
         Cursor cur=db.rawQuery("SELECT Hive_ID, sum(Amount_H) FROM "+ TABLE4+" GROUP By Amount_H ", null);
         return cur;
+    }
+    public Cursor exportAll(){
+        ArrayList<Sales> data = null;
+        SQLiteDatabase db=this.getWritableDatabase();
+        Cursor cur=db.rawQuery("SELECT * FROM "+ TABLE2, null);
+
+        return cur;
+
+    }
+
+    public SQLiteDatabase getWriteableDatabase() {
+        return null;
     }
 }
