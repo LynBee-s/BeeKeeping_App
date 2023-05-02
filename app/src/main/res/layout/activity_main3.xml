@@ -17,7 +17,7 @@
         <TextView
             android:id="@+id/textView31"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
             android:text="@string/id"
@@ -35,7 +35,7 @@
         <TextView
             android:id="@+id/textView34"
             android:layout_width="51dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
             android:text="@string/trans_id"
@@ -87,7 +87,7 @@
         <TextView
             android:id="@+id/textView38"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
             android:text="@string/description"
@@ -110,7 +110,7 @@
         <TextView
             android:id="@+id/textView40"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
             android:text="@string/amount"
@@ -128,7 +128,7 @@
         <TextView
             android:id="@+id/textView45"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
             android:text="@string/price"
@@ -152,7 +152,7 @@
         <TextView
             android:id="@+id/textView47"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
             android:text="@string/total"
@@ -175,7 +175,7 @@
         <TextView
             android:id="@+id/textView49"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
             android:text="@string/noteslc"

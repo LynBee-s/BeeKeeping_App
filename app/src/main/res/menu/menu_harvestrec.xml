@@ -11,6 +11,6 @@
         android:title="@string/register_new_activity" />
     <item
         android:id="@+id/toharvrec"
-        android:title="@string/review_harvest_records" />
+        android:title="@string/view_harvest_records" />
 
 </menu>

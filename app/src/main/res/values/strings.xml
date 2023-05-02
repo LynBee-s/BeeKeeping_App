@@ -46,7 +46,7 @@
     <string name="go_to_hive_activity_records">Go to Hive Activity Records</string>
     <string name="set_reminder">Set Reminder</string>
     <string name="register_new_activity">Register new Activity</string>
-    <string name="review_harvest_records">Review Harvest Records</string>
+    <string name="view_harvest_records">View Harvest Records</string>
     <string name="map">Map</string>
     <string name="go_to_map">Go to Map</string>
     <string name="activity_planner">Activity Planner</string>

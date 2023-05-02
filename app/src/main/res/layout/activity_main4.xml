@@ -41,7 +41,7 @@
 
         <TextView
             android:layout_width="13dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:allowClickWhenDisabled="false"
             android:fontFamily="@font/alice"
@@ -50,12 +50,17 @@
 
         <EditText
             android:id="@+id/transid3"
-            android:layout_width="wrap_content"
+            android:layout_width="152dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:autofillHints=""
             android:hint="@string/trans_id"
-            android:inputType="textPersonName"
-            android:autofillHints="" />
+            android:inputType="textPersonName" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
     </LinearLayout>
 
     <LinearLayout
@@ -66,7 +71,7 @@
         <TextView
             android:id="@+id/textView15"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:allowClickWhenDisabled="false"
             android:fontFamily="@font/alice"
@@ -75,12 +80,17 @@
 
         <EditText
             android:id="@+id/date3"
-            android:layout_width="wrap_content"
+            android:layout_width="233dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:autofillHints=""
             android:inputType="textPersonName"
-            tools:ignore="TouchTargetSizeCheck"
-            android:autofillHints="" />
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
 
     </LinearLayout>
 
@@ -92,7 +102,7 @@
         <TextView
             android:id="@+id/textView50"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
             android:text="@string/description"
@@ -100,13 +110,13 @@
 
         <EditText
             android:id="@+id/descrip3"
-            android:layout_width="204dp"
+            android:layout_width="292dp"
             android:layout_height="match_parent"
+            android:autofillHints=""
             android:fontFamily="@font/alice"
             android:hint="@string/description"
             android:inputType="textPersonName"
-            android:textColor="@color/black"
-            android:autofillHints="" />
+            android:textColor="@color/black" />
     </LinearLayout>
 
     <LinearLayout
@@ -117,7 +127,7 @@
         <TextView
             android:id="@+id/textView17"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:allowClickWhenDisabled="false"
             android:fontFamily="@font/alice"
@@ -126,17 +136,17 @@
 
         <EditText
             android:id="@+id/amt3"
-            android:layout_width="wrap_content"
+            android:layout_width="69dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:autofillHints=""
             android:inputType="textPersonName"
-            tools:ignore="TouchTargetSizeCheck"
-            android:autofillHints="" />
+            tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
             android:id="@+id/textView26"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:allowClickWhenDisabled="false"
             android:text="@string/price_xcd"
@@ -144,11 +154,11 @@
 
         <EditText
             android:id="@+id/price3"
-            android:layout_width="130dp"
+            android:layout_width="148dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:inputType="textPersonName"
-            android:autofillHints="" />
+            android:autofillHints=""
+            android:inputType="textPersonName" />
     </LinearLayout>
 
     <LinearLayout
@@ -159,7 +169,7 @@
         <TextView
             android:id="@+id/textView32"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:allowClickWhenDisabled="false"
             android:fontFamily="@font/alice"
@@ -168,11 +178,11 @@
 
         <EditText
             android:id="@+id/total3"
-            android:layout_width="wrap_content"
+            android:layout_width="187dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:inputType="textPersonName"
-            android:autofillHints="" />
+            android:autofillHints=""
+            android:inputType="textPersonName" />
 
     </LinearLayout>
 
@@ -184,7 +194,7 @@
         <TextView
             android:id="@+id/textView51"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/alice"
             android:text="@string/noteslc"
@@ -192,13 +202,18 @@
 
         <EditText
             android:id="@+id/coment3"
-            android:layout_width="322dp"
+            android:layout_width="286dp"
             android:layout_height="66dp"
+            android:autofillHints=""
             android:fontFamily="@font/alice"
             android:hint="@string/noteslc"
             android:inputType="textPersonName"
-            android:textColor="@color/black"
-            android:autofillHints="" />
+            android:textColor="@color/black" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
     </LinearLayout>
 
     <LinearLayout
