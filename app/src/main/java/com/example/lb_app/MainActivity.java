@@ -141,13 +141,13 @@ public class MainActivity extends AppCompatActivity {
                     isReadPermissionGranted = Boolean.TRUE.equals(result.get(android.Manifest.permission.READ_EXTERNAL_STORAGE));
                 }
                 if (result.get(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != null) {
-                    isReadPermissionGranted = Boolean.TRUE.equals(result.get(android.Manifest.permission.WRITE_EXTERNAL_STORAGE));
+                    isWritePermissionGranted = Boolean.TRUE.equals(result.get(android.Manifest.permission.WRITE_EXTERNAL_STORAGE));
                 }
                 if (result.get(android.Manifest.permission.ACCESS_FINE_LOCATION) != null) {
-                    isReadPermissionGranted = Boolean.TRUE.equals(result.get(android.Manifest.permission.ACCESS_FINE_LOCATION));
+                    isLocationPermissionGranted = Boolean.TRUE.equals(result.get(android.Manifest.permission.ACCESS_FINE_LOCATION));
                 }
                 if (result.get(android.Manifest.permission.ACCESS_COARSE_LOCATION) != null) {
-                    isReadPermissionGranted = Boolean.TRUE.equals(result.get(android.Manifest.permission.ACCESS_COARSE_LOCATION));
+                    isLocationPermissionGranted = Boolean.TRUE.equals(result.get(android.Manifest.permission.ACCESS_COARSE_LOCATION));
                 }
                 if (result.get(android.Manifest.permission.READ_CALENDAR) != null) {
                     isReadCalendarPermissionGranted = Boolean.TRUE.equals(result.get(android.Manifest.permission.READ_CALENDAR));
