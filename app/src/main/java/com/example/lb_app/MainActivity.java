@@ -38,13 +38,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         switch (item.getItemId()) {
             case R.id.mmenu:
                 MainMenu();
                 return true;
-
-            case R.id.hivrec:
+                case R.id.hivrec:
                 HiveRecords();
                 return true;
             case R.id.planner:
@@ -199,7 +197,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
-
     private void ActivityPlanner() {
         try {
             Intent intent=new Intent(this,MainActivity6.class);
