@@ -124,8 +124,6 @@ public boolean onCreateOptionsMenu(Menu menu) {
 
             String selection = Structure_BBDD.COLUMNAID + " = ?";
             String[] selectionArgs = {id3.getText().toString()};
-
-
             try {
                 Cursor cursor = db.query(
                         TABLE3,   // The table to query

@@ -1,6 +1,8 @@
 package com.example.lb_app;
 
-import org.apache.poi.xslf.model.geom.Context;
+import android.content.Context;
+
+
 
 public class Structure_BBDD {
     public Structure_BBDD(Context context){}
