@@ -1,11 +1,7 @@
 package com.example.lb_app;
 
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -15,9 +11,13 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     Button btnHR,btnS,btnE,btnMp,btnActP,btnHarV;
@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean isWriteCalendarPermissionGranted = false;
 
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -36,9 +37,12 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         switch (item.getItemId()) {
+
             case R.id.mmenu:
                 MainMenu();
                 return true;
@@ -90,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
         btnActP= findViewById(R.id.button);
         btnHarV= findViewById(R.id.btnharvestrec);
 
+
         btnMp.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, MainActivity7.class);
             startActivity(intent);
@@ -131,28 +136,25 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
             }
         });
-        mPermissionResultlauncher = registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), new ActivityResultCallback<Map<String, Boolean>>() {
-            @Override
-            public void onActivityResult(Map<String, Boolean> result) {
+        mPermissionResultlauncher = registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), result -> {
 
-                if (result.get(android.Manifest.permission.READ_EXTERNAL_STORAGE) != null) {
-                    isReadPermissionGranted = Boolean.TRUE.equals(result.get(android.Manifest.permission.READ_EXTERNAL_STORAGE));
-                }
-                if (result.get(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != null) {
-                    isWritePermissionGranted = Boolean.TRUE.equals(result.get(android.Manifest.permission.WRITE_EXTERNAL_STORAGE));
-                }
-                if (result.get(android.Manifest.permission.ACCESS_FINE_LOCATION) != null) {
-                    isLocationPermissionGranted = Boolean.TRUE.equals(result.get(android.Manifest.permission.ACCESS_FINE_LOCATION));
-                }
-                if (result.get(android.Manifest.permission.ACCESS_COARSE_LOCATION) != null) {
-                    isLocationPermissionGranted = Boolean.TRUE.equals(result.get(android.Manifest.permission.ACCESS_COARSE_LOCATION));
-                }
-                if (result.get(android.Manifest.permission.READ_CALENDAR) != null) {
-                    isReadCalendarPermissionGranted = Boolean.TRUE.equals(result.get(android.Manifest.permission.READ_CALENDAR));
-                }
-                if (result.get(android.Manifest.permission.WRITE_CALENDAR) != null) {
-                    isWriteCalendarPermissionGranted = Boolean.TRUE.equals(result.get(Manifest.permission.WRITE_CALENDAR));
-                }
+            if (result.get(Manifest.permission.READ_EXTERNAL_STORAGE) != null) {
+                isReadPermissionGranted = Boolean.TRUE.equals(result.get(Manifest.permission.READ_EXTERNAL_STORAGE));
+            }
+            if (result.get(Manifest.permission.WRITE_EXTERNAL_STORAGE) != null) {
+                isWritePermissionGranted = Boolean.TRUE.equals(result.get(Manifest.permission.WRITE_EXTERNAL_STORAGE));
+            }
+            if (result.get(Manifest.permission.ACCESS_FINE_LOCATION) != null) {
+                isLocationPermissionGranted = Boolean.TRUE.equals(result.get(Manifest.permission.ACCESS_FINE_LOCATION));
+            }
+            if (result.get(Manifest.permission.ACCESS_COARSE_LOCATION) != null) {
+                isLocationPermissionGranted = Boolean.TRUE.equals(result.get(Manifest.permission.ACCESS_COARSE_LOCATION));
+            }
+            if (result.get(Manifest.permission.READ_CALENDAR) != null) {
+                isReadCalendarPermissionGranted = Boolean.TRUE.equals(result.get(Manifest.permission.READ_CALENDAR));
+            }
+            if (result.get(Manifest.permission.WRITE_CALENDAR) != null) {
+                isWriteCalendarPermissionGranted = Boolean.TRUE.equals(result.get(Manifest.permission.WRITE_CALENDAR));
             }
         });
         requestPermission();
@@ -164,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
         isReadCalendarPermissionGranted = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CALENDAR) == PackageManager.PERMISSION_GRANTED;
         isWriteCalendarPermissionGranted = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_CALENDAR) == PackageManager.PERMISSION_GRANTED;
 
-        List<String> permissionRequest = new ArrayList<String>();
+        List<String> permissionRequest = new ArrayList<>();
         if (!isReadPermissionGranted) {
             permissionRequest.add(Manifest.permission.READ_EXTERNAL_STORAGE);
         }
@@ -180,7 +182,11 @@ public class MainActivity extends AppCompatActivity {
         if (!isWriteCalendarPermissionGranted) {
             permissionRequest.add(Manifest.permission.WRITE_CALENDAR);
         }
+        if(permissionRequest.isEmpty()){
+            requestPermission();
+        }
     }
+
     private void MainMenu() {
         try {
             Intent intent = new Intent(this, MainActivity.class);
