@@ -3,11 +3,8 @@ package com.example.lb_app;
 
 import static com.example.lb_app.Structure_BBDD.TABLE3;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -15,12 +12,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import java.time.MonthDay;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.time.MonthDay;
 import java.util.Calendar;
 
 
@@ -38,7 +36,7 @@ public boolean onCreateOptionsMenu(Menu menu) {
     inflater.inflate(R.menu.menu_expenses, menu);
     return true;
 }
-
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -58,7 +56,7 @@ public boolean onCreateOptionsMenu(Menu menu) {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main4);
-        HiveDB_Helper hiveDB_helper = new HiveDB_Helper(MainActivity4.this);
+         new HiveDB_Helper(MainActivity4.this);
         helper = new HiveListHelper(getApplicationContext(), "LBDB.db", null, 1);
 
         btnInsert = findViewById(R.id.insert3);
@@ -150,6 +148,7 @@ public boolean onCreateOptionsMenu(Menu menu) {
                 price3.setText(cursor.getString(4));
                 total3.setText(cursor.getString(5));
                 coment3.setText(cursor.getString(6));
+                cursor.close();
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), "ERROR: Could not find the requested register. ", Toast.LENGTH_LONG).show();
             }
@@ -172,12 +171,7 @@ public boolean onCreateOptionsMenu(Menu menu) {
                 values.put(Structure_BBDD.COLUMNA8, coment3.getText().toString());
                 String selection = Structure_BBDD.COLUMNAID + " LIKE ?";
                 String[] selectionArgs = {id3.getText().toString()};
-
-                int count = db.update(
-                        TABLE3,
-                        values,
-                        selection,
-                        selectionArgs);
+                db.update(TABLE3, values, selection, selectionArgs);
                 Toast.makeText(getApplicationContext(), "Register " + id3.getText() + " has been successfully updated.", Toast.LENGTH_LONG).show();
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), "ERROR:Please insert ID and try again.", Toast.LENGTH_LONG).show();

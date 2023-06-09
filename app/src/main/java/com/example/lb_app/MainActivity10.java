@@ -2,6 +2,7 @@ package com.example.lb_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -25,13 +26,14 @@ import java.util.ArrayList;
 public class MainActivity10 extends AppCompatActivity {
     public ArrayList<Hives> data;
     HiveDB_Helper hivedb_helper;
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_resumen, menu);
         return true;
     }
-
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 

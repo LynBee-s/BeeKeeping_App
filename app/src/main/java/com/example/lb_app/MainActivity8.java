@@ -1,14 +1,9 @@
 package com.example.lb_app;
 
 import static com.example.lb_app.HiveDB_Helper.DATABASE_NAME;
-
 import static com.example.lb_app.HiveListHelper.TABLE3;
-import static com.example.lb_app.Structure_BBDD.TABLE2;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -17,12 +12,14 @@ import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -30,18 +27,11 @@ import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.time.MonthDay;
 import java.util.ArrayList;
 import java.util.Calendar;
-
-import au.com.bytecode.opencsv.CSVWriter;
 
 public class MainActivity8 extends AppCompatActivity {
     public ArrayList<Expenditure> data;
@@ -55,7 +45,7 @@ public class MainActivity8 extends AppCompatActivity {
         inflater.inflate(R.menu.menu_expensehist, menu);
         return true;
     }
-
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -80,7 +70,7 @@ public class MainActivity8 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main8);
-        HiveDB_Helper hiveDB_helper = new HiveDB_Helper(MainActivity8.this);
+         new HiveDB_Helper(MainActivity8.this);
         helper = new HiveListHelper(getApplicationContext(), "LBDB.db", null, 1);
         recyclerView = findViewById(R.id.recycler_view5);
         data = new ArrayList<>();
@@ -107,7 +97,7 @@ public class MainActivity8 extends AppCompatActivity {
 
     private void getInfo() {
         SQLiteDatabase db = helper.getReadableDatabase();
-        Expenditure expenditure = null;
+        Expenditure expenditure;
         Cursor cur = db.rawQuery("select * from " + TABLE3, null);
         while (cur.moveToNext()) {
             expenditure = new Expenditure();
@@ -120,23 +110,21 @@ public class MainActivity8 extends AppCompatActivity {
             expenditure.setTotal(cur.getString(6));
             expenditure.setNotes(cur.getString(7));
             data.add(expenditure);
-        }
+     cur.close();   }
     }
 
-    private void export() {
+    private void export() throws SecurityException {
         try {
             File dbFile = getDatabasePath(DATABASE_NAME);
             helper= new HiveListHelper(getApplicationContext(),"LBDB.db", null, 1);
-            HiveDB_Helper dbhelper = new HiveDB_Helper(getApplicationContext());
+            new HiveDB_Helper(getApplicationContext());
             System.out.println(dbFile);
             File exportDir = new File(Environment.getExternalStorageDirectory() + "/Documents");
-            if (!exportDir.exists()) {
-                exportDir.mkdirs();
-            }
+            //noinspection ResultOfMethodCallIgnored
+            exportDir.mkdirs();
             Calendar calendar=Calendar.getInstance();
             String DateNow= MonthDay.now().toString()+"-"+calendar.get(Calendar.YEAR);
             File file = new File(exportDir, "Expenditure_History_"+DateNow+".xls");
-            file.createNewFile();
             try {
                 if (file.exists()) {
                     System.out.println("file.xls " + exportDir.getAbsolutePath());
@@ -145,8 +133,10 @@ public class MainActivity8 extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "ATTENTION:The file already exists!", Toast.LENGTH_LONG).show();
                 }
                 HSSFWorkbook wb = new HSSFWorkbook();
-                SQLiteDatabase db = helper.getWriteableDatabase();
-                Cursor cur = helper.exportAll();
+                helper.getWriteableDatabase();
+                SQLiteDatabase db;
+                helper.exportAll();
+                Cursor cur;
                 Sheet sheet = wb.createSheet("Expenditure History");
 
                 data = new ArrayList<>();
@@ -155,7 +145,7 @@ public class MainActivity8 extends AppCompatActivity {
                 Row row = sheet.createRow(0);
                 row.setHeightInPoints(12);
                 while (cur.moveToNext()) {
-                    String arrStr[] = {
+                    String[] arrStr = {
                             String.valueOf(cur.getString(0)),
                             String.valueOf(cur.getString(1)),
                             String.valueOf(cur.getString(2)),
@@ -221,6 +211,7 @@ public class MainActivity8 extends AppCompatActivity {
                 cell6.setCellStyle(style);
                 cell7.setCellStyle(style);
                 FileOutputStream fileOut = new FileOutputStream(file);
+                cur.close();
                 wb.write(fileOut);
                 fileOut.close();
                 Toast.makeText(getApplicationContext(),"Exported to"+exportDir.getAbsolutePath(),Toast.LENGTH_SHORT).show();

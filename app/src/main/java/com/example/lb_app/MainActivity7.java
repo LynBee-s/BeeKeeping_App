@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -33,7 +34,7 @@ public class MainActivity7 extends AppCompatActivity {
         inflater.inflate(R.menu.menu_tracker, menu);
         return true;
     }
-
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -67,7 +68,7 @@ public class MainActivity7 extends AppCompatActivity {
         tomap= findViewById(R.id.tomap);
         map= findViewById(R.id.mapView);
 
-        MapView mapView = new MapView(this);
+        new MapView(this);
 
         map.setOnClickListener(v -> showMap(Uri.parse("geo:12,0428,-61.6966?z=11")));
         tomap.setOnClickListener(v -> showMap(Uri.parse("geo:12,0428,-61.6966?z=11")));
@@ -82,7 +83,7 @@ public class MainActivity7 extends AppCompatActivity {
     }
     private  void  getInfo(){
         SQLiteDatabase db=helper.getReadableDatabase();
-        Hives hives = null;
+        Hives hives;
         Cursor cur = db.rawQuery("select ID,Hive_ID, Location from "+TABLE1 ,null);
         while (cur.moveToNext()) {
             hives= new Hives();
@@ -91,6 +92,7 @@ public class MainActivity7 extends AppCompatActivity {
             hives.setLocation(cur.getString(2));
             data.add(hives);
         }
+        cur.close();
     }
     private void MainMenu() {
         try {

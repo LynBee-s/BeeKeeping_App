@@ -1,41 +1,36 @@
 package com.example.lb_app;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
-import com.example.lb_app.databinding.ContentScrollingBinding;
-import com.google.android.material.appbar.CollapsingToolbarLayout;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.browser.customtabs.CustomTabsIntent;
 
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
-
 import com.example.lb_app.databinding.ActivityScrollingBinding;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 public class ScrollingActivity extends AppCompatActivity {
     Button buy1,buy2;
     String url="https://www.paypal.com/mep/dashboard";
     String urlinsta="https://www.instagram.com/lynbeehoney/?hl=en";
     String urlfb="https://www.facebook.com/profile.php?id=100067959146512&notif_id=1680897311748116&notif_t=page_user_activity&ref=notif";
-    private ActivityScrollingBinding binding;
+
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_scrolling, menu);
         return true;
     }
-
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -61,7 +56,7 @@ public class ScrollingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityScrollingBinding.inflate(getLayoutInflater());
+        com.example.lb_app.databinding.ActivityScrollingBinding binding = ActivityScrollingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         Toolbar toolbar = binding.toolbar;

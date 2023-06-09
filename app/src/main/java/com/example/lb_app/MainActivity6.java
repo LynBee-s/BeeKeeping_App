@@ -1,14 +1,10 @@
 package com.example.lb_app;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.browser.customtabs.CustomTabsIntent;
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.icu.util.Calendar;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
-import android.service.controls.templates.TemperatureControlTemplate;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,8 +15,8 @@ import android.widget.CalendarView;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import java.sql.Time;
-import java.util.Map;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.browser.customtabs.CustomTabsIntent;
 
 public class MainActivity6 extends AppCompatActivity {
     CalendarView calendarView;
@@ -35,7 +31,7 @@ public class MainActivity6 extends AppCompatActivity {
         inflater.inflate(R.menu.menu_planner, menu);
         return true;
     }
-
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -59,7 +55,7 @@ public class MainActivity6 extends AppCompatActivity {
         newevent = findViewById(R.id.setrecuerdo);
         calendarView = findViewById(R.id.calendarView7);
         View webview = findViewById(R.id.wv);
-        WebView wv = new WebView(MainActivity6.this);
+        new WebView(MainActivity6.this);
 
 
         newevent.setOnClickListener(v -> event());
