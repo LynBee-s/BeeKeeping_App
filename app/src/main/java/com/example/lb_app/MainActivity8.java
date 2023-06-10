@@ -33,6 +33,7 @@ import java.time.MonthDay;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+@SuppressWarnings("ResultOfMethodCallIgnored")
 public class MainActivity8 extends AppCompatActivity {
     public ArrayList<Expenditure> data;
     private RecyclerView recyclerView;
@@ -70,8 +71,8 @@ public class MainActivity8 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main8);
-         new HiveDB_Helper(MainActivity8.this);
-        helper = new HiveListHelper(getApplicationContext(), "LBDB.db", null, 1);
+        new HiveDB_Helper(MainActivity8.this);
+        helper = new HiveListHelper(getApplicationContext(), "LBDB.db", null);
         recyclerView = findViewById(R.id.recycler_view5);
         data = new ArrayList<>();
         export3 = findViewById(R.id.export5);
@@ -97,8 +98,8 @@ public class MainActivity8 extends AppCompatActivity {
 
     private void getInfo() {
         SQLiteDatabase db = helper.getReadableDatabase();
-        Expenditure expenditure;
-        Cursor cur = db.rawQuery("select * from " + TABLE3, null);
+        Expenditure expenditure ;
+        @SuppressLint("Recycle") Cursor cur = db.rawQuery("select * from " + TABLE3, null);
         while (cur.moveToNext()) {
             expenditure = new Expenditure();
             expenditure.setID(cur.getString(0));
@@ -110,18 +111,19 @@ public class MainActivity8 extends AppCompatActivity {
             expenditure.setTotal(cur.getString(6));
             expenditure.setNotes(cur.getString(7));
             data.add(expenditure);
-     cur.close();   }
+        }
     }
 
-    private void export() throws SecurityException {
+    private void export() {
         try {
             File dbFile = getDatabasePath(DATABASE_NAME);
-            helper= new HiveListHelper(getApplicationContext(),"LBDB.db", null, 1);
+            helper= new HiveListHelper(getApplicationContext(),"LBDB.db", null);
             new HiveDB_Helper(getApplicationContext());
             System.out.println(dbFile);
             File exportDir = new File(Environment.getExternalStorageDirectory() + "/Documents");
-            //noinspection ResultOfMethodCallIgnored
-            exportDir.mkdirs();
+            if (!exportDir.exists()) {
+                exportDir.mkdirs();
+            }
             Calendar calendar=Calendar.getInstance();
             String DateNow= MonthDay.now().toString()+"-"+calendar.get(Calendar.YEAR);
             File file = new File(exportDir, "Expenditure_History_"+DateNow+".xls");
@@ -211,9 +213,9 @@ public class MainActivity8 extends AppCompatActivity {
                 cell6.setCellStyle(style);
                 cell7.setCellStyle(style);
                 FileOutputStream fileOut = new FileOutputStream(file);
-                cur.close();
                 wb.write(fileOut);
                 fileOut.close();
+                cur.close();
                 Toast.makeText(getApplicationContext(),"Exported to"+exportDir.getAbsolutePath(),Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_SHORT).show();

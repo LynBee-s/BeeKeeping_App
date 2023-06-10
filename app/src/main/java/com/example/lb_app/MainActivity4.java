@@ -57,13 +57,12 @@ public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main4);
          new HiveDB_Helper(MainActivity4.this);
-        helper = new HiveListHelper(getApplicationContext(), "LBDB.db", null, 1);
+        helper = new HiveListHelper(getApplicationContext(), "LBDB.db", null);
 
         btnInsert = findViewById(R.id.insert3);
         btnUpdate = findViewById(R.id.update3);
         btnSearch = findViewById(R.id.search3);
         btnClear = findViewById(R.id.clear3);
-
 
         id3 = findViewById(R.id.id3);
         transid3 = findViewById(R.id.transid3);
@@ -78,7 +77,6 @@ public boolean onCreateOptionsMenu(Menu menu) {
             try {
                 Calendar calendar = Calendar.getInstance();
                 String DateNow = MonthDay.now().toString() + "-" + calendar.get(Calendar.YEAR);
-                date3.setText(DateNow);
                 PriceI = Float.parseFloat(price3.getText().toString());
                 AmtI = Float.parseFloat(amt3.getText().toString());
                 TotalI = PriceI * AmtI;
@@ -109,6 +107,7 @@ public boolean onCreateOptionsMenu(Menu menu) {
             }
         });
         btnSearch.setOnClickListener(v -> {
+
             SQLiteDatabase db = helper.getReadableDatabase();
             String[] projection = {
                     Structure_BBDD.COLUMNB2,

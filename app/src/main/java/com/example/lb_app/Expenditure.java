@@ -10,7 +10,8 @@ public class Expenditure {
     private String Total;
     private String Notes;
 
-    public Expenditure(String ID,String Trans_ID,String Date,String Description,String Amount,String Price, String Total,String Notes){
+    public Expenditure(String ID, String Trans_ID, String Date, String Description, String Amount, String Price, String Total, String Notes){
+        this.setNotes(Notes);
         this.setID(ID);
         this.setTrans_ID(Trans_ID);
         this.setDate(Date);
@@ -18,14 +19,13 @@ public class Expenditure {
         this.setAmount(Amount);
         this.setPrice(Price);
         this.setTotal(Total);
-        this.setNotes(Notes);
+
     }
+
     public Expenditure(){
 
     }
-    public Expenditure(String ID){
 
-    }
 
     public String getID() {
         return ID;
@@ -83,11 +83,12 @@ public class Expenditure {
         Total = total;
     }
 
+
     public String getNotes() {
         return Notes;
     }
 
-    public void setNotes(String Notes) {
-        Notes = Notes;
+    public void setNotes(String notes) {
+        Notes = notes;
     }
 }

@@ -11,23 +11,10 @@ public class Hives {
     private String General_Stat;
     private String Notes;
 
-    public Hives(String ID,String HiveID,String Date,String Hive_Stat,String Frames,String Population, String Location,String General_Stat,String Notes){
-        this.setID(ID);
-        this.setHiveID(HiveID);
-        this.setDate(Date);
-        this.setHive_Stat(Hive_Stat);
-        this.setFrames(Frames);
-        this.setPopulation(Population);
-        this.setLocation(Location);
-        this.setGeneral_Stat(General_Stat);
-        this.setNotes(Notes);
-    }
     public Hives(){
 
     }
-    public Hives(String ID){
 
-    }
 
     public String getID() {
         return ID;

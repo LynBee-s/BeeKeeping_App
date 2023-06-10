@@ -1,11 +1,10 @@
 package com.example.lb_app;
 
-import static com.example.lb_app.HiveDB_Helper.TABLE4;
-import static com.example.lb_app.Structure_BBDD.TABLE2;
+
+
+import static com.example.lb_app.HiveListHelper.TABLE4;
 
 import android.content.ContentValues;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,19 +17,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
-
-import java.time.MonthDay;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class HarvestAdapter extends RecyclerView.Adapter<HarvestAdapter.ViewHolder> {
-    LayoutInflater inflater;
     ArrayList<Harvest> data;
     HiveDB_Helper hiveDB_helper;
 
-    public HarvestAdapter(Context context) {
-        this.inflater = LayoutInflater.from(context);
-    }
+
 
     public HarvestAdapter(ArrayList<Harvest> data) {
         this.data = data;
@@ -68,7 +61,7 @@ public class HarvestAdapter extends RecyclerView.Adapter<HarvestAdapter.ViewHold
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             hiveDB_helper = new HiveDB_Helper(itemView.getContext());
-            helper = new HiveDB_Helper(itemView.getContext().getApplicationContext(), "LBDB.db", null, 1);
+            helper = new HiveDB_Helper(itemView.getContext().getApplicationContext(), null, 1);
 
             btnupdate8 = itemView.findViewById(R.id.btnupdate8);
 
@@ -82,50 +75,38 @@ public class HarvestAdapter extends RecyclerView.Adapter<HarvestAdapter.ViewHold
             btnDelete = (Button) itemView.findViewById(R.id.btnDelete);
 
 
-            btnDelete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    try {
-                        SQLiteDatabase db = helper.getWritableDatabase();
-                        // Define 'where' part of query.
-                        String selection = Structure_BBDD.COLUMNCID + " LIKE ?";
+            btnDelete.setOnClickListener(v -> {
+                try {
+                    SQLiteDatabase db = helper.getWritableDatabase();
+                    // Define 'where' part of query.
+                    String selection = Structure_BBDD.COLUMNCID + " LIKE ?";
 // Specify arguments in placeholder order.
-                        String[] selectionArgs = {id8.getText().toString()};
+                    String[] selectionArgs = {id8.getText().toString()};
 // Issue SQL statement.
-                        AlertDialog.Builder builder = new AlertDialog.Builder(itemView.getContext());
-                        builder.setMessage("Are you sure you would like to delete this register?").setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        db.delete(TABLE4, selection, selectionArgs);
-                                        Toast.makeText(itemView.getContext(), "The register has been deleted", Toast.LENGTH_SHORT).show();
-                                        id8.setText("");
-                                        hiveid8.setText("");
-                                        date8.setText("");
-                                        amt8.setText("");
-                                        other8.setText("");
-                                        amtt8.setText("");
-                                        notes8.setText("");
-                                    }
-                                })
-                                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(itemView.getContext());
+                    builder.setMessage("Are you sure you would like to delete this register?").setPositiveButton("yes", (dialogInterface, i) -> {
+                        db.delete(TABLE4, selection, selectionArgs);
+                        Toast.makeText(itemView.getContext(), "The register has been deleted", Toast.LENGTH_SHORT).show();
+                        id8.setText("");
+                        hiveid8.setText("");
+                        date8.setText("");
+                        amt8.setText("");
+                        other8.setText("");
+                        amtt8.setText("");
+                        notes8.setText("");
+                    })
+                            .setNegativeButton("No", (dialog, which) -> {
 
-                                    }
-
-                                    public void onCick(DialogInterface dialogInterface, int i) {
-                                    }
-                                }).show();
-                    } catch (Exception e) {
-                        Toast.makeText(itemView.getContext(), "ERROR", Toast.LENGTH_LONG).show();
-                    }
+                            }).show();
+                } catch (Exception e) {
+                    Toast.makeText(itemView.getContext(), "ERROR", Toast.LENGTH_LONG).show();
                 }
             });
                 btnupdate8.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         try {
-                            SQLiteDatabase db = helper.getReadableDatabase();
+                            helper.getReadableDatabase();
                             ContentValues values = new ContentValues();
                             values.put(Structure_BBDD.COLUMNCID, id8.getText().toString());
                             values.put(Structure_BBDD.COLUMNC2, hiveid8.getText().toString());

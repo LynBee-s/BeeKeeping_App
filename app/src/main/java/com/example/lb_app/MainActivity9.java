@@ -1,22 +1,22 @@
 package com.example.lb_app;
 
 
-import static com.example.lb_app.HiveDB_Helper.TABLE4;
-import static com.example.lb_app.Structure_BBDD.TABLE2;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
+import static com.example.lb_app.HiveListHelper.TABLE4;
+
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.time.MonthDay;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -33,7 +33,7 @@ public class MainActivity9 extends AppCompatActivity {
         inflater.inflate(R.menu.menu_harvestrec, menu);
         return true;
     }
-
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -61,8 +61,8 @@ public class MainActivity9 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main9);
-        HiveDB_Helper hiveDB_helper=new HiveDB_Helper(MainActivity9.this);
-        helper= new HiveListHelper(getApplicationContext(),"LBDB.db", null, 1);
+        new HiveDB_Helper(MainActivity9.this);
+        helper= new HiveListHelper(getApplicationContext(),"LBDB.db", null);
         data=new ArrayList<>();
 
         id9= findViewById(R.id.id9);
@@ -76,35 +76,32 @@ public class MainActivity9 extends AppCompatActivity {
         btnInsert=(Button) findViewById(R.id.btninsert8);
 
 
-        btnInsert.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    Calendar calendar=Calendar.getInstance();
-                    String DateNow= MonthDay.now().toString()+"-"+calendar.get(Calendar.YEAR);
+        btnInsert.setOnClickListener(v -> {
+            try {
+                Calendar calendar=Calendar.getInstance();
+                String DateNow= MonthDay.now().toString()+"-"+calendar.get(Calendar.YEAR);
 
-                    SQLiteDatabase db = helper.getWritableDatabase();
-                    ContentValues values = new ContentValues();
-                    values.put(Structure_BBDD.COLUMNC2, hiveid9.getText().toString());
-                    values.put(Structure_BBDD.COLUMNC3, DateNow);
-                    values.put(Structure_BBDD.COLUMNC4, amt9.getText().toString());
-                    values.put(Structure_BBDD.COLUMNC5, other9.getText().toString());
-                    values.put(Structure_BBDD.COLUMNC6,amtt9.getText().toString());
-                    values.put(Structure_BBDD.COLUMNC7,notes9.getText().toString());
-                    long newRowId = db.insert(TABLE4, null, values);
-                    Toast.makeText(getApplicationContext(), "The register was saved with ID: " + newRowId, Toast.LENGTH_SHORT).show();
+                SQLiteDatabase db = helper.getWritableDatabase();
+                ContentValues values = new ContentValues();
+                values.put(Structure_BBDD.COLUMNC2, hiveid9.getText().toString());
+                values.put(Structure_BBDD.COLUMNC3, DateNow);
+                values.put(Structure_BBDD.COLUMNC4, amt9.getText().toString());
+                values.put(Structure_BBDD.COLUMNC5, other9.getText().toString());
+                values.put(Structure_BBDD.COLUMNC6,amtt9.getText().toString());
+                values.put(Structure_BBDD.COLUMNC7,notes9.getText().toString());
+                long newRowId = db.insert(TABLE4, null, values);
+                Toast.makeText(getApplicationContext(), "The register was saved with ID: " + newRowId, Toast.LENGTH_SHORT).show();
 
-                    //Clear text from fields
-                    id9.setText("");
-                    hiveid9.setText("");
-                    date9.setText("");
-                    amt9.setText("");
-                    other9.setText("");
-                    amtt9.setText("");
-                    notes9.setText("");
-                } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-                }
+                //Clear text from fields
+                id9.setText("");
+                hiveid9.setText("");
+                date9.setText("");
+                amt9.setText("");
+                other9.setText("");
+                amtt9.setText("");
+                notes9.setText("");
+            } catch (Exception e) {
+                Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
             }
         });
     }

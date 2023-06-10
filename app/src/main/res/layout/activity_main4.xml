@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:allowClickWhenDisabled="false"
+            android:textIsSelectable="false"
             android:fontFamily="@font/alice"
             android:text="@string/id"
             android:textColor="@color/black" />
@@ -43,7 +43,7 @@
             android:layout_width="13dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:allowClickWhenDisabled="false"
+            android:textIsSelectable="false"
             android:fontFamily="@font/alice"
             android:text="@string/trans_id"
             android:textColor="@color/black" />
@@ -73,7 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:allowClickWhenDisabled="false"
+            android:textIsSelectable="false"
             android:fontFamily="@font/alice"
             android:text="@string/datelc"
             android:textColor="@color/black" />
@@ -129,7 +129,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:allowClickWhenDisabled="false"
+            android:textIsSelectable="false"
             android:fontFamily="@font/alice"
             android:text="@string/amount"
             android:textColor="@color/black" />
@@ -148,7 +148,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:allowClickWhenDisabled="false"
+            android:textIsSelectable="false"
             android:text="@string/price_xcd"
             android:textColor="@color/black" />
 
@@ -171,7 +171,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:allowClickWhenDisabled="false"
+            android:textIsSelectable="false"
             android:fontFamily="@font/alice"
             android:text="@string/total"
             android:textColor="@color/black" />

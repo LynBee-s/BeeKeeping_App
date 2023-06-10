@@ -58,7 +58,7 @@
     <string name="search">Search</string>
     <string name="clear_fields">Clear Fields</string>
     <string name="comment">Comment</string>
-    <string name="send_reciept">Send Reciept</string>
+    <string name="send_reciept">Send Receipt</string>
     <string name="make_payment">Make Payment</string>
     <string name="datelc">Date</string>
     <string name="noteslc">Notes:</string>
@@ -96,5 +96,6 @@
     <string name="to_hive_activity">Go to Hive Activity</string>
     <string name="view_sales_history">View Sales History</string>
     <string name="view_products">View Products</string>
+    <string name="export_to_xls_file">Export to xls File</string>
 
 </resources>

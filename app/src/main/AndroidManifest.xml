@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.ACTION_CREATE_DOCUMENT" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORGAE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
 
     <application
-        android:name="com.chaquo.python.android.PyApplication"
+
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -39,7 +39,7 @@
         </activity>
         <activity
             android:name=".HiveRecordList"
-            android:exported="false"
+            android:exported="true"
             android:label="Hive Activity Records">
             <meta-data
                 android:name="android.app.lib_name"

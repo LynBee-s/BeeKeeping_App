@@ -76,7 +76,7 @@ public class MainActivity5 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main5);
         new HiveDB_Helper(MainActivity5.this);
-        helper = new HiveListHelper(getApplicationContext(), "LBDB.db", null, 1);
+        helper = new HiveListHelper(getApplicationContext(), "LBDB.db", null);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view2);
         data = new ArrayList<>();
         export2 = (ImageButton) findViewById(R.id.export2);
@@ -144,7 +144,7 @@ public class MainActivity5 extends AppCompatActivity {
         private void export() throws SecurityException {
             try {
                 File dbFile = getDatabasePath(DATABASE_NAME);
-                helper= new HiveListHelper(getApplicationContext(),"LBDB.db", null, 1);
+                helper= new HiveListHelper(getApplicationContext(),"LBDB.db", null);
                 new HiveDB_Helper(getApplicationContext());
                 System.out.println(dbFile);
                 File exportDir = new File(Environment.getExternalStorageDirectory() + "/Documents");

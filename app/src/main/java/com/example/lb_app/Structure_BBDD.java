@@ -1,12 +1,7 @@
 package com.example.lb_app;
 
-import android.content.Context;
-
-
-
 public class Structure_BBDD {
-    public Structure_BBDD(Context context){}
-    public static final String DATABASE_NAME = "LBDB.db";
+    public Structure_BBDD(){}
     public static final String TABLE1 = "Hive_Rec";
     public static final String COLUMNID = "ID";
     public static final String COLUMN2 = "Hive_ID";
@@ -62,9 +57,6 @@ public class Structure_BBDD {
                     Structure_BBDD.COLUMN8 + " TEXT,"+
                     Structure_BBDD.COLUMN9 + " TEXT ); ";
 
-    // public static final String SQL_DELETE_ENTRIES =
-    // "DROP TABLE IF EXISTS " + Estructura_BBDD.TABLE_NAME;
-
     public static final String SQL_CREATE_ENTRIES2 =
 
             "CREATE TABLE " + Structure_BBDD.TABLE2 + " ( " +
@@ -77,8 +69,6 @@ public class Structure_BBDD {
                     Structure_BBDD.COLUMNA7 + " TEXT,"+
                     Structure_BBDD.COLUMNA8 + " TEXT ); ";
 
-    // public static final String SQL_DELETE_ENTRIES =
-    // "DROP TABLE IF EXISTS " + Estructura_BBDD.TABLE_NAME;
 
     public static final String SQL_CREATE_ENTRIES3 =
 
@@ -92,8 +82,6 @@ public class Structure_BBDD {
                     Structure_BBDD.COLUMNB7 + " TEXT,"+
                     Structure_BBDD.COLUMNB8 + " TEXT ); ";
 
-    // public static final String SQL_DELETE_ENTRIES =
-    // "DROP TABLE IF EXISTS " + Estructura_BBDD.TABLE3;
 
     public static final String SQL_CREATE_ENTRIES4 =
 
@@ -106,7 +94,5 @@ public class Structure_BBDD {
                     Structure_BBDD.COLUMNC6 + " TEXT,"+
                     Structure_BBDD.COLUMNC7 + " TEXT ); ";
 
-        // public static final String SQL_DELETE_ENTRIES =
-        // "DROP TABLE IF EXISTS " + Estructura_BBDD.TABLE4;
 
 }

@@ -1,9 +1,5 @@
 package com.example.lb_app;
 
-
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -15,24 +11,25 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
-
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.time.MonthDay;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-
-
 public class MainActivity2 extends AppCompatActivity {
     Button btnRead,btnUpdate,btnClear,btnInsert;
-    EditText id,hid,date,frame,hivst,pop,locate,note,ghivestat;
+    EditText id,hid,date,frame,hivst,pop,locate,hprof,note;
     public  ArrayList<Hives>data;
+    HiveDB_Helper hiveDB_helper=null;
     HiveListHelper helper;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_hactivity, menu);
+        inflater.inflate(R.menu.main_menu, menu);
         return true;
     }
     @SuppressLint("NonConstantResourceId")
@@ -40,33 +37,47 @@ public class MainActivity2 extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.tomainmenu12:
+            case R.id.mmenu:
                 MainMenu();
                 return true;
-            case R.id.viewlist:
-                ActivityList();
+
+            case R.id.hivrec:
+                HiveRecords();
                 return true;
-            case R.id.setevent:
-                Gotoevent();
+
+            case R.id.ventas:
+                Sales();
+                return true;
+
+            case R.id.gastos:
+                Expenditure();
+                return true;
+            case R.id.geoloc:
+                MapHive();
+                return true;
+            case R.id.salesresum:
+                SalesResume();
                 return true;
             case R.id.tohiveresum:
-                HiveResumen();
+                HiveRes();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
-//Hive Activity
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-       new HiveDB_Helper(MainActivity2.this);
-        helper= new HiveListHelper(getApplicationContext(),"LBDB.db", null, 1);
+        hiveDB_helper=new HiveDB_Helper(MainActivity2.this);
+        helper= new HiveListHelper(getApplicationContext(),HiveListHelper.DATABASE_NAME, null);
         data=new ArrayList<>();
+
+
 //Declare Buttons..................................---------------------------------------------------
-        btnInsert= findViewById(R.id.insert);
-        btnUpdate= findViewById(R.id.actualizar);
+        btnInsert=(Button) findViewById(R.id.insert);
+        btnUpdate=(Button) findViewById(R.id.actualizar);
         btnRead=(Button) findViewById(R.id.leer);
         btnClear=(Button) findViewById(R.id.limpiar);
 //Declare text fields..................................--------------------------------------------------
@@ -76,35 +87,34 @@ public class MainActivity2 extends AppCompatActivity {
         hivst=(EditText)findViewById(R.id.hivstat);
         frame=(EditText)findViewById(R.id.frames);
         pop=(EditText) findViewById(R.id.popu);
-        ghivestat=(EditText)findViewById(R.id.ghivestat2);
+        hprof=(EditText) findViewById(R.id.ghivestat2);
         locate=(EditText) findViewById(R.id.location);
         note=(EditText)findViewById(R.id.notes);
-//Button actions when pressed------------------------------------------------------------------------------
-        btnInsert.setOnClickListener(v -> {
+
+       btnInsert.setOnClickListener(v -> {
             try {
-                Calendar calendar=Calendar.getInstance();
-                String DateNow= MonthDay.now().toString()+"-"+calendar.get(Calendar.YEAR);
-                date.setText(DateNow);
+                Calendar calendar = Calendar.getInstance();
+                String DateNow = MonthDay.now().toString() + "-" + calendar.get(Calendar.YEAR);
                 SQLiteDatabase db = helper.getWritableDatabase();
                 ContentValues values = new ContentValues();
                 values.put(Structure_BBDD.COLUMN2, hid.getText().toString());
-                values.put(Structure_BBDD.COLUMN3, date.getText().toString());
+                values.put(Structure_BBDD.COLUMN3, DateNow);
                 values.put(Structure_BBDD.COLUMN4, frame.getText().toString());
                 values.put(Structure_BBDD.COLUMN5, hivst.getText().toString());
                 values.put(Structure_BBDD.COLUMN6, pop.getText().toString());
-                values.put(Structure_BBDD.COLUMN7, ghivestat.getText().toString());
+                values.put(Structure_BBDD.COLUMN7, hprof.getText().toString());
                 values.put(Structure_BBDD.COLUMN8, locate.getText().toString());
-                values.put(Structure_BBDD.COLUMN9, note.getText().toString());
+               values.put(Structure_BBDD.COLUMN9, note.getText().toString());
+
                 long newRowId = db.insert(Structure_BBDD.TABLE1, null, values);
                 Toast.makeText(getApplicationContext(), "The register was saved with ID: " + newRowId, Toast.LENGTH_LONG).show();
-                //Clear text from fields
                 id.setText("");
                 hid.setText("");
                 date.setText("");
                 frame.setText("");
                 hivst.setText("");
                 pop.setText("");
-                ghivestat.setText("");
+                hprof.setText("");
                 locate.setText("");
                 note.setText("");
             } catch (Exception e) {
@@ -112,9 +122,9 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
         btnRead.setOnClickListener(v -> {
-            try{
             SQLiteDatabase db = helper.getReadableDatabase();
             String[] projection = {
+                    Structure_BBDD.COLUMNID,
                     Structure_BBDD.COLUMN2,
                     Structure_BBDD.COLUMN3,
                     Structure_BBDD.COLUMN4,
@@ -123,7 +133,9 @@ public class MainActivity2 extends AppCompatActivity {
                     Structure_BBDD.COLUMN7,
                     Structure_BBDD.COLUMN8,
                     Structure_BBDD.COLUMN9
+
             };
+
             String selection = Structure_BBDD.COLUMNID + " = ?";
             String[] selectionArgs = {id.getText().toString()};
             try {
@@ -142,48 +154,41 @@ public class MainActivity2 extends AppCompatActivity {
                 frame.setText("");
                 hivst.setText("");
                 pop.setText("");
-                ghivestat.setText("");
+                hprof.setText("");
                 locate.setText("");
                 note.setText("");
 
-                hid.setText(cursor.getString(0));
-                date.setText(cursor.getString(1));
-                frame.setText(cursor.getString(2));
-                hivst.setText(cursor.getString(3));
-                pop.setText(cursor.getString(4));
-                ghivestat.setText(cursor.getString(5));
-                locate.setText(cursor.getString(6));
-                note.setText(cursor.getString(7));
+                id.setText(cursor.getString(0));
+                hid.setText(cursor.getString(1));
+                date.setText(cursor.getString(2));
+                frame.setText(cursor.getString(3));
+                hivst.setText(cursor.getString(4));
+                pop.setText(cursor.getString(5));
+                hprof.setText(cursor.getString(6));
+                locate.setText(cursor.getString(7));
+                note.setText(cursor.getString(8));
                 cursor.close();
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), "ERROR: Could not find the requested register. ", Toast.LENGTH_LONG).show();
             }
-        }catch (Exception e) {
-                Toast.makeText(getApplicationContext(), "ERROR: Could not find the requested register. ", Toast.LENGTH_LONG).show();
-            }
-            });
+        });
         btnUpdate.setOnClickListener(v -> {
-                try {
-                    SQLiteDatabase db = helper.getReadableDatabase();
-// New value for one column
-                    ContentValues values = new ContentValues();
-                    values.put(Structure_BBDD.COLUMNID, id.getText().toString());
-                    values.put(Structure_BBDD.COLUMN2, hid.getText().toString());
-                    values.put(Structure_BBDD.COLUMN3, date.getText().toString());
-                    values.put(Structure_BBDD.COLUMN4, frame.getText().toString());
-                    values.put(Structure_BBDD.COLUMN5, hivst.getText().toString());
-                    values.put(Structure_BBDD.COLUMN6, pop.getText().toString());
-                    values.put(Structure_BBDD.COLUMN7, ghivestat.getText().toString());
-                    values.put(Structure_BBDD.COLUMN8, note.getText().toString());
-                    values.put(Structure_BBDD.COLUMN9, note.getText().toString());
-                    String selection = Structure_BBDD.COLUMNID + " LIKE ?";
-                    String[] selectionArgs = {id.getText().toString()};
-                   db.update(Structure_BBDD.TABLE1,values, selection,selectionArgs);
+            SQLiteDatabase db = helper.getReadableDatabase();
+            ContentValues values = new ContentValues();
+            values.put(Structure_BBDD.COLUMNID, id.getText().toString());
+            values.put(Structure_BBDD.COLUMN2, hid.getText().toString());
+            values.put(Structure_BBDD.COLUMN3, date.getText().toString());
+            values.put(Structure_BBDD.COLUMN4, frame.getText().toString());
+            values.put(Structure_BBDD.COLUMN5, hivst.getText().toString());
+            values.put(Structure_BBDD.COLUMN6, pop.getText().toString());
+            values.put(Structure_BBDD.COLUMN7, hprof.getText().toString());
+            values.put(Structure_BBDD.COLUMN8, locate.getText().toString());
+            values.put(Structure_BBDD.COLUMN9,note.getText().toString());
+            String selection = Structure_BBDD.COLUMNID + " LIKE ?";
+            String[] selectionArgs = {id.getText().toString()};
 
-                    Toast.makeText(getApplicationContext(), "Register "+id.getText()+" has been updated. ", Toast.LENGTH_LONG).show();
-                } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), "ERROR: Please insert ID and try again. ", Toast.LENGTH_LONG).show();
-                }
+            db.update(Structure_BBDD.TABLE1, values, selection, selectionArgs);
+            Toast.makeText(getApplicationContext(), "Register " +id.getText()+ " has been successfully updated.", Toast.LENGTH_LONG).show();
         });
 
         btnClear.setOnClickListener(v -> {
@@ -194,14 +199,16 @@ public class MainActivity2 extends AppCompatActivity {
                 frame.setText("");
                 hivst.setText("");
                 pop.setText("");
-                ghivestat.setText("");
+                hprof.setText("");
                 locate.setText("");
                 note.setText("");
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
             }
+
         });
     }
+
     private void MainMenu() {
         try {
             Intent intent = new Intent(this, MainActivity.class);
@@ -210,28 +217,56 @@ public class MainActivity2 extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
-    private void Gotoevent() {
+    private void HiveRecords() {
         try {
-            Intent intent = new Intent(this, MainActivity6.class);
+            Intent intent = new Intent(this, MainActivity2.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
-    private void ActivityList() {
+
+    private void Sales() {
         try {
-            Intent intent = new Intent(this, HiveRecordList.class);
+            Intent intent = new Intent(this, MainActivity3.class);
+            startActivity(intent);
+
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void Expenditure() {
+        try {
+            Intent intent = new Intent(this, MainActivity4.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+        }
+
+    }
+    private void MapHive() {
+        try {
+            Intent intent = new Intent(this, MainActivity9.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
-    private void HiveResumen() {
+    private void SalesResume() {
         try {
-            Intent intent = new Intent(this,MainActivity10.class);
+            Intent intent = new Intent(this, MainActivity5.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+        }
+    } private void HiveRes() {
+        try {
+            Intent intent = new Intent(this, MainActivity10.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
     }
+
 }

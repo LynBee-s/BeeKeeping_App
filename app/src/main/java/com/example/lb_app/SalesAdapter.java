@@ -3,8 +3,6 @@ package com.example.lb_app;
 import static com.example.lb_app.Structure_BBDD.TABLE2;
 
 import android.content.ContentValues;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,15 +18,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class SalesAdapter extends RecyclerView.Adapter<SalesAdapter.ViewHolder>{
-    LayoutInflater inflater;
     ArrayList<Sales> data;
-    HiveDB_Helper helper;
-   HiveDB_Helper hiveDB_helper;
+    HiveDB_Helper hiveDB_helper;
     private float TotalI;
     private float AmtI;
     private float PriceI;
-public SalesAdapter(Context context){this.inflater=LayoutInflater.from(context);}
-public SalesAdapter(ArrayList<Sales>data){this.data=data;}
+
+    public SalesAdapter(ArrayList<Sales>data){this.data=data;}
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -60,7 +56,7 @@ public SalesAdapter(ArrayList<Sales>data){this.data=data;}
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             hiveDB_helper=new HiveDB_Helper(itemView.getContext());
-            helper= new HiveDB_Helper(itemView.getContext().getApplicationContext(), "LBDB.db", null, 1);
+            helper= new HiveDB_Helper(itemView.getContext().getApplicationContext(), null, 1);
             btnupdate=(Button) itemView.findViewById(R.id.btnupdate5);
             btndelete=(Button) itemView.findViewById(R.id.delete1);
 
@@ -73,74 +69,54 @@ public SalesAdapter(ArrayList<Sales>data){this.data=data;}
             total4=(EditText) itemView.findViewById(R.id.total4);
             notes4=(EditText) itemView.findViewById(R.id.notes4);
 
-            btndelete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    try {
-                        SQLiteDatabase db = helper.getWritableDatabase();
-                        // Define 'where' part of query.
-                        String selection = Structure_BBDD.COLUMNAID + " LIKE ?";
-// Specify arguments in placeholder order.
-                        String[] selectionArgs = {id4.getText().toString()};
-// Issue SQL statement.
-                        AlertDialog.Builder builder = new AlertDialog.Builder(itemView.getContext());
-                        builder.setMessage("Are you sure you would like to delete this register?").setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        db.delete(TABLE2, selection, selectionArgs);
-                                        Toast.makeText(itemView.getContext(), "The register has been deleted", Toast.LENGTH_LONG).show();
-                                        id4.setText("");
-                                        transid4.setText("");
-                                        date4.setText("");
-                                        descrip4.setText("");
-                                        amt4.setText("");
-                                        price4.setText("");
-                                        total4.setText("");
-                                        notes4.setText("");
-                                    }
-                                })
-                                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
+            btndelete.setOnClickListener(v -> {
+                try {
+                    SQLiteDatabase db = helper.getWritableDatabase();
+                    String selection = Structure_BBDD.COLUMNAID + " LIKE ?";
+                    String[] selectionArgs = {id4.getText().toString()};
+                    AlertDialog.Builder builder = new AlertDialog.Builder(itemView.getContext());
+                    builder.setMessage("Are you sure you would like to delete this register?").setPositiveButton("yes", (dialogInterface, i) -> {
+                        db.delete(TABLE2, selection, selectionArgs);
+                        Toast.makeText(itemView.getContext(), "The register has been deleted", Toast.LENGTH_LONG).show();
+                        id4.setText("");
+                        transid4.setText("");
+                        date4.setText("");
+                        descrip4.setText("");
+                        amt4.setText("");
+                        price4.setText("");
+                        total4.setText("");
+                        notes4.setText("");
+                    })
+                            .setNegativeButton("No", (dialog, which) -> {
 
-                                    }
-                                }).show();
-                    } catch (Exception e) {
-                        Toast.makeText(itemView.getContext(), "ERROR", Toast.LENGTH_LONG).show();
-                    }
+                            }).show();
+                } catch (Exception e) {
+                    Toast.makeText(itemView.getContext(), "ERROR", Toast.LENGTH_LONG).show();
                 }
             });
 
-            btnupdate.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    try {
-                        PriceI= Float.parseFloat(price4.getText().toString());
-                        AmtI=Float.parseFloat(amt4.getText().toString());
-                        TotalI=PriceI*AmtI;
-                        SQLiteDatabase db = helper.getReadableDatabase();
-// New value for one column
-                        ContentValues values = new ContentValues();
-                        values.put(Structure_BBDD.COLUMNAID,id4.getText().toString() );
-                        values.put(Structure_BBDD.COLUMNA2, transid4.getText().toString());
-                        values.put(Structure_BBDD.COLUMNA3, date4.getText().toString());
-                        values.put(Structure_BBDD.COLUMNA4, descrip4.getText().toString());
-                        values.put(Structure_BBDD.COLUMNA5, amt4.getText().toString());
-                        values.put(Structure_BBDD.COLUMNA6, price4.getText().toString());
-                        values.put(Structure_BBDD.COLUMNA7, TotalI);
-                        values.put(Structure_BBDD.COLUMNA8, notes4.getText().toString());
-                        String selection = Structure_BBDD.COLUMNAID + " LIKE ?";
-                        String[] selectionArgs = {id4.getText().toString()};
+            btnupdate.setOnClickListener(v -> {
+                try {
+                    PriceI= Float.parseFloat(price4.getText().toString());
+                    AmtI=Float.parseFloat(amt4.getText().toString());
+                    TotalI=PriceI*AmtI;
+                    SQLiteDatabase db = helper.getReadableDatabase();
+                    ContentValues values = new ContentValues();
+                    values.put(Structure_BBDD.COLUMNAID,id4.getText().toString() );
+                    values.put(Structure_BBDD.COLUMNA2, transid4.getText().toString());
+                    values.put(Structure_BBDD.COLUMNA3, date4.getText().toString());
+                    values.put(Structure_BBDD.COLUMNA4, descrip4.getText().toString());
+                    values.put(Structure_BBDD.COLUMNA5, amt4.getText().toString());
+                    values.put(Structure_BBDD.COLUMNA6, price4.getText().toString());
+                    values.put(Structure_BBDD.COLUMNA7, TotalI);
+                    values.put(Structure_BBDD.COLUMNA8, notes4.getText().toString());
+                    String selection = Structure_BBDD.COLUMNAID + " LIKE ?";
+                    String[] selectionArgs = {id4.getText().toString()};
 
-                        int count = db.update(
-                                Structure_BBDD.TABLE2,
-                                values,
-                                selection,
-                                selectionArgs);
-                        Toast.makeText(itemView.getContext(), "Register "+id4.getText()+" was successfully updated.",Toast.LENGTH_LONG).show();
-                    } catch (Exception e) {
-                        Toast.makeText(itemView.getContext(), "ERROR",Toast.LENGTH_LONG).show();
-                    }
+                    db.update(TABLE2, values, selection, selectionArgs);
+                    Toast.makeText(itemView.getContext(), "Register "+id4.getText()+" was successfully updated.",Toast.LENGTH_LONG).show();
+                } catch (Exception e) {
+                    Toast.makeText(itemView.getContext(), "ERROR",Toast.LENGTH_LONG).show();
                 }
             });
 

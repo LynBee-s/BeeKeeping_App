@@ -9,14 +9,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class HiveListHelper extends SQLiteOpenHelper {
 
-    // If you change the database schema, you must increment the database version.
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "LBDB.db";
     public static final String TABLE1= "Hive_Rec";
-    public static final String TABLE2 = "Sales";
     public static final String TABLE3 = "Expenditure";
     public static final String TABLE4 = "Harvest_Rec";
-    public HiveListHelper( Context context,String name,SQLiteDatabase.CursorFactory factory, int version) {
+    public HiveListHelper(Context context, String name, SQLiteDatabase.CursorFactory factory) {
         super(context, name, factory, DATABASE_VERSION);
     }
 
@@ -26,7 +24,7 @@ public class HiveListHelper extends SQLiteOpenHelper {
         db.execSQL(Structure_BBDD.SQL_CREATE_ENTRIES2);
         db.execSQL(Structure_BBDD.SQL_CREATE_ENTRIES3);
         db.execSQL(Structure_BBDD.SQL_CREATE_ENTRIES4);
-        onCreate(db);
+
 
     }
 
@@ -34,14 +32,13 @@ public class HiveListHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //db.execSQL(Estructura_BBDD.SQL_DELETE_ENTRIES);
     }
-    public Cursor exportAll() {
+    public void exportAll() {
         SQLiteDatabase db=this.getReadableDatabase();
         Cursor cur=db.rawQuery("SELECT * FROM "+ TABLE1,null);
-        return cur;
+        cur.close();
     }
 
-    public SQLiteDatabase getWriteableDatabase() {
-        return null;
+    public void getWriteableDatabase() {
     }
 }
 

@@ -1,14 +1,9 @@
 package com.example.lb_app;
 
 import static com.example.lb_app.HiveDB_Helper.DATABASE_NAME;
-import static com.example.lb_app.HiveDB_Helper.TABLE4;
-import static com.example.lb_app.Structure_BBDD.TABLE2;
+import static com.example.lb_app.HiveListHelper.TABLE4;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -17,13 +12,14 @@ import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -31,26 +27,20 @@ import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.time.MonthDay;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import au.com.bytecode.opencsv.CSVWriter;
-
+@SuppressWarnings("ResultOfMethodCallIgnored")
 public class HarvestRecordList extends AppCompatActivity {
     private RecyclerView recyclerView;
     HiveListHelper helper;
     Button btnExport;
     public ArrayList<Harvest> data;
-    HarvestAdapter harvestAdapter=null;
-    HarvestAdapter.ViewHolder viewHolder=null;
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -58,7 +48,7 @@ public class HarvestRecordList extends AppCompatActivity {
         inflater.inflate(R.menu.menu_harvestreclist, menu);
         return true;
     }
-
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -84,8 +74,8 @@ public class HarvestRecordList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_harvest_record_list);
-        HiveDB_Helper hiveDB_helper=new HiveDB_Helper(HarvestRecordList.this);
-        helper= new HiveListHelper(getApplicationContext(),"LBDB.db", null, 1);
+       new HiveDB_Helper(HarvestRecordList.this);
+        helper= new HiveListHelper(getApplicationContext(),"LBDB.db", null);
         recyclerView= findViewById(R.id.recycler_v3);
         btnExport= findViewById(R.id.btnexport8);
         data=new ArrayList<>();
@@ -108,8 +98,8 @@ public class HarvestRecordList extends AppCompatActivity {
     }
     private  void  getInfo(){
         SQLiteDatabase db=helper.getReadableDatabase();
-        Harvest harvest = null;
-        Cursor cur = db.rawQuery("select * from "+ HiveDB_Helper.TABLE4 ,null);
+        Harvest harvest;
+        Cursor cur = db.rawQuery("select * from "+ TABLE4 ,null);
         while (cur.moveToNext()) {
             harvest=new Harvest();
             harvest.setID(cur.getString(0));
@@ -120,13 +110,14 @@ public class HarvestRecordList extends AppCompatActivity {
             harvest.setAmount_O(cur.getString(5));
             harvest.setNotes(cur.getString(6));
             data.add(harvest);
-        }
+
+              }cur.close();
     }
     private void export() {
         try {
             File dbFile = getDatabasePath(DATABASE_NAME);
-            helper= new HiveListHelper(getApplicationContext(),"LBDB.db", null, 1);
-            HiveDB_Helper dbhelper = new HiveDB_Helper(getApplicationContext());
+            helper= new HiveListHelper(getApplicationContext(),"LBDB.db", null);
+            new HiveDB_Helper(getApplicationContext());
             System.out.println(dbFile);
             File exportDir = new File(Environment.getExternalStorageDirectory() + "/Documents");
             if (!exportDir.exists()) {
@@ -135,7 +126,6 @@ public class HarvestRecordList extends AppCompatActivity {
             Calendar calendar=Calendar.getInstance();
             String DateNow= MonthDay.now().toString()+"-"+calendar.get(Calendar.YEAR);
             File file = new File(exportDir, "Harvest_History_"+DateNow+".xls");
-            file.createNewFile();
             try {
                 if (file.exists()) {
                     System.out.println("file.xls " + exportDir.getAbsolutePath());
@@ -144,8 +134,10 @@ public class HarvestRecordList extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "ATTENTION:The file already exists!", Toast.LENGTH_LONG).show();
                 }
                 HSSFWorkbook wb = new HSSFWorkbook();
-                SQLiteDatabase db = helper.getWriteableDatabase();
-                Cursor cur = helper.exportAll();
+                helper.getWriteableDatabase();
+                SQLiteDatabase db;
+                helper.exportAll();
+                Cursor cur;
                 Sheet sheet = wb.createSheet("Harvest History");
 
                 data = new ArrayList<>();
@@ -154,7 +146,7 @@ public class HarvestRecordList extends AppCompatActivity {
                 Row row = sheet.createRow(0);
                 row.setHeightInPoints(12);
                 while (cur.moveToNext()) {
-                    String arrStr[] = {
+                    String[] arrStr = {
                             String.valueOf(cur.getString(0)),
                             String.valueOf(cur.getString(1)),
                             String.valueOf(cur.getString(2)),
@@ -213,6 +205,7 @@ public class HarvestRecordList extends AppCompatActivity {
                 cell4.setCellStyle(style);
                 cell5.setCellStyle(style);
                 cell6.setCellStyle(style);
+                cur.close();
                 FileOutputStream fileOut = new FileOutputStream(file);
                 wb.write(fileOut);
                 fileOut.close();

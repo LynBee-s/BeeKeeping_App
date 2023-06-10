@@ -62,7 +62,7 @@ public class MainActivity7 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main7);
-        helper= new HiveListHelper(getApplicationContext(),"LBDB.db", null, 1);
+        helper= new HiveListHelper(getApplicationContext(),"LBDB.db", null);
         recyclerView= findViewById(R.id.recycler_view7);
         data=new ArrayList<>();
         tomap= findViewById(R.id.tomap);

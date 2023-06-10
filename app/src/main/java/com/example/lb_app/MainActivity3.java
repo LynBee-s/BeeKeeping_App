@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -67,7 +68,7 @@ public class MainActivity3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
         new HiveDB_Helper(MainActivity3.this);
-        helper=new HiveListHelper(getApplicationContext(),"LBDB.db",null,1);
+        helper=new HiveListHelper(getApplicationContext(),"LBDB.db",null);
 
 
         btninsert2= findViewById(R.id.insert2);
@@ -88,14 +89,17 @@ public class MainActivity3 extends AppCompatActivity {
 
         btnPay= findViewById(R.id.pay);
 
-        btnPay.setOnClickListener(v -> {
-            try{
-                CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-                CustomTabsIntent customTabsIntent = builder.build();
-                customTabsIntent.launchUrl(MainActivity3.this, Uri.parse(url));
-            }catch (Exception e){
-                Toast.makeText(getApplication(),"Error",Toast.LENGTH_LONG).show();
-        }
+        btnPay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                    CustomTabsIntent customTabsIntent = builder.build();
+                    customTabsIntent.launchUrl(MainActivity3.this, Uri.parse(url));
+                } catch (Exception e) {
+                    Toast.makeText(getApplication(), "Error", Toast.LENGTH_LONG).show();
+                }
+                }
             });
 
         btninsert2.setOnClickListener(v -> {
@@ -219,34 +223,37 @@ public class MainActivity3 extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
             }
         });
-        btnSendrecipt.setOnClickListener(v -> {
-            Calendar.getInstance();
-            try{
-                PriceI= Float.parseFloat(price2.getText().toString());
-                AmtI=Float.parseFloat(amt2.getText().toString());
-                TotalI=PriceI*AmtI;
-                transid.getText();
-                date2.getText();
-                descrip2.getText();
-                amt2.getText();
-                price2.getText();
-                total2.getText();
+        btnSendrecipt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                Intent intent=new Intent(Intent.ACTION_SEND);
-                intent.setType("*/*");
-                intent.putExtra(Intent.EXTRA_SUBJECT,"Transaction Notification from LynBee´s");
-                intent.putExtra(Intent.EXTRA_TEXT,"Date: "+date2.getText()+" " +
-                        "\n Receipt number: "+transid.getText()+" " +
-                        "\n Description: "+descrip2.getText()+" " +
-                        "\n Amount: "+amt2.getText()+" " +
-                        "\n Price: "+price2.getText()+
-                        "\n Total: "+TotalI+" "+
-                        "\n \n  Thank you for your purchase!");
-                if(intent.resolveActivity(getPackageManager()) !=null){
+                Calendar.getInstance();
+                try {
+                    PriceI = Float.parseFloat(price2.getText().toString());
+                    AmtI = Float.parseFloat(amt2.getText().toString());
+                    TotalI = PriceI * AmtI;
+                    transid.getText();
+                    date2.getText();
+                    descrip2.getText();
+                    amt2.getText();
+                    price2.getText();
+                    total2.getText();
+
+                    Intent intent = new Intent(Intent.ACTION_SEND);
+                    intent.setType("*/*");
+                    intent.putExtra(Intent.EXTRA_SUBJECT, "Transaction Notification from LynBee´s");
+                    intent.putExtra(Intent.EXTRA_TEXT, "Date: " + date2.getText() + " " +
+                            "\n Receipt number: " + transid.getText() + " " +
+                            "\n Description: " + descrip2.getText() + " " +
+                            "\n Amount: " + amt2.getText() + " " +
+                            "\n Price: " + price2.getText() +
+                            "\n Total: " + TotalI + " " +
+                            "\n \n  Thank you for your purchase!");
+
                     startActivity(intent);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
                 }
-            } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
             }
         });
     }

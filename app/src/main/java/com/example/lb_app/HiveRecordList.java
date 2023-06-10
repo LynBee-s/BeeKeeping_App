@@ -2,13 +2,8 @@ package com.example.lb_app;
 
 import static com.example.lb_app.HiveDB_Helper.DATABASE_NAME;
 import static com.example.lb_app.HiveDB_Helper.TABLE1;
-import static com.example.lb_app.Structure_BBDD.TABLE2;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -17,13 +12,14 @@ import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -31,18 +27,12 @@ import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.time.MonthDay;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import au.com.bytecode.opencsv.CSVWriter;
 
 public class HiveRecordList extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -56,7 +46,7 @@ public class HiveRecordList extends AppCompatActivity {
         inflater.inflate(R.menu.menu_recordlist, menu);
         return true;
     }
-
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -79,8 +69,8 @@ public class HiveRecordList extends AppCompatActivity {
         setContentView(R.layout.activity_hive_record_list);
         recyclerView= findViewById(R.id.recycler_view);
         btnexport= findViewById(R.id.exportar);
-        HiveDB_Helper hiveDB_helper=new HiveDB_Helper(HiveRecordList.this);
-        helper= new HiveListHelper(getApplicationContext(),"LBDB.db", null, 1);
+        new HiveDB_Helper(HiveRecordList.this);
+        helper= new HiveListHelper(getApplicationContext(),"LBDB.db", null);
         data=new ArrayList<>();
 
         getAdapter();
@@ -102,7 +92,7 @@ public class HiveRecordList extends AppCompatActivity {
     }
     private  void  getInfo(){
         SQLiteDatabase db=helper.getReadableDatabase();
-        Hives hives = null;
+        Hives hives;
         Cursor cur = db.rawQuery("select * from "+TABLE1 ,null);
         while (cur.moveToNext()) {
             hives= new Hives();
@@ -117,6 +107,7 @@ public class HiveRecordList extends AppCompatActivity {
             hives.setNotes(cur.getString(8));
             data.add(hives);
         }
+        cur.close();
     }
     private  void InsertNew() {
         try {
@@ -129,8 +120,8 @@ public class HiveRecordList extends AppCompatActivity {
     private void export() {
         try {
             File dbFile = getDatabasePath(DATABASE_NAME);
-            helper= new HiveListHelper(getApplicationContext(),"LBDB.db", null, 1);
-            HiveDB_Helper dbhelper = new HiveDB_Helper(getApplicationContext());
+            helper= new HiveListHelper(getApplicationContext(),"LBDB.db", null);
+            new HiveDB_Helper(getApplicationContext());
             System.out.println(dbFile);
             File exportDir = new File(Environment.getExternalStorageDirectory() + "/Documents");
             if (!exportDir.exists()) {
@@ -139,7 +130,6 @@ public class HiveRecordList extends AppCompatActivity {
             Calendar calendar=Calendar.getInstance();
             String DateNow= MonthDay.now().toString()+"-"+calendar.get(Calendar.YEAR);
             File file = new File(exportDir, "Hive_Activity_History_"+DateNow+".xls");
-            file.createNewFile();
             try {
                 if (file.exists()) {
                     System.out.println("file.xls " + exportDir.getAbsolutePath());
@@ -148,8 +138,10 @@ public class HiveRecordList extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "ATTENTION:The file already exists!", Toast.LENGTH_LONG).show();
                 }
                 HSSFWorkbook wb = new HSSFWorkbook();
-                SQLiteDatabase db = helper.getWriteableDatabase();
-                Cursor cur = helper.exportAll();
+                helper.getWriteableDatabase();
+                SQLiteDatabase db;
+                helper.exportAll();
+                Cursor cur;
                 Sheet sheet = wb.createSheet("Hive Activity");
 
                 data = new ArrayList<>();
@@ -158,7 +150,7 @@ public class HiveRecordList extends AppCompatActivity {
                 Row row = sheet.createRow(0);
                 row.setHeightInPoints(12);
                 while (cur.moveToNext()) {
-                    String arrStr[] = {
+                    String[] arrStr = {
                             String.valueOf(cur.getString(0)),
                             String.valueOf(cur.getString(1)),
                             String.valueOf(cur.getString(2)),
@@ -229,6 +221,7 @@ public class HiveRecordList extends AppCompatActivity {
                 cell6.setCellStyle(style);
                 cell7.setCellStyle(style);
                 cell8.setCellStyle(style);
+                cur.close();
                 FileOutputStream fileOut = new FileOutputStream(file);
                 wb.write(fileOut);
                 fileOut.close();

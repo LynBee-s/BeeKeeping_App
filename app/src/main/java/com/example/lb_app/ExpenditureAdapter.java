@@ -3,8 +3,6 @@ package com.example.lb_app;
 import static com.example.lb_app.Structure_BBDD.TABLE3;
 
 import android.content.ContentValues;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,16 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class ExpenditureAdapter extends RecyclerView.Adapter<ExpenditureAdapter.ViewHolder> {
-    LayoutInflater inflater;
     ArrayList<Expenditure> data;
     HiveDB_Helper hiveDB_helper;
     private float TotalI;
     private float AmtI;
     private float PriceI;
-
-    public ExpenditureAdapter(Context context) {
-        this.inflater = LayoutInflater.from(context);
-    }
 
     public ExpenditureAdapter(ArrayList<Expenditure> data) {
         this.data = data;
@@ -67,7 +60,7 @@ public class ExpenditureAdapter extends RecyclerView.Adapter<ExpenditureAdapter.
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             hiveDB_helper = new HiveDB_Helper(itemView.getContext());
-            helper = new HiveDB_Helper(itemView.getContext().getApplicationContext(), "LBDB.db", null, 1);
+            helper = new HiveDB_Helper(itemView.getContext().getApplicationContext(), null, 1);
 
             btnupdate2 = itemView.findViewById(R.id.updateexp);
             btndelete = itemView.findViewById(R.id.delete3);
@@ -90,26 +83,19 @@ public class ExpenditureAdapter extends RecyclerView.Adapter<ExpenditureAdapter.
                     String[] selectionArgs = {id5.getText().toString()};
 // Issue SQL statement.
                     AlertDialog.Builder builder = new AlertDialog.Builder(itemView.getContext());
-                    builder.setMessage("Are you sure you would like to delete this register?").setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    db.delete(TABLE3, selection, selectionArgs);
-                                    Toast.makeText(itemView.getContext(), "The register has been deleted", Toast.LENGTH_LONG).show();
-                                    id5.setText("");
-                                    transid5.setText("");
-                                    date5.setText("");
-                                    descrip5.setText("");
-                                    amt5.setText("");
-                                    price5.setText("");
-                                    total5.setText("");
-                                    notes5.setText("");
-                                }
-                            })
-                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-
-                                }
+                    builder.setMessage("Are you sure you would like to delete this register?").setPositiveButton("yes", (dialogInterface, i) -> {
+                        db.delete(TABLE3, selection, selectionArgs);
+                        Toast.makeText(itemView.getContext(), "The register has been deleted", Toast.LENGTH_LONG).show();
+                        id5.setText("");
+                        transid5.setText("");
+                        date5.setText("");
+                        descrip5.setText("");
+                        amt5.setText("");
+                        price5.setText("");
+                        total5.setText("");
+                        notes5.setText("");
+                    })
+                            .setNegativeButton("No", (dialog, which) -> {
 
                             }).show();
 
@@ -124,7 +110,6 @@ public class ExpenditureAdapter extends RecyclerView.Adapter<ExpenditureAdapter.
                     AmtI = Float.parseFloat(amt5.getText().toString());
                     TotalI = PriceI * AmtI;
                     SQLiteDatabase db = helper.getReadableDatabase();
-// New value for one column
                     ContentValues values = new ContentValues();
                     values.put(Structure_BBDD.COLUMNBID, id5.getText().toString());
                     values.put(Structure_BBDD.COLUMNB2, transid5.getText().toString());
@@ -136,11 +121,7 @@ public class ExpenditureAdapter extends RecyclerView.Adapter<ExpenditureAdapter.
                     values.put(Structure_BBDD.COLUMNB8, notes5.getText().toString());
                     String selection = Structure_BBDD.COLUMNBID + " LIKE ?";
                     String[] selectionArgs = {id5.getText().toString()};
-                    int count = db.update(
-                            Structure_BBDD.TABLE3,
-                            values,
-                            selection,
-                            selectionArgs);
+                     db.update(Structure_BBDD.TABLE3, values, selection, selectionArgs);
                     Toast.makeText(itemView.getContext(), "Register " + id5.getText() + " was successfully updated.", Toast.LENGTH_LONG).show();
                 } catch (Exception e) {
                     Toast.makeText(itemView.getContext(), "ERROR", Toast.LENGTH_LONG).show();

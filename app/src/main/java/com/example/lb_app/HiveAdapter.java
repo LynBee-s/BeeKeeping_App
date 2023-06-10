@@ -1,25 +1,17 @@
 package com.example.lb_app;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 public class HiveAdapter extends RecyclerView.Adapter<HiveAdapter.ViewHolder>{
-    LayoutInflater inflater;
     ArrayList<Hives> data;
 
-    public  HiveAdapter(Context context){
-        this.inflater=LayoutInflater.from(context);
-    }
+
 public  HiveAdapter(ArrayList<Hives> data) {
     this.data = data;
 }
@@ -48,7 +40,7 @@ public  HiveAdapter(ArrayList<Hives> data) {
     public int getItemCount() {
         return data.size();
     }
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvid,tvhid,tvdate,tvhivestat,tvframes,tvpop,tvloc,tvnotes,tvghivestat;
 
         public ViewHolder(final View itemView) {
