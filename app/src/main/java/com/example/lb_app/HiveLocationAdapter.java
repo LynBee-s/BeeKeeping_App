@@ -1,7 +1,6 @@
 package com.example.lb_app;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,13 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class HiveLocationAdapter extends RecyclerView.Adapter<HiveLocationAdapter.ViewHolder>{
-        LayoutInflater inflater;
+
         ArrayList<Hives> data;
         HiveDB_Helper helper;
         HiveDB_Helper hiveDB_helper;
-    public  HiveLocationAdapter(Context context){
-        this.inflater=LayoutInflater.from(context);
-    }
+
     public HiveLocationAdapter(ArrayList<Hives>data){this.data=data;}
     @NonNull
     @Override
@@ -48,7 +45,7 @@ public class HiveLocationAdapter extends RecyclerView.Adapter<HiveLocationAdapte
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             hiveDB_helper=new HiveDB_Helper(itemView.getContext());
-            helper= new HiveDB_Helper(itemView.getContext().getApplicationContext(), null, 1);
+            helper= new HiveDB_Helper(itemView.getContext().getApplicationContext());
             id6= itemView.findViewById(R.id.id6);
             hiveid= itemView.findViewById(R.id.hiveid2);
             hivelocate= itemView.findViewById(R.id.location2);
@@ -56,7 +53,7 @@ public class HiveLocationAdapter extends RecyclerView.Adapter<HiveLocationAdapte
 
             updateloc.setOnClickListener(v -> {
                 try {
-                    helper= new HiveDB_Helper(itemView.getContext(), null, 1);
+                    helper= new HiveDB_Helper(itemView.getContext());
                     SQLiteDatabase db = helper.getReadableDatabase();
                     ContentValues values = new ContentValues();
                     values.put(Structure_BBDD.COLUMNID, id6.getText().toString());

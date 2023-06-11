@@ -61,7 +61,7 @@ public class HarvestAdapter extends RecyclerView.Adapter<HarvestAdapter.ViewHold
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             hiveDB_helper = new HiveDB_Helper(itemView.getContext());
-            helper = new HiveDB_Helper(itemView.getContext().getApplicationContext(), null, 1);
+            helper = new HiveDB_Helper(itemView.getContext().getApplicationContext());
 
             btnupdate8 = itemView.findViewById(R.id.btnupdate8);
 
@@ -72,7 +72,7 @@ public class HarvestAdapter extends RecyclerView.Adapter<HarvestAdapter.ViewHold
             other8 = itemView.findViewById(R.id.other7);
             amtt8 = itemView.findViewById(R.id.amount8);
             notes8 = itemView.findViewById(R.id.notes8);
-            btnDelete = (Button) itemView.findViewById(R.id.btnDelete);
+            btnDelete = itemView.findViewById(R.id.btnDelete);
 
 
             btnDelete.setOnClickListener(v -> {
@@ -102,23 +102,20 @@ public class HarvestAdapter extends RecyclerView.Adapter<HarvestAdapter.ViewHold
                     Toast.makeText(itemView.getContext(), "ERROR", Toast.LENGTH_LONG).show();
                 }
             });
-                btnupdate8.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        try {
-                            helper.getReadableDatabase();
-                            ContentValues values = new ContentValues();
-                            values.put(Structure_BBDD.COLUMNCID, id8.getText().toString());
-                            values.put(Structure_BBDD.COLUMNC2, hiveid8.getText().toString());
-                            values.put(Structure_BBDD.COLUMNC3, date8.getText().toString());
-                            values.put(Structure_BBDD.COLUMNC4, amt8.getText().toString());
-                            values.put(Structure_BBDD.COLUMNC5, other8.getText().toString());
-                            values.put(Structure_BBDD.COLUMNC6, amtt8.getText().toString());
-                            values.put(Structure_BBDD.COLUMNC7, notes8.getText().toString());
-                            Toast.makeText(itemView.getContext(), "Register " + id8.getText() + " was successfully updated.", Toast.LENGTH_SHORT).show();
-                        } catch (Exception e) {
-                            Toast.makeText(itemView.getContext(), "ERROR", Toast.LENGTH_LONG).show();
-                        }
+                btnupdate8.setOnClickListener(v -> {
+                    try {
+                        helper.getReadableDatabase();
+                        ContentValues values = new ContentValues();
+                        values.put(Structure_BBDD.COLUMNCID, id8.getText().toString());
+                        values.put(Structure_BBDD.COLUMNC2, hiveid8.getText().toString());
+                        values.put(Structure_BBDD.COLUMNC3, date8.getText().toString());
+                        values.put(Structure_BBDD.COLUMNC4, amt8.getText().toString());
+                        values.put(Structure_BBDD.COLUMNC5, other8.getText().toString());
+                        values.put(Structure_BBDD.COLUMNC6, amtt8.getText().toString());
+                        values.put(Structure_BBDD.COLUMNC7, notes8.getText().toString());
+                        Toast.makeText(itemView.getContext(), "Register " + id8.getText() + " was successfully updated.", Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                        Toast.makeText(itemView.getContext(), "ERROR", Toast.LENGTH_LONG).show();
                     }
                 });
                 }

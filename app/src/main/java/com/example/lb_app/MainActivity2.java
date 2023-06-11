@@ -48,9 +48,11 @@ public class MainActivity2 extends AppCompatActivity {
             case R.id.ventas:
                 Sales();
                 return true;
-
             case R.id.gastos:
                 Expenditure();
+                return true;
+            case R.id.gastoshstry:
+                ExpenditureHistory();
                 return true;
             case R.id.geoloc:
                 MapHive();
@@ -74,22 +76,19 @@ public class MainActivity2 extends AppCompatActivity {
         helper= new HiveListHelper(getApplicationContext(),HiveListHelper.DATABASE_NAME, null);
         data=new ArrayList<>();
 
-
-//Declare Buttons..................................---------------------------------------------------
-        btnInsert=(Button) findViewById(R.id.insert);
-        btnUpdate=(Button) findViewById(R.id.actualizar);
-        btnRead=(Button) findViewById(R.id.leer);
-        btnClear=(Button) findViewById(R.id.limpiar);
-//Declare text fields..................................--------------------------------------------------
-        id=(EditText) findViewById(R.id.id);
-        hid=(EditText)findViewById(R.id.hivid);
-        date=(EditText)findViewById(R.id.date6);
-        hivst=(EditText)findViewById(R.id.hivstat);
-        frame=(EditText)findViewById(R.id.frames);
-        pop=(EditText) findViewById(R.id.popu);
-        hprof=(EditText) findViewById(R.id.ghivestat2);
-        locate=(EditText) findViewById(R.id.location);
-        note=(EditText)findViewById(R.id.notes);
+        btnInsert= findViewById(R.id.insert);
+        btnUpdate= findViewById(R.id.actualizar);
+        btnRead= findViewById(R.id.leer);
+        btnClear= findViewById(R.id.limpiar);
+        id= findViewById(R.id.id);
+        hid= findViewById(R.id.hivid);
+        date= findViewById(R.id.date6);
+        hivst= findViewById(R.id.hivstat);
+        frame= findViewById(R.id.frames);
+        pop= findViewById(R.id.popu);
+        hprof= findViewById(R.id.ghivestat2);
+        locate= findViewById(R.id.location);
+        note= findViewById(R.id.notes);
 
        btnInsert.setOnClickListener(v -> {
             try {
@@ -263,6 +262,14 @@ public class MainActivity2 extends AppCompatActivity {
     } private void HiveRes() {
         try {
             Intent intent = new Intent(this, MainActivity10.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+        }
+    }
+    private void ExpenditureHistory() {
+        try {
+            Intent intent = new Intent(this, MainActivity8.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();

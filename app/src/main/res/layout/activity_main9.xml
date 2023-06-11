@@ -15,7 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="290dp"
         android:background="#FEDD59"
-        app:srcCompat="@mipmap/harvestrecimg_foreground" />
+        app:srcCompat="@mipmap/harvestrecimg_foreground"
+        android:contentDescription="@string/harvest_records" />
 
     <LinearLayout
         android:layout_width="match_parent"

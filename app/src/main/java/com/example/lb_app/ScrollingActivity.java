@@ -64,8 +64,8 @@ public class ScrollingActivity extends AppCompatActivity {
         CollapsingToolbarLayout toolBarLayout = binding.toolbarLayout;
         toolBarLayout.setTitle(getTitle());
 
-        buy1=(Button) findViewById(R.id.buy);
-        buy2=(Button) findViewById(R.id.buy2);
+        buy1= findViewById(R.id.buy);
+        buy2= findViewById(R.id.buy2);
         buy1.setOnClickListener(v -> {
             try{
                 CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();

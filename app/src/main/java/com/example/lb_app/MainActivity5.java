@@ -77,9 +77,9 @@ public class MainActivity5 extends AppCompatActivity {
         setContentView(R.layout.activity_main5);
         new HiveDB_Helper(MainActivity5.this);
         helper = new HiveListHelper(getApplicationContext(), "LBDB.db", null);
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view2);
+        recyclerView = findViewById(R.id.recycler_view2);
         data = new ArrayList<>();
-        export2 = (ImageButton) findViewById(R.id.export2);
+        export2 = findViewById(R.id.export2);
 
         getAdapter();
         getInfo();
@@ -154,7 +154,7 @@ public class MainActivity5 extends AppCompatActivity {
                 String DateNow= MonthDay.now().toString()+"-"+calendar.get(Calendar.YEAR);
                 File file = new File(exportDir, "Sales_History_"+DateNow+".xls");
                 try {
-                    if (file.exists()) {
+                    if (!file.exists()) {
                         System.out.println("file.xls " + exportDir.getAbsolutePath());
                         Toast.makeText(getApplicationContext(), "Writing data to excel file...", Toast.LENGTH_SHORT).show();
                     } else {

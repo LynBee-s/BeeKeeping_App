@@ -60,7 +60,7 @@ public class ExpenditureAdapter extends RecyclerView.Adapter<ExpenditureAdapter.
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             hiveDB_helper = new HiveDB_Helper(itemView.getContext());
-            helper = new HiveDB_Helper(itemView.getContext().getApplicationContext(), null, 1);
+            helper = new HiveDB_Helper(itemView.getContext().getApplicationContext());
 
             btnupdate2 = itemView.findViewById(R.id.updateexp);
             btndelete = itemView.findViewById(R.id.delete3);

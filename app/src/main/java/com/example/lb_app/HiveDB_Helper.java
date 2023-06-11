@@ -22,9 +22,7 @@ public class HiveDB_Helper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    public HiveDB_Helper(Context context, Object o, int i) {
-        super(context.getApplicationContext(), DATABASE_NAME, null, 1);
-    }
+
 
     public void onCreate(SQLiteDatabase db) {
 
@@ -44,15 +42,6 @@ public class HiveDB_Helper extends SQLiteOpenHelper {
         db.execSQL("select * from " + TABLE3);
         s.getBytes(StandardCharsets.UTF_8);
         return null;
-    }
-
-    public SQLiteDatabase getWriteableDatabase(SQLiteDatabase db, String s) {
-        db.execSQL("select * from " + TABLE1);
-        db.execSQL("select * from " + TABLE2);
-        db.execSQL("select * from " + TABLE3);
-        s.getBytes(StandardCharsets.UTF_8);
-        return null;
-
     }
 
     public Cursor getHiveBar() {

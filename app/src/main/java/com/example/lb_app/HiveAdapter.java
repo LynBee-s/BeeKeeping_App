@@ -45,15 +45,15 @@ public  HiveAdapter(ArrayList<Hives> data) {
 
         public ViewHolder(final View itemView) {
             super(itemView);
-            tvid=(TextView) itemView.findViewById(R.id.rvid);
-            tvhid=(TextView) itemView.findViewById(R.id.rvhid);
-            tvdate=(TextView) itemView.findViewById(R.id.rvdate);
-            tvframes=(TextView)itemView.findViewById(R.id.rvframes);
-            tvhivestat=(TextView) itemView.findViewById(R.id.rvhivestat);
-            tvpop=(TextView) itemView.findViewById(R.id.rvpop);
-            tvghivestat=(TextView) itemView.findViewById(R.id.ghivestat);
-            tvloc=(TextView) itemView.findViewById(R.id.rvlocate);
-            tvnotes=(TextView) itemView.findViewById(R.id.rvnote);
+            tvid= itemView.findViewById(R.id.rvid);
+            tvhid= itemView.findViewById(R.id.rvhid);
+            tvdate= itemView.findViewById(R.id.rvdate);
+            tvframes= itemView.findViewById(R.id.rvframes);
+            tvhivestat= itemView.findViewById(R.id.rvhivestat);
+            tvpop= itemView.findViewById(R.id.rvpop);
+            tvghivestat= itemView.findViewById(R.id.ghivestat);
+            tvloc= itemView.findViewById(R.id.rvlocate);
+            tvnotes= itemView.findViewById(R.id.rvnote);
         }
     }
 }

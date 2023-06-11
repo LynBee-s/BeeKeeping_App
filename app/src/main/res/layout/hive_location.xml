@@ -24,6 +24,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:autofillHints=""
+            android:labelFor="@id/id6"
             android:inputType="textPersonName"
             android:textAlignment="center" />
     </LinearLayout>
@@ -53,6 +54,7 @@
             android:autofillHints=""
             android:inputType="textPersonName"
             android:text=""
+            android:labelFor="@id/hiveid2"
             android:textAlignment="center" />
     </LinearLayout>
 
@@ -74,6 +76,7 @@
             android:layout_width="259dp"
             android:layout_height="match_parent"
             android:autofillHints=""
+            android:labelFor="@id/location2"
             android:inputType="textPersonName"
             android:text=""
             android:textAlignment="center" />

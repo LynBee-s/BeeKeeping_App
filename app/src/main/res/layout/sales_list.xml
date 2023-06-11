@@ -74,6 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:autofillHints=""
+                android:labelFor="@id/id4"
                 android:inputType="textPersonName"
                 android:textSize="11sp" />
 

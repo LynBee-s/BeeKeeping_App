@@ -56,18 +56,18 @@ public class SalesAdapter extends RecyclerView.Adapter<SalesAdapter.ViewHolder>{
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             hiveDB_helper=new HiveDB_Helper(itemView.getContext());
-            helper= new HiveDB_Helper(itemView.getContext().getApplicationContext(), null, 1);
-            btnupdate=(Button) itemView.findViewById(R.id.btnupdate5);
-            btndelete=(Button) itemView.findViewById(R.id.delete1);
+            helper= new HiveDB_Helper(itemView.getContext().getApplicationContext());
+            btnupdate= itemView.findViewById(R.id.btnupdate5);
+            btndelete= itemView.findViewById(R.id.delete1);
 
-            id4=(EditText) itemView.findViewById(R.id.id4);
-            transid4=(EditText) itemView.findViewById(R.id.transid4);
-            date4=(EditText) itemView.findViewById(R.id.date4);
-            descrip4=(EditText) itemView.findViewById(R.id.descrip4);
-            amt4=(EditText) itemView.findViewById(R.id.amt4);
-            price4=(EditText)itemView.findViewById(R.id.price4);
-            total4=(EditText) itemView.findViewById(R.id.total4);
-            notes4=(EditText) itemView.findViewById(R.id.notes4);
+            id4= itemView.findViewById(R.id.id4);
+            transid4= itemView.findViewById(R.id.transid4);
+            date4= itemView.findViewById(R.id.date4);
+            descrip4= itemView.findViewById(R.id.descrip4);
+            amt4= itemView.findViewById(R.id.amt4);
+            price4= itemView.findViewById(R.id.price4);
+            total4= itemView.findViewById(R.id.total4);
+            notes4= itemView.findViewById(R.id.notes4);
 
             btndelete.setOnClickListener(v -> {
                 try {

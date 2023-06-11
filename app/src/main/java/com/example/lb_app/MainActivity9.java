@@ -73,7 +73,7 @@ public class MainActivity9 extends AppCompatActivity {
         amtt9= findViewById(R.id.amtt9);
         notes9= findViewById(R.id.notes9);
 
-        btnInsert=(Button) findViewById(R.id.btninsert8);
+        btnInsert= findViewById(R.id.btninsert8);
 
 
         btnInsert.setOnClickListener(v -> {
