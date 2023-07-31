@@ -244,8 +244,13 @@ public class MainActivity extends AppCompatActivity {
     }
     private void PlanEvent() {
         try {
-            Intent intent=new Intent(this,MainActivity6.class);
-            startActivity(intent);
+              Intent intent = new Intent(Intent.ACTION_INSERT) 
+                     .setData(CalendarContract.Events.CONTENT_URI) 
+                     .putExtra(CalendarContract.Events.TITLE, "Reminder: ") 
+                     .putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true); 
+             if (intent.resolveActivity(getPackageManager()) != null) { 
+                 startActivity(intent); 
+             }
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
         }
